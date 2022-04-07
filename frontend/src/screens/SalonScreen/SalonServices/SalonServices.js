@@ -18,10 +18,9 @@ const SalonServices = () => {
         <Text style={styles.text} >Gallery</Text>
         <Text style={styles.text} >Reviews</Text>
         </View>
-        <Text style={{marginTop: 20, textAlign: "center"}} >Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, corporis laudantium ratione, sapiente voluptatibus pariatur repellendus, exercitationem asperiores illo saepe rem! Ullam omnis odio recusandae consequuntur veritatis assumenda perspiciatis. Minima!</Text>
-        <Text>Open Hours: Monday - Friday | 09:00AM - 09:00PM</Text>
-        <Text>Contact #: 123 4567 890</Text>
-        <Text>Address: ABC Lane, 2nd Floor, G/13-1</Text>
+        <View>
+{/* Services */}
+        </View>
       </View>
     </View>
   )
