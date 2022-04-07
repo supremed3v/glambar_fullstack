@@ -1,8 +1,13 @@
 import { View, Text, StyleSheet, Image } from 'react-native'
 import React from 'react'
 import salonbg from '../../../../assets/salonbg.jpeg'
+import CustomButton from '../../../components/CustomButton'
 
 const SalonServices = () => {
+  
+  const onViewServicesPressed = () => {
+    console.log("Forgot Password");
+  };
   return (
     <View style={{marginTop: 50}} >
       <View>
@@ -19,7 +24,11 @@ const SalonServices = () => {
         <Text style={styles.text} >Reviews</Text>
         </View>
         <View>
-{/* Services */}
+        <Text style={styles.text} >Hair Care</Text>
+        <CustomButton
+            text="View Services"
+            onPress={onViewServicesPressed}
+          />
         </View>
       </View>
     </View>
