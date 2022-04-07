@@ -13,34 +13,30 @@ import bgSignup from "../../../assets/signup-bg.jpeg";
 
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
-import  Ionicons  from '@expo/vector-icons/Ionicons';
 
 import React, { useState } from "react";
-const SignupScreen = () => {
+
+const SignUpScreen = ({ navigation }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const onCreateAnAccount = () =>{
-    console.warn("Create an account");
-}
+  const onPrivacyPressed = () => {
+    navigation.navigate("TermsandConditions");
+  };
 
-const onPrivacyPressed = () =>{
-    console.log("Privacy Pressed");
-}
+  const onSignUpPressed = () => {
+    navigation.navigate("ClientDetails");
+  };
 
-const onSignupPressed = () => {
-    console.warn("signed up");
-}
-
-const onSignUpGoogle = () =>{
+  const onSignUpGoogle = () => {
     console.warn("signup with google");
-}
+  };
 
-const onSignInPressed = () =>{
-    console.log(signin);
-}
+  const onSignIn = () => {
+    navigation.goBack();
+  };
 
   return (
     <ImageBackground source={bgSignup} style={styles.container}>
@@ -66,19 +62,29 @@ const onSignInPressed = () =>{
           secureTextEntry={true}
         />
 
-        
-      <Text style={styles.text}>
-            I read and agree to the <Text onPress={onPrivacyPressed} style={styles.button}>Terms and Conditions</Text>.
+        <Text style={styles.text}>
+          I read and agree to the{" "}
+          <Text onPress={onPrivacyPressed} style={styles.button}>
+            Terms and Conditions
+          </Text>
+          .
         </Text>
-      <CustomButton text="Create an account" onPressed={onSignupPressed}  />
+        <CustomButton text="Create an account" onPress={onSignUpPressed} />
 
-      <CustomButton text="Sign Up With Google" onPress={onSignUpGoogle} bgColor="#FAE9EA" fgColor="#DD4D44" />
-      <Text style={styles.signInText}>
-            Already have an account? <Text onPress={onSignInPressed} style={styles.button}>Sign In</Text>.
+        <CustomButton
+          text="Sign Up With Google"
+          onPress={onSignUpGoogle}
+          bgColor="#FAE9EA"
+          fgColor="#DD4D44"
+        />
+        <Text style={styles.signInText}>
+          Already have an account?{" "}
+          <Text onPress={onSignIn} style={styles.button}>
+            Sign In
+          </Text>
+          .
         </Text>
       </View>
-      
-        
     </ImageBackground>
   );
 };
@@ -98,23 +104,21 @@ const styles = StyleSheet.create({
   text: {
     marginTop: 20,
     textAlign: "left",
-    color: '#827676',
-    fontWeight: 'normal'
+    color: "#827676",
+    fontWeight: "normal",
   },
   container_center: {
     alignItems: "center",
     marginTop: 30,
   },
 
-  button:{
-      color: "#5085E1"
+  button: {
+    color: "#5085E1",
   },
 
   signInText: {
-      marginTop: 150,
-      color: "#827676"
-  }
-
-  
+    marginTop: 150,
+    color: "#827676",
+  },
 });
-export default SignupScreen;
+export default SignUpScreen;

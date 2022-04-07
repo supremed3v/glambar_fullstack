@@ -1,29 +1,30 @@
 import {
-    ImageBackground,
-    TextInput,
-    Image,
-    StyleSheet,
-    Text,
-    View,
-    useWindowDimensions,
-    ScrollView,
-  } from "react-native";
-  
-  import bgClientDetails from "../../../assets/signup-bg.jpeg";
+  ImageBackground,
+  TextInput,
+  Image,
+  StyleSheet,
+  Text,
+  View,
+  useWindowDimensions,
+  ScrollView,
+} from "react-native";
 
-  import CustomInput from "../../components/CustomInput";
+import bgClientDetails from "../../../assets/signup-bg.jpeg";
+
+import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
 import React, { useState } from "react";
-const ClientDetails = () => {
-    const [firstname, setFirstname] = useState("");
+
+const ClientDetails = ({ navigation }) => {
+  const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [contact, setContact] = useState("");
   const [address, setAddress] = useState("");
 
-  const onAddingClientDetails = () =>{
-    console.warn("Add Clients Details");
-}
-    return(
+  const onSave = () => {
+    navigation.navigate("Home");
+  };
+  return (
     <ImageBackground source={bgClientDetails} style={styles.container}>
       <View style={styles.container_center}>
         <Text style={styles.ProfileText}>Profile</Text>
@@ -48,10 +49,10 @@ const ClientDetails = () => {
           value={address}
           setValue={setAddress}
         />
-        <CustomButton text="Save" onPressed={onAddingClientDetails}  />
-        </View>
-        </ImageBackground>
-        );
+        <CustomButton text="Save" onPress={onSave} />
+      </View>
+    </ImageBackground>
+  );
 };
 const styles = StyleSheet.create({
   ProfileText: {
@@ -68,6 +69,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 30,
   },
-
 });
 export default ClientDetails;
