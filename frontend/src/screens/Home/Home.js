@@ -15,6 +15,7 @@ import myData from "../../DummyData/SalonHomeData";
 
 const Home = ({ navigation }) => {
   const [search, setSearch] = useState("");
+
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <SafeAreaView>
@@ -22,8 +23,6 @@ const Home = ({ navigation }) => {
           data={myData}
           ListHeaderComponent={
             <View style={styles.container}>
-              <Text>Home</Text>
-
               <CustomInput
                 placeholder="Search"
                 value={search}
@@ -58,6 +57,7 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     marginTop: 50,
+    paddingHorizontal: 20,
   },
 
   card: {
@@ -65,8 +65,8 @@ const styles = StyleSheet.create({
     height: 200,
     paddingLeft: 50,
     paddingRight: 50,
-    marginTop: 10,
-    // backgroundColor: "black",
+    marginTop: 20,
+    marginBottom: 10,
   },
   cardImg: {
     borderRadius: 15,
