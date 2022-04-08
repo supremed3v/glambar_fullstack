@@ -14,6 +14,7 @@ import Home from "./src/screens/Home";
 import SalonScreen from "./src/screens/SalonScreen";
 import SalonServices from "./src/screens/SalonScreen/SalonServices";
 import NewPassword from "./src/screens/NewPassword/NewPassword";
+import Profile from "./src/screens/Profile/Profile";
 
 const Stack = createStackNavigator();
 
@@ -39,6 +40,7 @@ export default function App() {
           name="TermsandConditions"
           component={TermsandConditions}
         />
+        <Stack.Screen name="Profile" component={Profile}/>
         <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
         <Stack.Screen name="ClientDetails" component={ClientDetails} />
         <Stack.Screen name="SalonScreen" component={SalonScreen} />
