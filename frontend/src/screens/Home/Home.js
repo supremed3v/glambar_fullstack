@@ -34,8 +34,7 @@ const Home = ({ navigation }) => {
             <TouchableOpacity
               key={id}
               style={styles.card}
-              onPress={() => navigation.navigate("SalonServices", { myData })}
-            >
+              onPress={() => navigation.navigate("SalonServices", { myData })}>
               <Image source={{ uri: item.img }} style={styles.cardImg} />
               <View style={styles.textSalon}>
                 <Text>{item.name}</Text>

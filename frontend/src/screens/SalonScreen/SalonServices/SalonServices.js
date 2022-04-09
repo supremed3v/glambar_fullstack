@@ -9,19 +9,12 @@ const SalonServices = () => {
         <Image style={styles.image} source={salonbg} resizeMode="cover" />
       </View>
       <View style={styles.container}>
-        <Text style={{marginTop: 20, marginLeft: 20,}} >Stylers Salon</Text>
-        <View style={styles.flexContainer} >
-
-        <Text style={styles.textAbout}>About</Text>
-        <Text style={styles.text} >Services</Text>
-        <Text style={styles.text} >Packages</Text>
-        <Text style={styles.text} >Gallery</Text>
-        <Text style={styles.text} >Reviews</Text>
-        </View>
-        <Text style={{marginTop: 20, textAlign: "center"}} >Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, corporis laudantium ratione, sapiente voluptatibus pariatur repellendus, exercitationem asperiores illo saepe rem! Ullam omnis odio recusandae consequuntur veritatis assumenda perspiciatis. Minima!</Text>
-        <Text>Open Hours: Monday - Friday | 09:00AM - 09:00PM</Text>
-        <Text>Contact #: 123 4567 890</Text>
-        <Text>Address: ABC Lane, 2nd Floor, G/13-1</Text>
+        <Text style={{marginTop: 30, marginLeft: 25,fontWeight: 'bold',fontSize:20}} >Stylers Salon</Text>
+        
+        <Text style={{marginTop: 20, marginStart: 25}}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, corporis laudantium ratione, sapiente voluptatibus pariatur repellendus, exercitationem asperiores illo saepe rem! Ullam omnis odio recusandae consequuntur veritatis assumenda perspiciatis. Minima!</Text>
+        <Text style={{marginTop: 5, marginStart: 25}}>Open Hours: Monday - Friday | 09:00AM - 09:00PM </Text>
+        <Text style={{marginTop: 5, marginStart: 25}}>Contact #: 123 4567 890</Text>
+        <Text style={{marginTop: 5, marginStart: 25}}>Address: ABC Lane, 2nd Floor, G/13-1</Text>
       </View>
     </View>
   )
