@@ -24,17 +24,17 @@ const SalonScreen = () => {
         <Text></Text>
       </View>
       <View style={styles.container}>
-        <Text style={{ marginTop: 20, marginLeft: 20 }}>Stylers Salon</Text>
+        <Text style={{ marginTop: 25, marginLeft: 20, fontWeight: "bold", fontSize: 20}}>Stylers Salon</Text>
 
-        <Text style={{ marginTop: 20, textAlign: "center" }}>
+        <Text style={{ marginTop: 15, marginStart: 20 }}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem,
           corporis laudantium ratione, sapiente voluptatibus pariatur
           repellendus, exercitationem asperiores illo saepe rem! Ullam omnis
           odio recusandae consequuntur veritatis assumenda perspiciatis. Minima!
         </Text>
-        <Text>Open Hours: Monday - Friday | 09:00AM - 09:00PM</Text>
-        <Text>Contact #: 123 4567 890</Text>
-        <Text>Address: ABC Lane, 2nd Floor, G/13-1</Text>
+        <Text style={{ marginTop: 10, marginStart: 20}}>Open Hours: Monday - Friday | 09:00AM - 09:00PM</Text>
+        <Text style={{ marginTop: 10, marginStart: 20}}>Contact #: 123 4567 890</Text>
+        <Text style={{ marginTop: 10, marginStart: 20}}>Address: ABC Lane, 2nd Floor, G/13-1</Text>
       </View>
     </View>
   );
