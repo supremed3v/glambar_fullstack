@@ -4,14 +4,17 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "../screens/Home";
 const Tab = createBottomTabNavigator();
 import Ionicons from "react-native-vector-icons/Ionicons";
+import UpcomingAppointment from "../screens/UpcomingAppointment/UpcomingAppointment";
+import Profile from "../screens/Profile/Profile";
+import AddressDetails from "../screens/AddressDetails/AddressDetails";
 
-const HomeNavigationContainer = ({ navigation }) => {
+const HomeNavigationContainer = () => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
-          if (route.name === "Home") {
+          if (route.name === "HomeNav") {
             iconName = focused ? "home-outline" : "home-outline";
           } else if (route.name === "Appointment") {
             iconName = focused ? "calendar-outline" : "calendar-outline";
@@ -32,23 +35,23 @@ const HomeNavigationContainer = ({ navigation }) => {
     >
       <Tab.Screen
         options={{ headerShown: false }}
-        name="Home"
+        name="HomeNav"
         component={Home}
       />
       <Tab.Screen
         options={{ headerShown: false }}
         name="Appointment"
-        component={Home}
+        component={UpcomingAppointment}
       />
       <Tab.Screen
         options={{ headerShown: false }}
         name="Profile"
-        component={Home}
+        component={Profile}
       />
       <Tab.Screen
         options={{ headerShown: false }}
         name="Location"
-        component={Home}
+        component={AddressDetails}
       />
       <Tab.Screen
         options={{ headerShown: false }}

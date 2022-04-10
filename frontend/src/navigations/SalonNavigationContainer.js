@@ -4,6 +4,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import SalonServices from "../screens/SalonScreen/SalonServices/SalonServices";
 const Tab = createBottomTabNavigator();
 import Ionicons from "react-native-vector-icons/Ionicons";
+import SalonScreen from "../screens/SalonScreen";
+import SalonServices2 from "../screens/SalonScreen/SalonServices2";
 
 const SalonNavigationContainer = ({ navigation }) => {
   return (
@@ -21,7 +23,7 @@ const SalonNavigationContainer = ({ navigation }) => {
               : "person-circle-outline";
           } else if (route.name === "Reviews") {
             iconName = focused ? "exit-outline" : "exit-outline";
-          } 
+          }
           return <Ionicons name={iconName} size={size} color={color} />;
         },
         tabBarActiveTintColor: "rgb(59, 113, 243)",
@@ -31,7 +33,7 @@ const SalonNavigationContainer = ({ navigation }) => {
       <Tab.Screen
         options={{ headerShown: false }}
         name="About"
-        component={SalonServices}
+        component={SalonScreen}
       />
       <Tab.Screen
         options={{ headerShown: false }}
@@ -41,13 +43,13 @@ const SalonNavigationContainer = ({ navigation }) => {
       <Tab.Screen
         options={{ headerShown: false }}
         name="Packages"
-        component={SalonServices}
+        component={SalonServices2}
       />
-    
+
       <Tab.Screen
         options={{ headerShown: false }}
         name="Reviews"
-        component={SalonServices}
+        component={SalonServices2}
       />
     </Tab.Navigator>
   );

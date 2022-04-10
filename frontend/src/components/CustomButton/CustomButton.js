@@ -17,7 +17,15 @@ const CustomButton = ({
         bgColor ? { backgroundColor: bgColor } : {},
       ]}
     >
-      <Text style={[styles.text, styles[`text_${type}`], fgColor ? {color: fgColor} : {} ]}>{text}</Text>
+      <Text
+        style={[
+          styles.text,
+          styles[`text_${type}`],
+          fgColor ? { color: fgColor } : {},
+        ]}
+      >
+        {text}
+      </Text>
     </Pressable>
   );
 };
@@ -44,12 +52,12 @@ const styles = StyleSheet.create({
   },
 
   text_TERTIARY: {
-    color: 'gray'
+    color: "gray",
   },
 
   text_SECONDARY: {
-    color: "white"
-  }
+    color: "white",
+  },
 });
 
 export default CustomButton;
