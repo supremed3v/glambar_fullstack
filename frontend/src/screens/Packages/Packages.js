@@ -1,9 +1,9 @@
-import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, SafeAreaView,FlatList } from "react-native";
 import React from "react";
-import salonbg from "../../../../assets/salonbg.jpeg";
-import CustomButton from "../../../components/CustomButton";
+import salonbg from "../../../assets/salonbg.jpeg";
+import myData from "../../DummyData/SalonPackageData";
 
-const SalonServices = () => {
+const Packages = () => {
   const AddToCart = () => {
     console.log("Pressed");
   };
@@ -12,6 +12,7 @@ const SalonServices = () => {
       <View>
         <Image style={styles.image} source={salonbg} resizeMode="cover" />
       </View>
+      
       <View style={styles.container}>
         <Text
           style={{
@@ -21,20 +22,20 @@ const SalonServices = () => {
             fontSize: 20,
           }}
         >
-          Services
+          Packages
         </Text>
         <View>
-         {/* new service */}
+             {/* new package */}
         <View style={styles.card}>
           <Image
             source={{
-              uri: "https://images.unsplash.com/photo-1605980766335-d3a41c7332a1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80",
+              uri: "https://i.pinimg.com/550x/4e/ab/d3/4eabd3b68c29b33411117742ef10a229.jpg",
             }}
             resizeMode="cover"
             style={styles.cardImage}
           />
           <View style={styles.textWrapper}></View>
-          <Text>Hair Color {"\n"}Balayage {"\n"}Price: 1900/=</Text>
+          <Text>Mehndi Package {"\n"}Dupatta setting is included. {"\n"}Price: 20000/-</Text>
         </View>
         
         <View style={{ marginTop: 10 }}>
@@ -51,17 +52,17 @@ const SalonServices = () => {
               <Text style={{textAlign: "center"}}>Add to cart</Text>
             </TouchableOpacity>
           </View>
-           {/* new service */}
-           <View style={styles.card}>
+           {/* new package */}
+        <View style={styles.card}>
           <Image
             source={{
-              uri: "https://images.unsplash.com/photo-1551392505-f4056032826e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=693&q=80",
+              uri: "https://i.pinimg.com/originals/04/a7/fb/04a7fbd5418865d88cdc7e8eadc5aebb.jpg",
             }}
             resizeMode="cover"
             style={styles.cardImage}
           />
           <View style={styles.textWrapper}></View>
-          <Text>Makeup {"\n"}Eye Makeup {"\n"}Price: 3000/=</Text>
+          <Text>Barat Package {"\n"}Without Services.{"\n"}Price: 50000/-</Text>
         </View>
         
         <View style={{ marginTop: 10 }}>
@@ -78,9 +79,12 @@ const SalonServices = () => {
               <Text style={{textAlign: "center"}}>Add to cart</Text>
             </TouchableOpacity>
           </View>
-           </View>
-      </View>
+         
+          
+          </View>
     </View>
+   
+        </View>
   );
 };
 
@@ -106,7 +110,7 @@ const styles = StyleSheet.create({
   text: {
     paddingRight: 20,
   },
-  textAbout: {
+  textPrice: {
     fontWeight: "bold",
     paddingRight: 20,
   },
@@ -129,4 +133,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SalonServices;
+export default Packages;
