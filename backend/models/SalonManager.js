@@ -3,9 +3,8 @@ const mongoose = require("mongoose");
 const SalonManagerSchema = new mongoose.Schema(
   {
     email: { type: String, required: true, unique: true },
-    password: { type: String, required: true },
-    firstName: { type: String, required: true, maxlength: 10 },
-    lastName: { type: String, required: true, maxlength: 10 },
+    password: { type: String, required: true, minlength: 6 },
+    salonName: { type: String, required: true, maxlength: 10, unique: true },
     contactNumber: {
       type: Number,
       required: true,
@@ -17,4 +16,4 @@ const SalonManagerSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("User", SalonManagerSchema);
+module.exports = mongoose.model("SalonManager", SalonManagerSchema);
