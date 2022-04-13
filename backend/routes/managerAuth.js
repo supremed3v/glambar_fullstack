@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const User = require("../models/User");
+const SalonManager = require("../models/SalonManager");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const SECRET_TOKEN = "MYSECRET";
@@ -11,25 +11,24 @@ router.post("/register", async (req, res) => {
 
   // check if username or email is already taken by another user already
 
-  const takenUsername = await User.findOne({ username: user.username });
-  const takenEmail = await User.findOne({ email: user.email });
+  const takenEmail = await SalonManager.findOne({ email: user.email });
 
-  if (takenUsername || takenEmail) {
-    res.json({ message: "Username or email has already been taken" });
+  if (takenEmail) {
+    res.json({
+      message: "Account with same email has already been registered",
+    });
   } else {
     user.password = await bcrypt.hash(req.body.password, 10);
-    const dbUser = new User({
-      username: user.username.toLowerCase(),
+    const dbUser = new SalonManager({
       email: user.email.toLowerCase(),
       password: user.password,
-      firstName: user.firstName,
-      lastName: user.lastName,
+      salonName: user.salonName,
       contactNumber: user.contactNumber,
       address: user.address,
     });
 
     dbUser.save();
-    res.json({ message: "Success" });
+    res.json({ message: "Success", dbUser });
   }
 });
 
@@ -38,14 +37,15 @@ router.post("/register", async (req, res) => {
 router.post("/login", async (req, res) => {
   const userLogginIn = req.body;
 
-  User.findOne({ username: userLogginIn.username }).then((dbUser) => {
+  SalonManager.findOne({ email: userLogginIn.email }).then((dbUser) => {
     if (!dbUser) {
-      return res.json({ message: "Invalid Username or Password" });
+      return res.json({ message: "Invalid Email or Password" });
     }
     bcrypt.compare(userLogginIn.password, dbUser.password).then((isCorrect) => {
       if (isCorrect) {
         return res.json({
           message: "Success",
+          dbUser,
         });
       } else {
         return res.json({
