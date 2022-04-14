@@ -22,14 +22,12 @@ router.post("/register", async (req, res) => {
       username: user.username.toLowerCase(),
       email: user.email.toLowerCase(),
       password: user.password,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      contactNumber: user.contactNumber,
-      address: user.address,
     });
 
-    dbUser.save();
-    res.json({ message: "Success" });
+    await dbUser.save();
+    const token = jwt.sign({ userId: req.user._id }, SECRET_TOKEN);
+    console.log(req.user._id);
+    res.send({ token: token });
   }
 });
 
@@ -56,26 +54,7 @@ router.post("/login", async (req, res) => {
   });
 });
 
-function verifyJWT(req, res, next) {
-  const token = req.headers["x-access-token"]?.split(" ")[1];
-  if (token) {
-    jwt.verify(token, SECRET_TOKEN, (err, decoded) => {
-      if (err)
-        return req.json({
-          isLoggedIn: false,
-          message: "Failed to Authenticate",
-        });
-      req.user = {};
-      req.user.id = decoded.id;
-      req.user.username = decoded.username;
-      next();
-    });
-  } else {
-    res.json({ message: "Incorrect Token Given", isLoggedIn: false });
-  }
-}
-
-router.get("/getUsername", verifyJWT, (req, res) => {
+router.get("/getUsername", (req, res) => {
   res.json({ isLoggedIn: true, username: req.user.username });
 });
 

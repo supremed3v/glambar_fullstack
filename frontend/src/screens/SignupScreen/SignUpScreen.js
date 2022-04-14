@@ -13,21 +13,34 @@ import bgSignup from "../../../assets/signup-bg.jpeg";
 
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
-
-import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+const EMAIL_REGEX =
+  /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
 const SignUpScreen = ({ navigation }) => {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-
+  const { control, handleSubmit, watch } = useForm();
+  const pass = watch("password");
   const onPrivacyPressed = () => {
     navigation.navigate("TermsandConditions");
   };
 
-  const onSignUpPressed = () => {
-    navigation.navigate("ClientDetails");
+  const onSignUpPressed = (data) => {
+    // fetch("http://10.0.2.2:5000/api/auth/register", {
+    //   method: "post",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     username,
+    //     email,
+    //     password,
+    //   }),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     console.log(data);
+    //   })
+    //   .catch((error) => console.log(error.message));
   };
 
   const onSignUpGoogle = () => {
@@ -43,23 +56,50 @@ const SignUpScreen = ({ navigation }) => {
       <View style={styles.container_center}>
         <Text style={styles.SignupText}>Create an account</Text>
         <CustomInput
+          name="username"
           placeholder="Username"
-          value={username}
-          setValue={setUsername}
+          control={control}
+          rules={{
+            required: "Name is required",
+            minLength: {
+              value: 3,
+              message: "Name should be atleast 3 characters long",
+            },
+            maxLength: {
+              value: 15,
+              message: "Name should be max 10 characters",
+            },
+          }}
         />
-        <CustomInput placeholder="Email" value={email} setValue={setEmail} />
         <CustomInput
+          placeholder="Email"
+          name="email"
+          control={control}
+          rules={{
+            required: "Email is required",
+            pattern: { value: EMAIL_REGEX, message: "Email is invalid" },
+          }}
+        />
+        <CustomInput
+          name="password"
           placeholder="Password"
-          value={password}
-          setValue={setPassword}
           secureTextEntry={true}
+          rules={{
+            required: "Password is required",
+            minLength: {
+              value: 8,
+              message: "Password should be 8 characters long",
+            },
+          }}
         />
 
         <CustomInput
           placeholder="Confirm Password"
-          value={confirmPassword}
-          setValue={setConfirmPassword}
           secureTextEntry={true}
+          name="confirm-password"
+          rules={{
+            validate: (value) => value === pass || "Password do not match",
+          }}
         />
 
         <Text style={styles.text}>
