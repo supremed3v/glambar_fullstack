@@ -27,7 +27,7 @@ const SignInScreen = ({ navigation }) => {
   const { height } = useWindowDimensions();
 
   const onSignInPressed = () => {
-    navigation.navigate("Home");
+    
   };
 
   const onForgotPasswordPressed = () => {
@@ -73,7 +73,7 @@ const SignInScreen = ({ navigation }) => {
                 required: "Password is required",
                 minLength: {
                   value: 5,
-                  message: "Password should be minimum 3 characters long",
+                  message: "Password should be minimum 5 characters long",
                 },
               }}
             />

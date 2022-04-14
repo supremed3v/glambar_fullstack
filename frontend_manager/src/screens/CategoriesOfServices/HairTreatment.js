@@ -66,6 +66,7 @@ import {
                 <Text style={styles.volumeText}>
                     Volume
                 </Text>
+                
                 <View style={styles.pickerVolumeContainer}>
                     <Picker style={styles.picker2}
                         selectedValue={volume}
@@ -76,6 +77,7 @@ import {
                         <Picker.Item label="Thick" value="Thick" />
                     </Picker>
                 </View>
+                 
             </View>
           <CustomInput
             placeholder="Description "
