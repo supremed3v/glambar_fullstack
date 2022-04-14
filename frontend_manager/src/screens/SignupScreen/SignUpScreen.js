@@ -1,37 +1,64 @@
-import {
-  ImageBackground,
-  TextInput,
-  Image,
-  StyleSheet,
-  Text,
-  View,
-  useWindowDimensions,
-  ScrollView,
-} from "react-native";
+import { ImageBackground, StyleSheet, Text, View } from "react-native";
+import axios from "axios";
 
 import bgSignup from "../../../assets/signup-bg.jpeg";
-
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
 
-import React, { useState } from "react";
+import React from "react";
+
+import { useForm } from "react-hook-form";
+
+const EMAIL_REGEX =
+  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 const SignUpScreen = ({ navigation }) => {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const { control, handleSubmit, watch } = useForm();
 
+  const pwd = watch("password");
   const onPrivacyPressed = () => {
     navigation.navigate("TermsandConditions");
   };
 
-  const onSignUpPressed = () => {
-    navigation.navigate("SalonDetails");
-  };
+  const onSignUpPressed = async (data) => {
+    fetch("http://10.0.2.2:5000", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        salonName,
+        email,
+        phoneNumber,
+        contactNumber,
+        address,
+        password,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
 
-  const onSignUpGoogle = () => {
-    console.warn("signup with google");
+    // try {
+    //   const reponse = await axios.post(
+    //     "http://10.0.2.2:5000/api/manager/register",
+    //     {
+    //       salonName,
+    //       email,
+    //       password,
+    //       contactNumber,
+    //       address,
+    //     }
+    //   );
+    //   if (reponse.status === 201) {
+    //     alert(` You have created: ${JSON.stringify(reponse.data)}`);
+    //   } else {
+    //     throw new Error(console.log(Error));
+    //   }
+    // } catch (err) {
+    //   console.log(err.message);
+    // }
   };
 
   const onSignIn = () => {
@@ -41,25 +68,63 @@ const SignUpScreen = ({ navigation }) => {
   return (
     <ImageBackground source={bgSignup} style={styles.container}>
       <View style={styles.container_center}>
-        <Text style={styles.SignupText}>Create an account</Text>
+        <Text style={styles.SignupText}>Register Your Salon!</Text>
         <CustomInput
-          placeholder="Username"
-          value={username}
-          setValue={setUsername}
+          name="salonName"
+          placeholder="Enter your Salon Name"
+          control={control}
+          rules={{ required: "Salon name is required" }}
         />
-        <CustomInput placeholder="Email" value={email} setValue={setEmail} />
         <CustomInput
+          name="email"
+          placeholder="Enter your Email"
+          control={control}
+          rules={{
+            required: "Email is required",
+            pattern: { value: EMAIL_REGEX, message: "Email is invalid" },
+          }}
+        />
+        <CustomInput
+          name="contactNumber"
+          placeholder="Enter your Contact Number"
+          control={control}
+          keyboardType={"phone-pad"}
+          rules={{
+            required: "Contact number is required",
+            minLength: {
+              value: 12,
+              message: "Contact number should be 12 numbers long",
+            },
+          }}
+        />
+        <CustomInput
+          name="address"
+          placeholder="Enter your Salon Address"
+          control={control}
+          rules={{ required: "Address is required" }}
+        />
+        <CustomInput
+          name="password"
           placeholder="Password"
-          value={password}
-          setValue={setPassword}
           secureTextEntry={true}
+          control={control}
+          rules={{
+            required: "Password is required",
+            minLength: {
+              value: 7,
+              message: "Password should be 7 characters long",
+            },
+          }}
         />
 
         <CustomInput
-          placeholder="Confirm Password"
-          value={confirmPassword}
-          setValue={setConfirmPassword}
+          name="confirm-password"
+          placeholder="Password"
           secureTextEntry={true}
+          control={control}
+          rules={{
+            validate: (value) => value === pwd || "Password do not match",
+          }}
         />
 
         <Text style={styles.text}>
@@ -69,14 +134,11 @@ const SignUpScreen = ({ navigation }) => {
           </Text>
           .
         </Text>
-        <CustomButton text="Create an account" onPress={onSignUpPressed} />
-
         <CustomButton
-          text="Sign Up With Google"
-          onPress={onSignUpGoogle}
-          bgColor="#FAE9EA"
-          fgColor="#DD4D44"
+          text="Register Your Salon"
+          onPress={handleSubmit(onSignUpPressed)}
         />
+
         <Text style={styles.signInText}>
           Already have an account?{" "}
           <Text onPress={onSignIn} style={styles.button}>
@@ -91,7 +153,7 @@ const SignUpScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   SignupText: {
-    marginTop: 60,
+    marginTop: 80,
     fontSize: 26,
     fontWeight: "bold",
     color: "#5085E1",
@@ -117,7 +179,7 @@ const styles = StyleSheet.create({
   },
 
   signInText: {
-    marginTop: 150,
+    marginTop: 10,
     color: "#827676",
   },
 });

@@ -5,6 +5,7 @@ const authRoute = require("./routes/auth");
 const managerRoute = require("./routes/managerAuth");
 const app = express();
 const PORT = 5000;
+const requireAuth = require("./middleware/requireAuth");
 
 // Applying cors
 // app.use(cors());
@@ -21,9 +22,13 @@ mongoose
 
 app.use(express.json({ limit: "30mb", extended: true }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
-app.use("/api/user", userRoute);
+// app.use("/api/user", userRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/manager", managerRoute);
+
+app.get("/", requireAuth, (req, res) => {
+  res.send(req.user._id);
+});
 
 app.listen(PORT, () => {
   console.log("Server is up");
