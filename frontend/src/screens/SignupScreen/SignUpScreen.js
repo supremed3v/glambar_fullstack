@@ -19,12 +19,14 @@ const EMAIL_REGEX =
 
 const SignUpScreen = ({ navigation }) => {
   const { control, handleSubmit, watch } = useForm();
-  const pass = watch("password");
+  const pwd = watch("password");
+  // const navigtion = useNavigation();
+
   const onPrivacyPressed = () => {
     navigation.navigate("TermsandConditions");
   };
 
-  const onSignUpPressed = (data) => {
+  const onSignUpPressed = () => {
     // fetch("http://10.0.2.2:5000/api/auth/register", {
     //   method: "post",
     //   headers: {
@@ -56,25 +58,42 @@ const SignUpScreen = ({ navigation }) => {
       <View style={styles.container_center}>
         <Text style={styles.SignupText}>Create an account</Text>
         <CustomInput
-          name="username"
-          placeholder="Username"
+          name="name"
           control={control}
+          placeholder="Name"
           rules={{
             required: "Name is required",
             minLength: {
               value: 3,
-              message: "Name should be atleast 3 characters long",
+              message: "Name should be at least 3 characters long",
             },
             maxLength: {
-              value: 15,
-              message: "Name should be max 10 characters",
+              value: 24,
+              message: "Name should be max 24 characters long",
+            },
+          }}
+        />
+
+        <CustomInput
+          name="username"
+          control={control}
+          placeholder="Username"
+          rules={{
+            required: "Username is required",
+            minLength: {
+              value: 3,
+              message: "Username should be at least 3 characters long",
+            },
+            maxLength: {
+              value: 24,
+              message: "Username should be max 24 characters long",
             },
           }}
         />
         <CustomInput
-          placeholder="Email"
           name="email"
           control={control}
+          placeholder="Email"
           rules={{
             required: "Email is required",
             pattern: { value: EMAIL_REGEX, message: "Email is invalid" },
@@ -82,23 +101,24 @@ const SignUpScreen = ({ navigation }) => {
         />
         <CustomInput
           name="password"
+          control={control}
           placeholder="Password"
-          secureTextEntry={true}
+          secureTextEntry
           rules={{
             required: "Password is required",
             minLength: {
               value: 8,
-              message: "Password should be 8 characters long",
+              message: "Password should be at least 8 characters long",
             },
           }}
         />
-
         <CustomInput
-          placeholder="Confirm Password"
-          secureTextEntry={true}
-          name="confirm-password"
+          name="password-repeat"
+          control={control}
+          placeholder="Repeat Password"
+          secureTextEntry
           rules={{
-            validate: (value) => value === pass || "Password do not match",
+            validate: (value) => value === pwd || "Password do not match",
           }}
         />
 
@@ -109,7 +129,10 @@ const SignUpScreen = ({ navigation }) => {
           </Text>
           .
         </Text>
-        <CustomButton text="Create an account" onPress={onSignUpPressed} />
+        <CustomButton
+          text="Create an account"
+          onPress={handleSubmit(onSignUpPressed)}
+        />
 
         <CustomButton
           text="Sign Up With Google"

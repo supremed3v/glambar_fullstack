@@ -4,10 +4,10 @@ import { Controller } from "react-hook-form";
 
 const CustomInput = ({
   control,
+  name,
   placeholder,
   keyboardType,
   secureTextEntry,
-  name,
   rules = {},
 }) => {
   return (
@@ -20,20 +20,21 @@ const CustomInput = ({
         fieldState: { error },
       }) => (
         <>
-          <TextInput
-            placeholder={placeholder}
-            onChangeText={onChange}
-            value={value}
-            onBlur={onBlur}
-            style={styles.input}
-            secureTextEntry={secureTextEntry}
-          />
           <View
             style={[
               styles.container,
               { borderColor: error ? "red" : "#e8e8e8" },
             ]}
           >
+            <TextInput
+              placeholder={placeholder}
+              onChangeText={onChange}
+              value={value}
+              onBlur={onBlur}
+              style={styles.input}
+              secureTextEntry={secureTextEntry}
+            />
+
             {error && (
               <Text style={{ color: "red", alignContent: "center" }}>
                 {error.message || "Error"}

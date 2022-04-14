@@ -15,10 +15,15 @@ import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
 
 import React, { useState } from "react";
+import { useForm, Controller } from "react-hook-form";
 
 const SignInScreen = ({ navigation }) => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const {
+    control,
+    handleSubmit,
+    formState: { error },
+  } = useForm();
+
   const { height } = useWindowDimensions();
 
   const onSignInPressed = () => {
@@ -55,22 +60,28 @@ const SignInScreen = ({ navigation }) => {
 
             <CustomInput
               placeholder="Username"
-              value={username}
-              setValue={setUsername}
-            />
-            <CustomInput
-              placeholder="Firstname"
-              value={username}
-              setValue={setUsername}
+              name="username"
+              control={control}
+              rules={{ required: "Username is required" }}
             />
             <CustomInput
               placeholder="Password"
-              value={password}
-              setValue={setPassword}
-              secureTextEntry={true}
+              secureTextEntry
+              control={control}
+              name="password"
+              rules={{
+                required: "Password is required",
+                minLength: {
+                  value: 5,
+                  message: "Password should be minimum 3 characters long",
+                },
+              }}
             />
 
-            <CustomButton text="Sign In" onPress={onSignInPressed} />
+            <CustomButton
+              text="Sign In"
+              onPress={handleSubmit(onSignInPressed)}
+            />
 
             <CustomButton
               text="Forgot Password?"
