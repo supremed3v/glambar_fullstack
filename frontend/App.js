@@ -51,15 +51,9 @@ export default function App() {
       >
         <Stack.Screen name="Login" component={SignInScreen} />
         <Stack.Screen name="Home" component={HomeNavigationContainer} />
-        <Stack.Screen
-          name="SalonServices"
-          component={SalonNavigationContainer}
-        />
+        <Stack.Screen name="SalonServices" component={SalonNavigationContainer}/>
         <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
-        <Stack.Screen
-          name="TermsandConditions"
-          component={TermsandConditions}
-        />
+        <Stack.Screen name="TermsandConditions" component={TermsandConditions}/>
         <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
         <Stack.Screen name="ClientDetails" component={ClientDetails} />
         <Stack.Screen name="SalonScreen" component={SalonScreen} />
@@ -71,10 +65,7 @@ export default function App() {
         <Stack.Screen name="AboutUs" component={AboutUs} />
         <Stack.Screen name="Packages" component={Packages}/>
         <Stack.Screen name="Reviews" component={Reviews}/>
-        <Stack.Screen
-          name="UpcomingAppointment"
-          component={UpcomingAppointment}
-        />
+        <Stack.Screen name="UpcomingAppointment" component={UpcomingAppointment}/>
         <Stack.Screen name="PassedAppointment" component={PassedAppointment} />
         <Stack.Screen name="Complain" component={Complain} />
         <Stack.Screen name="Rate" component={Rate} />
