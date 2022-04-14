@@ -46,7 +46,7 @@ import {
                         <Picker.Item label="Sides" value="Sides" />
                         <Picker.Item label="Forehead" value="Forehead" />
                         <Picker.Item label="Knuckles" value="Knuckles" />
-                        <Picker.Item label="Knuckles" value="Knuckles" />
+                        <Picker.Item label="Face" value="Face" />
                     </Picker>
                 </View>
             </View>
