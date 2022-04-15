@@ -96,7 +96,7 @@ import {
           rules={{ required: "Designation is required" }}
         />
          <CustomInput
-          name="name"
+          name="experience"
           placeholder="Enter Experience"
           control={control}
           rules={{ required: "Experience is required" }}

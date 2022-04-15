@@ -13,15 +13,21 @@ import image from "../../../assets/bg-screen.jpg";
 import logo from "../../../assets/logo-white.png";
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
+import React from "react";
+import { useForm } from "react-hook-form";
 
-import React, { useState } from "react";
+const AddAddress = () => {
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-const AddAddress = ({ navigation }) => {
-  const [newAddress, setnewAddress] = useState("");
   const { height } = useWindowDimensions();
 
-  const onAddAddressPressed = () => {
-    navigation.push("Address Added.");
+
+  const onAddAddressPressed = (data) => {
+    console.log(data);
   };
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
@@ -31,11 +37,18 @@ const AddAddress = ({ navigation }) => {
             <Text style={styles.text}>Add Your Address</Text>
 
             <CustomInput
-              placeholder="Address"
-              value={newAddress}
-              setValue={setnewAddress}
-            />
-            <CustomButton text="Add" onPress={onAddAddressPressed} />
+          name="city"
+          placeholder="Enter Your City"
+          control={control}
+          rules={{ required: "City name is required" }}
+        />
+        <CustomInput
+          name="area"
+          placeholder="Enter Your City"
+          control={control}
+          rules={{ required: "Area is required" }}
+        />
+        <CustomButton text="Submit" onPress={handleSubmit(onAddAddressPressed)} />
           </View>
         </ImageBackground>
       </View>

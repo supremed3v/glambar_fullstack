@@ -14,11 +14,20 @@ import {
   import CustomInput from "../../components/CustomInput";
   import CustomButton from "../../components/CustomButton";
   import AntDesign from "@expo/vector-icons/AntDesign"; 
-  import React, { useState } from "react";
+  import React from "react";
+  import { useForm } from "react-hook-form";
   
-  const Complain = ({ navigation }) => {
-    const [complain, setcomplain] = useState("");
-    const onSubmitPressed = () => {
+  const Complain = () => {
+    const {
+      control,
+      handleSubmit,
+      formState: { errors },
+    } = useForm();
+  
+    const { height } = useWindowDimensions();
+  
+    const onSave = (data) => {
+      console.log(data);
       console.warn("Thanks for your valuable response");
     };
 
@@ -27,12 +36,14 @@ import {
       <ImageBackground source={bgSignup} style={styles.container}>
         <View style={styles.container_center}>
           <Text style={styles.SignupText}>Complain</Text>
-            <CustomInput
-          placeholder="Your text here...."
-          value={complain}
-          setValue={setcomplain}
+          <CustomInput
+          name="complain"
+          placeholder="Enter Your Complain here"
+          control={control}
+          rules={{ required: "To proceed further you need to file a complain here." }}
         />
-          <CustomButton text="Submit" onPress={onSubmitPressed} />
+
+<CustomButton text="Submit" onPress={handleSubmit(onSave)} />
 
         </View>
       </ImageBackground>

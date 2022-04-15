@@ -23,7 +23,7 @@ import {
   
     const pwd = watch("password");
 
-    const onUpdatePasswordPressed = (data) => {
+    const onSave = (data) => {
       console.log(data);
         console.warn("Password Updated.");
     };
@@ -65,7 +65,7 @@ import {
             validate: (value) => value === pwd || "Password do not match",
           }}
         />
-          <CustomButton text="Reset Password" onPressed={handleSubmit(onUpdatePasswordPressed)}  />
+          <CustomButton text="Reset Password" onPressed={handleSubmit(onSave)}  />
           </View>
           </ImageBackground>
       );
