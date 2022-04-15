@@ -37,7 +37,7 @@ const SalonHome = ({ navigation }) => {
                     {/* Card 1 */}
                     <TouchableOpacity
                         style={styles.card}
-                        onPress={() => navigation.navigate("SalonServices",)}>
+                        onPress={() => navigation.navigate("SalonDetails",)}>
                         <View style={{ alignItems: "center", marginTop:10 }}>
                            <Ionicons name="ios-person-circle-sharp" size={65} color="black" />
                         <Text style={{ fontWeight: "bold", fontSize: 16, }}>PROFILE</Text>
@@ -67,7 +67,7 @@ const SalonHome = ({ navigation }) => {
                     {/* Card 4 */}
                     <TouchableOpacity
                         style={styles.card}
-                        onPress={() => navigation.navigate("SalonServices",)}>
+                        onPress={() => navigation.navigate("Appointment",)}>
                             <View style={{ alignItems: "center", marginTop:10 }}>
                             <AntDesign name="calendar" size={67} color="black" />
                         <Text style={{ fontWeight: "bold", fontSize: 16, }}>VIEW BOOKINGS</Text>
@@ -79,7 +79,7 @@ const SalonHome = ({ navigation }) => {
                     {/* Card 5 */}
                     <TouchableOpacity
                         style={styles.card}
-                        onPress={() => navigation.navigate("SalonServices",)}>
+                        onPress={() => navigation.navigate("Service",)}>
                         <View style={{ alignItems: "center", marginTop:10 }}>
                         <Feather name="scissors" size={65} color="black" />
                         <Text style={{ fontWeight: "bold", fontSize: 16, }}>MANAGE SERVICES</Text>
@@ -88,10 +88,10 @@ const SalonHome = ({ navigation }) => {
                     {/* Card 6 */}
                     <TouchableOpacity
                         style={styles.card}
-                        onPress={() => navigation.navigate("AddServices",)}>
+                        onPress={() => navigation.navigate("Package",)}>
                         <View style={{ alignItems: "center", marginTop:10 }}>
-                        <MaterialIcons name="category" size={68} color="black" />
-                        <Text style={{ fontWeight: "bold", fontSize: 16, }}>MANAGE CATEGORIES</Text>
+                        <Feather name="package" size={64} color="black" />
+                        <Text style={{ fontWeight: "bold", fontSize: 16, }}>MANAGE PACKAGES</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
@@ -100,7 +100,7 @@ const SalonHome = ({ navigation }) => {
                     {/* Card 7 */}
                     <TouchableOpacity
                         style={styles.card}
-                        onPress={() => navigation.navigate("SalonServices",)}>
+                        onPress={() => navigation.navigate("Job",)}>
                         <View style={{ alignItems: "center", marginTop:10 }}>
                         <FontAwesome name="suitcase" size={68} color="black" />
                         <Text style={{ fontWeight: "bold", fontSize: 16, }}>POST JOB</Text>
@@ -130,7 +130,7 @@ const SalonHome = ({ navigation }) => {
                     {/* Card 10 */}
                     <TouchableOpacity
                         style={styles.card}
-                        onPress={() => navigation.navigate("SalonServices",)}>
+                        onPress={() => navigation.navigate("UpdatePassword",)}>
                         <View style={{ alignItems: "center", marginTop:10, marginBottom:10 }}>
                         <Feather name="unlock" size={68} color="black" />
                         <Text style={{ fontWeight: "bold", fontSize: 16, }}>UPDATE PASSWORD</Text>

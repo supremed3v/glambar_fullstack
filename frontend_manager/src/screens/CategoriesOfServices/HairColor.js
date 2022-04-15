@@ -17,7 +17,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { Picker } from "@react-native-picker/picker";
 
-const HairColor = () => {
+const HairColor = ({navigation}) => {
   const {
     control,
     handleSubmit,
@@ -28,6 +28,7 @@ const HairColor = () => {
 
   const onSave = (data) => {
     console.log(data);
+    navigation.push("Service");
   };
   return (
     <ImageBackground source={bgClientDetails} style={styles.container}>

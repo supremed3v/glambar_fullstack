@@ -4,6 +4,7 @@ import {
     Image,
     StyleSheet,
     Text,
+    watch,
     View,
     useWindowDimensions,
     ScrollView
@@ -23,10 +24,14 @@ import {
   
     const pwd = watch("password");
 
-    const onUpdatePasswordPressed = (data) => {
-      console.log(data);
+    const onSave = (data) => {
+      console.log(data)
         console.warn("Password Updated.");
+        navigation.push("SalonHome");
     };
+
+
+
  
       return (
         <ImageBackground source={bgUpdatePassword} style={styles.container}>
@@ -65,7 +70,7 @@ import {
             validate: (value) => value === pwd || "Password do not match",
           }}
         />
-          <CustomButton text="Reset Password" onPressed={handleSubmit(onUpdatePasswordPressed)}  />
+          <CustomButton text="Reset Password" onPress={handleSubmit(onSave)}  />
           </View>
           </ImageBackground>
       );

@@ -26,8 +26,9 @@ const SignInScreen = ({ navigation }) => {
 
   const { height } = useWindowDimensions();
 
-  const onSignInPressed = () => {
-    
+  const onSignInPressed = (data) => {
+    console.log(data);
+    navigation.push("Home");
   };
 
   const onForgotPasswordPressed = () => {

@@ -18,7 +18,7 @@ import {
   import  {Picker}  from "@react-native-picker/picker";
 
   
-  const HairTreatment = () => {
+  const HairTreatment = ({navigation}) => {
     const {
       control,
       handleSubmit,
@@ -29,6 +29,7 @@ import {
   
     const onSave = (data) => {
       console.log(data);
+      navigation.push("Service");
     };
     return (
       <ImageBackground source={bgClientDetails} style={styles.container}>

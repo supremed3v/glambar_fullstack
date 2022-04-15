@@ -16,7 +16,7 @@ import {
   import React from "react";
   import { useForm } from "react-hook-form";
   
-  const Pedicure = () => {
+  const Pedicure = ({navigation}) => {
     const {
       control,
       handleSubmit,
@@ -27,6 +27,7 @@ import {
   
     const onSave = (data) => {
       console.log(data);
+      navigation.push("Service");
     };
  
     return (

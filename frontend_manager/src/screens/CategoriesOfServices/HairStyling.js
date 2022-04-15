@@ -18,7 +18,7 @@ import CustomButton from "../../components/CustomButton";
 
 
 
-const HairStyling  = () => {
+const HairStyling  = ({navigation}) => {
   const {
     control,
     handleSubmit,
@@ -29,11 +29,12 @@ const HairStyling  = () => {
 
   const onSave = (data) => {
     console.log(data);
+    navigation.push("Service");
   };
   return (
     <ImageBackground source={bgNewPassword} style={styles.container}>
       <View style={styles.container_center}>
-        <Text style={styles.AddHairStylingText}>Add Hair Styling</Text>
+        <Text style={styles.AddHairStylingText}>Hair Styling</Text>
 
         
         <CustomInput

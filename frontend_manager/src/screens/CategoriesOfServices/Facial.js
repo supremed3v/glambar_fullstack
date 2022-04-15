@@ -16,7 +16,7 @@ import {
   import React from "react";
   import { useForm } from "react-hook-form";
   
-  const Facial = () => {
+  const Facial = ({navigation}) => {
     const {
     control,
     handleSubmit,
@@ -26,7 +26,8 @@ import {
   const { height } = useWindowDimensions();
 
   const onSave = (data) => {
-    console.log(data)
+    console.log(data);
+    navigation.push("Service");
     };
     return (
       <ImageBackground source={bgClientDetails} style={styles.container}>

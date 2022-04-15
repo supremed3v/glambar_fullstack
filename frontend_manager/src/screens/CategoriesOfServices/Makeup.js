@@ -17,7 +17,7 @@ import {
 
   
 
-  const Makeup = () => {
+  const Makeup = ({navigation}) => {
     const {
       control,
       handleSubmit,
@@ -28,12 +28,13 @@ import {
   
     const onSave = (data) => {
       console.log(data);
+      navigation.push("Service");
     };
  
       return (
         <ImageBackground source={bgNewPassword} style={styles.container}>
         <View style={styles.container_center}>
-          <Text style={styles.AddMakeupText}>Add Makeup</Text>
+          <Text style={styles.AddMakeupText}>Makeup</Text>
           <CustomInput
           name="label"
           placeholder="Enter Service Name"
