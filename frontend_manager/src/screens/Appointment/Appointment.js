@@ -18,11 +18,11 @@ import {
   
   const Appointment = ({ navigation }) => {
   
-    const onRequestPressed = () => {
-        navigation.navigate("RequestAppointment");
+    const onAppointmentPressed = () => {
+        navigation.navigate("CustomerRequest");
       };
     const onViewDetailsPressed = () => {
-      navigation.navigate("ViewDetails");
+      navigation.navigate("Service");
     };
 
     const onRejectPressed = () => {
@@ -38,9 +38,9 @@ import {
         <View style={styles.container_center}>
           <Text style={styles.SignupText}>Appointmets</Text>
         <View style={styles.UpcomingPassed}>
-          <CustomButton text="Appointment" />
+          <CustomButton text="Appointment" onPress={onAppointmentPressed} />
           <CustomButton
-            text="Request" onPress={onRequestPressed}
+            text="Request"
           />
           </View>
           <View style ={styles.salonDetails}>

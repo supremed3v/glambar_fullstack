@@ -4,52 +4,162 @@ import {
     Text,
     View,
     Option,
+    TouchableOpacity,
     useWindowDimensions,
-    ScrollView
+    ScrollView,
 } from "react-native";
 
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import  {Picker}  from "@react-native-picker/picker";
-import bgNewPassword from "../../../assets/signup-bg.jpeg";
+import { Picker } from "@react-native-picker/picker";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 
-const AddService = () => {
-    const [pickerValue, setPickerValue] = useState('Choose Category');
+const AddService = ({ navigation }) => {
+
+
+
     return (
-        <ImageBackground source={bgNewPassword} style={styles.container}>
-            <View style={styles.container_center}>
-                <Text style={styles.AddNewServiceText}>Add New Service</Text>
-            </View>
-            <View style={styles.category}>
-                <Text style={styles.text}>
-                    Service Category
-                </Text>
-                <View style={styles.pickerContainer}>
-                    <Picker style={styles.picker}
-                        selectedValue={pickerValue}
-                        onValueChange={(itemValue) => setPickerValue(itemValue)}>
-                        <Picker.Item label="Choose Category" value="Choose Category" />
-                        <Picker.Item label="Baby Care" value="Baby Care" />
-                        <Picker.Item 
-                        onPress={() => navigation.navigate("Bleach",)}
-                        label="Bleach" value="Bleach" />
-                        <Picker.Item label="Massage" value="Massage" />
-                        <Picker.Item label="Facial" value="Facial" />
-                        <Picker.Item label="Hair Styling" value="Hair Styling" />
-                        <Picker.Item label="Hair Treatment" value="Hair Treatment" />
-                        <Picker.Item label="Hair Color" value="Hair Color" />
-                        <Picker.Item label="Hair Cutting" value="Hair Cutting" />
-                        <Picker.Item label="Makeup" value="Makeup" />
-                        <Picker.Item label="Manicure" value="Manicure" />
-                        <Picker.Item label="Pedicure" value="Pedicure" />
-                        <Picker.Item label="Threading" value="Threading" />
-                        <Picker.Item label="Waxing" value="Waxing" />
-                        <Picker.Item label="Scrub" value="Scrub" />
-                    </Picker>
+            <ScrollView>
+                <View style={styles.container_center}>
+                    <Text style={styles.AddNewServiceText}>Add New Service</Text>
                 </View>
-            </View>
-        </ImageBackground>
+                <View style={styles.category}>
+                    <Text style={styles.text2}>Choose category to add new service</Text>
+                    <SafeAreaView>
+                        {/* Card#1 */}
+                        <View style={styles.cardAlign}>
+                            <TouchableOpacity
+                                style={styles.card}
+                                onPress={() => navigation.navigate("BabyCare",)}>
+                                <View style={{ alignItems: "center", marginTop: 12 }}>
+                                    <Text style={styles.cardText}>BABY CARE</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+                        {/* Card#2 */}
+                        <View style={styles.cardAlign}>
+                            <TouchableOpacity
+                                style={styles.card}
+                                onPress={() => navigation.navigate("Bleach",)}>
+                                <View style={{ alignItems: "center", marginTop: 12 }}>
+                                    <Text style={styles.cardText}>BLEACH</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+                        {/* Card#3 */}
+                        <View style={styles.cardAlign}>
+                            <TouchableOpacity
+                                style={styles.card}
+                                onPress={() => navigation.navigate("Facial",)}>
+                                <View style={{ alignItems: "center", marginTop: 12 }}>
+                                    <Text style={styles.cardText}>FACIAL</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+                        {/* Card#4*/}
+                        <View style={styles.cardAlign}>
+                            <TouchableOpacity
+                                style={styles.card}
+                                onPress={() => navigation.navigate("HairColor",)}>
+                                <View style={{ alignItems: "center", marginTop: 12 }}>
+                                    <Text style={styles.cardText}>HAIR COLOR</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+                        {/* Card#5 */}
+                        <View style={styles.cardAlign}>
+                            <TouchableOpacity
+                                style={styles.card}
+                                onPress={() => navigation.navigate("HairCutting",)}>
+                                <View style={{ alignItems: "center", marginTop: 12 }}>
+                                    <Text style={styles.cardText}>HAIR CUTTING</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+                        {/* Card#6 */}
+                        <View style={styles.cardAlign}>
+                            <TouchableOpacity
+                                style={styles.card}
+                                onPress={() => navigation.navigate("HairStyling",)}>
+                                <View style={{ alignItems: "center", marginTop: 12 }}>
+                                    <Text style={styles.cardText}>HAIR STYLING</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+                        {/* Card#7 */}
+                        <View style={styles.cardAlign}>
+                            <TouchableOpacity
+                                style={styles.card}
+                                onPress={() => navigation.navigate("HairTreatment",)}>
+                                <View style={{ alignItems: "center", marginTop: 12 }}>
+                                    <Text style={styles.cardText}>HAIR TREATMENT</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+                        {/* Card#8 */}
+                        <View style={styles.cardAlign}>
+                            <TouchableOpacity
+                                style={styles.card}
+                                onPress={() => navigation.navigate("Massage",)}>
+                                <View style={{ alignItems: "center", marginTop: 12 }}>
+                                    <Text style={styles.cardText}>MASSAGE</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+                        {/* Card#9 */}
+                        <View style={styles.cardAlign}>
+                            <TouchableOpacity
+                                style={styles.card}
+                                onPress={() => navigation.navigate("Manicure",)}>
+                                <View style={{ alignItems: "center", marginTop: 12 }}>
+                                    <Text style={styles.cardText}>MANICURE</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+                        {/* Card#10 */}
+                        <View style={styles.cardAlign}>
+                            <TouchableOpacity
+                                style={styles.card}
+                                onPress={() => navigation.navigate("Pedicure",)}>
+                                <View style={{ alignItems: "center", marginTop: 12 }}>
+                                    <Text style={styles.cardText}>PEDICURE</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+                        {/* Card#11 */}
+                        <View style={styles.cardAlign}>
+                            <TouchableOpacity
+                                style={styles.card}
+                                onPress={() => navigation.navigate("Scrub",)}>
+                                <View style={{ alignItems: "center", marginTop: 12 }}>
+                                    <Text style={styles.cardText}>SCRUB</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+                        {/* Card#12 */}
+                        <View style={styles.cardAlign}>
+                            <TouchableOpacity
+                                style={styles.card}
+                                onPress={() => navigation.navigate("Threading",)}>
+                                <View style={{ alignItems: "center", marginTop: 12 }}>
+                                    <Text style={styles.cardText}>THREADING</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+                        {/* Card#13 */}
+                        <View style={styles.cardAlign}>
+                            <TouchableOpacity
+                                style={styles.card}
+                                onPress={() => navigation.navigate("Waxing",)}>
+                                <View style={{ alignItems: "center", marginTop: 12 }}>
+                                    <Text style={styles.cardText}>WAXING</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+                    </SafeAreaView>
+                </View>
+            </ScrollView>
     );
 
 };
@@ -60,49 +170,50 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         color: "#5085E1",
     },
+
     container: {
         flex: 1,
     },
+    text2: {
+        
+        textAlign: "center",
+        paddingLeft: 10,
+        paddingRight: 10,
+        color: "#827676",
+        fontSize:16,
+        marginTop:10,
+        fontWeight: "normal",
+    },
     text: {
         marginTop: 15,
-        paddingLeft: 30,
+        paddingStart: 85,
         color: '#827676',
-        fontSize: 18,
-        marginBottom: 10,
+        fontSize: 16,
+        alignItems: "center",
+        justifyContent: "center",
     },
     container_center: {
         alignItems: "center",
         marginTop: 30,
     },
-
-    button: {
-        color: "#5085E1"
+    cardAlign: {
+        alignItems: "center",
+        justifyContent: "space-between",
+        flexDirection: "column",
+        marginBottom:15
     },
-    signInText: {
-        marginTop: 150,
-        color: "#827676"
+    card: {
+        width: 350,
+        height: 55,
+        borderRadius: 5,
+        backgroundColor: "#edeef2"
     },
-    pickerContainer: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop:2,
-        color:"gray",
-        height:55,
-    },
-    picker: {
-        width: 200,
-        height: 40,
-        borderColor: 'blue',
-        borderWidth: 1,
-        color:'#827676',
-        fontWeight:'bold',
-        backgroundColor:'#dee1e3',
-    },
-    category:{
-        marginTop:35,
-        flexDirection:'row'
+    cardText: {
+        fontSize: 20,
+        fontWeight: "bold"
     }
+
+
 
 });
 export default AddService;

@@ -28,6 +28,7 @@ const SignInScreen = ({ navigation }) => {
 
   const onSignInPressed = (data) => {
     console.log(data)
+    navigation.push("SalonHome");
   };
   
 

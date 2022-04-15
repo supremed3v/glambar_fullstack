@@ -18,7 +18,7 @@ import {
 
   
 
-  const Threading = () => {
+  const Threading = ({navigation}) => {
     const {
       control,
       handleSubmit,
@@ -29,12 +29,13 @@ import {
   
     const onSave = (data) => {
       console.log(data);
+      navigation.push("Service");
     };
  
       return (
         <ImageBackground source={bgNewPassword} style={styles.container}>
         <View style={styles.container_center}>
-          <Text style={styles.AddThreadingText}>Add Threading</Text>
+          <Text style={styles.AddThreadingText}>Threading</Text>
          
           {/* <View style={styles.category}>
                 <Text style={styles.text2}>

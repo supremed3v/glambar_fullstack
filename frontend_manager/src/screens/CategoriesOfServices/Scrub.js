@@ -17,7 +17,7 @@ import {
 
   
 
-  const Scrub = () => {
+  const Scrub = ({navigation}) => {
     const {
       control,
       handleSubmit,
@@ -28,13 +28,14 @@ import {
   
     const onSave = (data) => {
       console.log(data);
+      navigation.push("Service");
     };
  
  
       return (
         <ImageBackground source={bgNewPassword} style={styles.container}>
         <View style={styles.container_center}>
-          <Text style={styles.AddScrubText}>Add Scrub</Text>
+          <Text style={styles.AddScrubText}>Scrub</Text>
          
           <CustomInput
           name="label"

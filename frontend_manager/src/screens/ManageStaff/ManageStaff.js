@@ -43,7 +43,7 @@ import {
         />
         <CustomInput
           name="contactNumber"
-          placeholder="Enter your Contact Number"
+          placeholder="Enter Contact Number"
           control={control}
           keyboardType={"phone-pad"}
           rules={{

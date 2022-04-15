@@ -16,7 +16,7 @@ import bgNewPassword from "../../../assets/signup-bg.jpeg";
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
 
-const HairCutting = () => {
+const HairCutting = ({navigation}) => {
   const {
     control,
     handleSubmit,
@@ -27,12 +27,13 @@ const HairCutting = () => {
 
   const onSave = (data) => {
     console.log(data);
+    navigation.push("Service");
   };
 
   return (
     <ImageBackground source={bgNewPassword} style={styles.container}>
       <View style={styles.container_center}>
-        <Text style={styles.AddHairCuttingText}>Add Hair Cutting</Text>
+        <Text style={styles.AddHairCuttingText}>Hair Cutting</Text>
 
         <CustomInput
           name="label"

@@ -19,7 +19,7 @@ import {
 
   
 
-  const AddJob = () => {
+  const AddJob = ({naviagtion}) => {
     const {
       control,
       handleSubmit,
@@ -29,7 +29,8 @@ import {
     const { height } = useWindowDimensions();
   
     const post = (data) => {
-      console.log(data)
+      console.log(data);
+      naviagtion.push("SalonHome");
     };
     
  

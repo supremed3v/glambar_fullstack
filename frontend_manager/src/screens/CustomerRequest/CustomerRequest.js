@@ -19,10 +19,10 @@ import {
   const CustomerRequest = ({ navigation }) => {
   
     const onRequestPressed = () => {
-        navigation.navigate("RequestAppointment");
+        navigation.navigate("Appointment");
       };
     const onViewDetailsPressed = () => {
-      navigation.navigate("ViewDetails");
+      navigation.navigate("Service");
     };
 
     const onRejectPressed = () => {

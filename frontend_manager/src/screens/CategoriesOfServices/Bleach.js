@@ -17,7 +17,7 @@ import CustomButton from "../../components/CustomButton";
 
 
 
-const Bleach = () => {
+const Bleach = ({navigation}) => {
   const {
   control,
   handleSubmit,
@@ -27,13 +27,14 @@ const Bleach = () => {
 const { height } = useWindowDimensions();
 
 const onSave = (data) => {
-  console.log(data)
+  console.log(data);
+  navigation.push("Service");
   };
 
   return (
     <ImageBackground source={bgNewPassword} style={styles.container}>
       <View style={styles.container_center}>
-        <Text style={styles.AddBleachText}>Add Bleach</Text>
+        <Text style={styles.AddBleachText}>Bleach</Text>
 
         <CustomInput
           name="label"

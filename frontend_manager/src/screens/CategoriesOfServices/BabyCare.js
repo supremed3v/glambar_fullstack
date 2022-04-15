@@ -16,7 +16,7 @@ import {
   import React from "react";
   import { useForm } from "react-hook-form";
   
-  const BabyCare = () => {
+  const BabyCare = ({navigation}) => {
     const {
     control,
     handleSubmit,
@@ -27,6 +27,8 @@ import {
 
   const onSave = (data) => {
     console.log(data)
+    navigation.push("Service");
+
     };
     return (
       <ImageBackground source={bgClientDetails} style={styles.container}>

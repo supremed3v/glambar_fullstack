@@ -17,7 +17,7 @@ import {
   import { useForm } from "react-hook-form";
   import  {Picker}  from "@react-native-picker/picker";
 
-  const Waxing = () => {
+  const Waxing = ({navigation}) => {
     const {
       control,
       handleSubmit,
@@ -28,6 +28,7 @@ import {
   
     const onSave = (data) => {
       console.log(data);
+      navigation.push("Service");
     };
  
     return (
