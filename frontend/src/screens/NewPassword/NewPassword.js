@@ -64,7 +64,7 @@ import {
             validate: (value) => value === pwd || "Password do not match",
           }}
         />
-          <CustomButton text="Reset Password" onPressed={handleSubmit(onUpdatePasswordPressed)}  />
+          <CustomButton text="Reset Password" onPress={handleSubmit(onUpdatePasswordPressed)}  />
           </View>
           </ImageBackground>
       );
