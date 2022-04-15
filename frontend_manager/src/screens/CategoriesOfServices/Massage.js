@@ -13,50 +13,58 @@ import {
   
   import CustomInput from "../../components/CustomInput";
   import CustomButton from "../../components/CustomButton";
-  import React, { useState } from "react";
+  import React from "react";
+  import { useForm } from "react-hook-form";
   
-  const Massage = ({ navigation }) => {
-    const [label, setLabel] = useState("");
-    const [type, setType] = useState("");
-    const [time, setTime] = useState("");
-    const [description, setDescription] = useState("");
-    const [price, setPrice] = useState("");
+  const Massage = () => {
+    const {
+      control,
+      handleSubmit,
+      formState: { errors },
+    } = useForm();
   
-    const onSave = () => {
-      navigation.navigate("Home");
+    const { height } = useWindowDimensions();
+  
+    const onSave = (data) => {
+      console.log(data);
     };
+ 
     return (
       <ImageBackground source={bgClientDetails} style={styles.container}>
         <View style={styles.container_center}>
           <Text style={styles.ProfileText}>Massage</Text>
           <CustomInput
-            placeholder="Service Label"
-            value={label}
-            setValue={setLabel}
-          />
-          <CustomInput
-            placeholder="Oil Type"
-            value={type}
-            setValue={setType}
-          />
-           <CustomInput
-            placeholder="Time per minute"
-            value={time}
-            setValue={setTime}
-          />
-          <CustomInput
-            placeholder="Description "
-            value={description}
-            setValue={setDescription} 
-            
-          />
-          <CustomInput
-            placeholder="Price"
-            value={price}
-            setValue={setPrice}
-            keyboardType= "numeric"
-          />
-          <CustomButton text="Submit" onPress={onSave} />
+          name="label"
+          placeholder="Enter Service Name"
+          control={control}
+          rules={{ required: "Sevice name is required" }}
+        />
+        <CustomInput
+          name="oilType"
+          placeholder="Enter Oil Name"
+          control={control}
+          rules={{ required: "Oil name is required" }}
+        />
+            <CustomInput
+          name="time"
+          placeholder="Enter Time in minutes"
+          control={control}
+          rules={{ required: "Time is required" }}
+        />
+         <CustomInput
+          name="description"
+          placeholder="Enter Description"
+          control={control}
+          rules={{ required: "Description is required" }}
+        />
+        <CustomInput
+          name="price"
+          placeholder="Enter Price"
+          control={control}
+          rules={{ required: "Price is required" }}
+          keyboardType={"numeric"}
+        />
+        <CustomButton text="Submit" onPress={handleSubmit(onSave)} />
         </View>
       </ImageBackground>
     );

@@ -9,21 +9,24 @@ import {
     ScrollView
   } from "react-native";
 
-  import React, { useState } from "react";
+
+  import React from "react";
+  import { useForm } from "react-hook-form";
   import bgUpdatePassword from "../../../assets/signup-bg.jpeg";
   import CustomInput from "../../components/CustomInput";
   import CustomButton from "../../components/CustomButton";
 
   
 
-  const UpdatePassword = () => {
-    const [PreviousPassword, setPreviousPassword] = useState("");
-    const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const UpdatePassword = ({ navigation }) => {
+    const { control, handleSubmit, watch } = useForm();
+  
+    const pwd = watch("password");
 
-    const onUpdatePasswordPressed = () => {
+    const onUpdatePasswordPressed = (data) => {
+      console.log(data);
         console.warn("Password Updated.");
-    }
+    };
  
       return (
         <ImageBackground source={bgUpdatePassword} style={styles.container}>
@@ -33,25 +36,36 @@ import {
             Your new password must be different from previous used password.
         </Text>
         <CustomInput
-          placeholder="Previous Password"
-          value={PreviousPassword}
-          setValue={setPreviousPassword}
-          secureTextEntry={true}
+          name="previousPassword"
+          placeholder="Enter Your Previous Password"
+          control={control}
+          secureTextEntry ={true}
+          rules={{ required: "Previous Password is required" }}
         />
-        <CustomInput
-          placeholder=" New Password"
-          value={password}
-          setValue={setPassword}
+       <CustomInput
+          name="password"
+          placeholder="Password"
           secureTextEntry={true}
+          control={control}
+          rules={{
+            required: "Password is required",
+            minLength: {
+              value: 7,
+              message: "Password should be 7 characters long",
+            },
+          }}
         />
 
         <CustomInput
-          placeholder="Confirm Password"
-          value={confirmPassword}
-          setValue={setConfirmPassword}
+          name="confirm-password"
+          placeholder="Password"
           secureTextEntry={true}
+          control={control}
+          rules={{
+            validate: (value) => value === pwd || "Password do not match",
+          }}
         />
-          <CustomButton text="Reset Password" onPressed={onUpdatePasswordPressed}  />
+          <CustomButton text="Reset Password" onPressed={handleSubmit(onUpdatePasswordPressed)}  />
           </View>
           </ImageBackground>
       );

@@ -9,21 +9,26 @@ import {
   ScrollView
 } from "react-native";
 
-import React, { useState } from "react";
+import React from "react";
+  import { useForm } from "react-hook-form";
 import bgNewPassword from "../../../assets/signup-bg.jpeg";
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
 
 
 
-const Bleach = ({ navigation }) => {
-  const [serviceLabel, setServiceLabel] = useState("");
-  const [description, setDescription] = useState("");
-  const [price, setPrice] = useState("");
+const Bleach = () => {
+  const {
+  control,
+  handleSubmit,
+  formState: { errors },
+} = useForm();
 
-  const onSubmit = () => {
-    console.warn("Submitted!");
-  }
+const { height } = useWindowDimensions();
+
+const onSave = (data) => {
+  console.log(data)
+  };
 
   return (
     <ImageBackground source={bgNewPassword} style={styles.container}>
@@ -31,25 +36,28 @@ const Bleach = ({ navigation }) => {
         <Text style={styles.AddBleachText}>Add Bleach</Text>
 
         <CustomInput
-          placeholder="Service Label"
-          value={serviceLabel}
-          setValue={setServiceLabel}
-          secureTextEntry={true}
+          name="label"
+          placeholder="Enter Service Name"
+          control={control}
+          rules={{ required: "Sevice name is required" }}
         />
-
-        <CustomInput
-          placeholder="Description"
-          value={description}
-          setValue={setDescription}
-          secureTextEntry={true}
+         <CustomInput
+          name="description"
+          placeholder="Enter Description"
+          control={control}
+          rules={{ required: "Description is required" }}
         />
-        <CustomInput
-          placeholder="Price"
-          value={price}
-          setValue={setPrice}
-          secureTextEntry={true}
+          <CustomInput
+          name="price"
+          placeholder="Enter Price"
+          control={control}
+          rules={{ required: "Price is required" }}
+          keyboardType={"numeric"}
+          />
+            <CustomButton
+          text="Submit"
+          onPress={handleSubmit(onSave)}
         />
-        <CustomButton text="Submit" onPressed={onSubmit} />
       </View>
     </ImageBackground>
   );

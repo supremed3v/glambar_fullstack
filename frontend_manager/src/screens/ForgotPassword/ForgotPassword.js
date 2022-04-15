@@ -9,16 +9,25 @@ import {
   ScrollView,
 } from "react-native";
 
-import React, { useState } from "react";
+import React from "react";
+import { useForm } from "react-hook-form";
 import bgSignup from "../../../assets/signup-bg.jpeg";
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
+const EMAIL_REGEX =
+  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-const ForgotPassword = ({ navigation }) => {
-  const [email, setEmail] = useState("");
+const ForgotPassword = () => {
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  const onForgotPasswordPressed = () => {
-    console.warn("Link Sent");
+  const { height } = useWindowDimensions();
+
+  const onForgotPasswordPressed = (data) => {
+    console.log(data);
   };
   const onLogInPressed = () => {
     navigation.navigate("Login");
@@ -31,10 +40,18 @@ const ForgotPassword = ({ navigation }) => {
           Enter your email address and we'll send you instructions to reset your
           password.
         </Text>
-        <CustomInput placeholder="Email" value={email} setValue={setEmail} />
+        <CustomInput
+          name="email"
+          placeholder="Enter Your Email Address"
+          control={control}
+          rules={{
+            required: "Email is required",
+            pattern: { value: EMAIL_REGEX, message: "Email is invalid" },
+          }}
+        />
         <CustomButton
           text="Send Reset Link"
-          onPressed={onForgotPasswordPressed}
+          onPress={handleSubmit(onForgotPasswordPressed)}
         />
         <Text style={styles.logInText}>
           Back to{" "}

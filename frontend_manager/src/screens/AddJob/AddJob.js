@@ -9,7 +9,9 @@ import {
     ScrollView
   } from "react-native";
 
-  import React, { useState } from "react";
+  import React from "react";
+  import { useForm } from "react-hook-form";
+  
   import  {Picker}  from "@react-native-picker/picker";
   import bgNewPassword from "../../../assets/signup-bg.jpeg";
   import CustomInput from "../../components/CustomInput";
@@ -18,31 +20,31 @@ import {
   
 
   const AddJob = () => {
-    const [salonName, setSalonName] = useState("");
-    const [pickerValue, setPickerValue] = useState('Choose Category');
-  const [address, setAddress] = useState("");
-  const [requiredStaff, setRequiredStaff] = useState("");
-  const [description, setDescription] = useState("");
-  const [experience, setExperience] = useState("");
-  const [salary, setSalary] = useState("");
-
-
-    const onSubmit = () => {
-        console.warn("Submitted!");
-    }
+    const {
+      control,
+      handleSubmit,
+      formState: { errors },
+    } = useForm();
+  
+    const { height } = useWindowDimensions();
+  
+    const post = (data) => {
+      console.log(data)
+    };
+    
  
       return (
         <ImageBackground source={bgNewPassword} style={styles.container}>
         <View style={styles.container_center}>
           <Text style={styles.AddJobText}>Add Job</Text>
          
-        <CustomInput
-          placeholder="Salon Name"
-          value={salonName}
-          setValue={setSalonName}
-          secureTextEntry={true}
+          <CustomInput
+          name="salonName"
+          placeholder="Enter your Salon Name"
+          control={control}
+          rules={{ required: "Salon name is required" }}
         />
-        <View style={styles.category}>
+        {/* <View style={styles.category}>
                 <Text style={styles.text2}>
                     City
                 </Text>
@@ -55,38 +57,43 @@ import {
                         <Picker.Item label="Rawalpindi" value="Rawalpindi" />
                     </Picker>
                 </View>
-            </View>
+            </View> */}
         <CustomInput
-          placeholder="Address"
-          value={address}
-          setValue={setAddress}
-          secureTextEntry={true}
+          name="address"
+          placeholder="Enter your Salon Address"
+          control={control}
+          rules={{ required: "Address is required" }}
         />
          <CustomInput
-          placeholder="Required Staff"
-          value={requiredStaff}
-          setValue={setRequiredStaff}
-          secureTextEntry={true}
-        />
-         <CustomInput
-          placeholder="Description"
-          value={description}
-          setValue={setDescription}
-          secureTextEntry={true}
+          name="requiredStaff"
+          placeholder="Enter Required Position"
+          control={control}
+          rules={{ required: "Mention Required position" }}
         />
         <CustomInput
-          placeholder="Experience"
-          value={experience}
-          setValue={setExperience}
-          secureTextEntry={true}
+          name="description"
+          placeholder="Enter Job Description"
+          control={control}
+          rules={{ required: "Job Description is required" }}
+        />
+        <CustomInput
+          name="experience"
+          placeholder="Enter experience required."
+          keyboardType={"numeric"}
+          control={control}
+          rules={{ required: "Experience is required" }}
         />
          <CustomInput
-          placeholder="Salary"
-          value={salary}
-          setValue={setSalary}
-          secureTextEntry={true}
+          name="Salary"
+          placeholder="Enter salary you are offering for the position."
+          keyboardType={"numeric"}
+          control={control}
+          rules={{ required: "Salaray is required" }}
         />
-          <CustomButton text="Submit" onPressed={onSubmit}  />
+          <CustomButton
+          text="Post Job"
+          onPress={handleSubmit(post)}
+        />
           </View>
           </ImageBackground>
       );
@@ -101,6 +108,7 @@ import {
         color: "#5085E1",
       },
     container: {
+      height: "100%",
         flex: 1,
       },
       text: {

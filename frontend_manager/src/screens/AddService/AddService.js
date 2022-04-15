@@ -8,12 +8,13 @@ import {
     ScrollView
 } from "react-native";
 
-import React, { useState } from "react";
+import React from "react";
+import { useForm } from "react-hook-form";
 import  {Picker}  from "@react-native-picker/picker";
 import bgNewPassword from "../../../assets/signup-bg.jpeg";
 
 
-const AddService = ({navigation}) => {
+const AddService = () => {
     const [pickerValue, setPickerValue] = useState('Choose Category');
     return (
         <ImageBackground source={bgNewPassword} style={styles.container}>

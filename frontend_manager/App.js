@@ -26,7 +26,7 @@ export default function App() {
     <NavigationContainer theme={theme}>
       <Stack.Navigator
         screenOptions={{ headerShown: false }}
-        initialRouteName="Login"
+        initialRouteName="AddJob"
       >
         <Stack.Screen name="Login" component={SignInScreen} />
         <Stack.Screen name="Signup" component={SignUpScreen} />

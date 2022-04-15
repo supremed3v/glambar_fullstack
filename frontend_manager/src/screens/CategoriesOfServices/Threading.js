@@ -9,7 +9,8 @@ import {
     ScrollView
   } from "react-native";
 
-  import React, { useState } from "react";
+  import React from "react";
+  import { useForm } from "react-hook-form";
   import  {Picker}  from "@react-native-picker/picker";
   import bgNewPassword from "../../../assets/signup-bg.jpeg";
   import CustomInput from "../../components/CustomInput";
@@ -18,20 +19,24 @@ import {
   
 
   const Threading = () => {
-    const [pickerValue, setPickerValue] = useState('Choose Category');
-    const [description, setDescription] = useState("");
-    const [price, setPrice] = useState("");
-
-    const onSubmit = () => {
-        console.warn("Submitted!");
-    }
+    const {
+      control,
+      handleSubmit,
+      formState: { errors },
+    } = useForm();
+  
+    const { height } = useWindowDimensions();
+  
+    const onSave = (data) => {
+      console.log(data);
+    };
  
       return (
         <ImageBackground source={bgNewPassword} style={styles.container}>
         <View style={styles.container_center}>
           <Text style={styles.AddThreadingText}>Add Threading</Text>
          
-          <View style={styles.category}>
+          {/* <View style={styles.category}>
                 <Text style={styles.text2}>
                     Body Part
                 </Text>
@@ -49,21 +54,29 @@ import {
                         <Picker.Item label="Face" value="Face" />
                     </Picker>
                 </View>
-            </View>
+            </View> */}
 
-            <CustomInput
-          placeholder="Description"
-          value={description}
-          setValue={setDescription}
-          secureTextEntry={true}
+<CustomInput
+          name="label"
+          placeholder="Enter Service Name"
+          control={control}
+          rules={{ required: "Sevice name is required" }}
         />
-         <CustomInput
-          placeholder="Price"
-          value={price}
-          setValue={setPrice}
-          secureTextEntry={true}
+
+<CustomInput
+          name="description"
+          placeholder="Enter Description"
+          control={control}
+          rules={{ required: "Description is required" }}
         />
-          <CustomButton text="Submit" onPressed={onSubmit}  />
+        <CustomInput
+          name="price"
+          placeholder="Enter Price"
+          control={control}
+          rules={{ required: "Price is required" }}
+          keyboardType={"numeric"}
+        />
+        <CustomButton text="Submit" onPress={handleSubmit(onSave)} />
           </View>
           </ImageBackground>
       );
