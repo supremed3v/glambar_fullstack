@@ -11,7 +11,6 @@ import {
 
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Picker } from "@react-native-picker/picker";
 import bgNewPassword from "../../../assets/signup-bg.jpeg";
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";

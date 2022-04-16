@@ -14,15 +14,16 @@ import bgClientDetails from "../../../assets/signup-bg.jpeg";
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
 import React from "react";
-import { useForm } from "react-hook-form";
-import { Picker } from "@react-native-picker/picker";
-
+import Select from "react-select";
+import { useForm, Controller} from "react-hook-form";
 const HairColor = ({navigation}) => {
   const {
     control,
+    methods,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  
 
   const { height } = useWindowDimensions();
 
@@ -30,6 +31,12 @@ const HairColor = ({navigation}) => {
     console.log(data);
     navigation.push("Service");
   };
+  const options = [
+    { value: '1', label: 'Apple'},
+    { value: '2', label: 'Ball'},
+    { value: '3', label: 'Cat'},
+   ];
+   const default_value = 1;
   return (
     <ImageBackground source={bgClientDetails} style={styles.container}>
       <View style={styles.container_center}>
@@ -46,6 +53,22 @@ const HairColor = ({navigation}) => {
           control={control}
           rules={{ required: "Brand name is required" }}
         />
+        <View style={{ flex: 1, flexDirection: 'column', justifyContent: 'center' }}>
+        <Controller
+                control={methods.control}
+                defaultValue={default_value}
+                name="field_name_product"
+                render={({ onChange, value, name, ref }) => (
+                    <Select
+                        inputRef={ref}
+                        classNamePrefix="addl-class"
+                        options={options}
+                        value={options.find(c => c.value === value)}
+                        onChange={val => onChange(val.value)}
+                    />
+                )}
+            />
+      </View>
         {/* <View style={styles.lengthCategory}>
                 <Text style={styles.lengthText}>
                     Length

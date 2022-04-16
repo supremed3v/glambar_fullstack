@@ -2,18 +2,18 @@ import { View, TextInput, StyleSheet, Text } from "react-native";
 import React from "react";
 import { Controller } from "react-hook-form";
 
-const CustomInput = ({
+const CustomerPicker = ({
   control,
   placeholder,
-  keyboardType,
-  secureTextEntry,
   name,
+  Picker,
+  onValueChange,
   rules = {},
 }) => {
   return (
     <Controller
       control={control}
-      name={name}
+      selectedValue={selectedValue}
       rules={rules}
       render={({
         field: { value, onChange, onBlur },
@@ -25,12 +25,12 @@ const CustomInput = ({
             onChangeText={onChange}
             value={value}
             onBlur={onBlur}
-            style={styles.input}
+            style={styles.Picker}
             secureTextEntry={secureTextEntry}
           />
           <View
             style={[
-              styles.container,
+              styles.pickerContainer,
               { borderColor: error ? "red" : "#e8e8e8" },
             ]}
           >
@@ -48,20 +48,22 @@ const CustomInput = ({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "white",
-    width: "80%",
-    borderColor: "#e8e8e8",
-    borderWidth: 1,
-    borderRadius: 5,
-    paddingHorizontal: 10,
-    marginVertical: 5,
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 2,
+    color: "gray",
+    height: 55,
   },
-  input: {
-    paddingTop: 10,
-    backgroundColor: "white",
-    padding: 5,
-    borderRadius: 5,
+  Picker: {
+    width: 200,
+    height: 40,
+    borderColor: "blue",
+    borderWidth: 1,
+    color: "#827676",
+    fontWeight: "bold",
+    backgroundColor: "#dee1e3",
   },
 });
 
-export default CustomInput;
+export default CustomerPicker;

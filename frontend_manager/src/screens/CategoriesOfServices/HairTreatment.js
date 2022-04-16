@@ -15,7 +15,6 @@ import {
   import CustomButton from "../../components/CustomButton";
   import React from "react";
   import { useForm } from "react-hook-form";
-  import  {Picker}  from "@react-native-picker/picker";
 
   
   const HairTreatment = ({navigation}) => {

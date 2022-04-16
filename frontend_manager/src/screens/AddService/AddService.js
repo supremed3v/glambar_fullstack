@@ -11,7 +11,6 @@ import {
 
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Picker } from "@react-native-picker/picker";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 
