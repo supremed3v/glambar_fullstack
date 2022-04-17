@@ -11,7 +11,6 @@ import {
   
   import background from "../../../assets/bg.jpeg";
   import salonimage from "../../../assets/salonimage.jpeg";
-  import CustomInput from "../../components/CustomInput";
   import CustomButton from "../../components/CustomButton";
   
   import React, { useState } from "react";

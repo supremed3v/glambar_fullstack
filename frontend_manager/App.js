@@ -4,9 +4,9 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 
 import {
-  SignInScreen, SignUpScreen, Job, Service, BabyCare, Bleach, Facial,
+  SignInScreen, SignUpScreen, AddJob, Service, BabyCare, Bleach, Facial,
   HairColor, HairCutting, HairStyling, HairTreatment,
-  Makeup, Manicure, Massage, Pedicure, Package, Scrub, Threading, Waxing,
+  Makeup, Manicure, Massage, Pedicure, AddPackage, Scrub, Threading, Waxing,
   CustomerRequest, ForgotPassword, JobSeekerRecruited, ManageStaff,
   SalonDetails, SalonHome, UpdatePassword, VerificationCode, Appointment, LandingPage
 } from "./src/screens";
@@ -26,13 +26,13 @@ export default function App() {
     <NavigationContainer theme={theme}>
       <Stack.Navigator
         screenOptions={{ headerShown: false }}
-        initialRouteName="SalonHome"
+        initialRouteName="UpdatePassword"
       >
         <Stack.Screen name="Login" component={SignInScreen} />
         <Stack.Screen name="Signup" component={SignUpScreen} />
         <Stack.Screen name="Appointment" component={Appointment} />
-        <Stack.Screen name="Package" component={Package} />
-        <Stack.Screen name="Job" component={Job} />
+        <Stack.Screen name="AddPackage" component={AddPackage} />
+        <Stack.Screen name="AddJob" component={AddJob} />
         <Stack.Screen name="Service" component={Service} />
         <Stack.Screen name="BabyCare" component={BabyCare} />
         <Stack.Screen name="Bleach" component={Bleach} />
@@ -52,7 +52,6 @@ export default function App() {
         <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
         <Stack.Screen name="JobSeekerRecruited" component={JobSeekerRecruited} />
         <Stack.Screen name="ManageStaff" component={ManageStaff} />
-        <Stack.Screen name="SalonDetails" component={SalonDetails} />
         <Stack.Screen name="SalonHome" component={SalonHome} />
         <Stack.Screen name="UpdatePassword" component={UpdatePassword} />
         <Stack.Screen name="VerificationCode" component={VerificationCode} />

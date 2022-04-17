@@ -3,7 +3,6 @@ import {
   StyleSheet,
   Text,
   View,
-  useWindowDimensions,
   ScrollView,
   Alert,
 } from "react-native";
@@ -24,7 +23,7 @@ const HairColor = ({ navigation }) => {
 
   const onSave = (data) => {
     console.log(data);
-    Alert.alert('','Submitted Successfully');
+    Alert.alert("", "Submitted Successfully");
   };
   const onBackPress = () => {
     // set route
@@ -32,7 +31,11 @@ const HairColor = ({ navigation }) => {
   };
   return (
     <>
-      <ImageBackground source={hairColor} style={styles.image} resizeMode= "cover"/>
+      <ImageBackground
+        source={hairColor}
+        style={styles.image}
+        resizeMode="cover"
+      />
       <Ionicons
         style={styles.backIcon}
         name="md-chevron-back-circle-sharp"
@@ -41,90 +44,89 @@ const HairColor = ({ navigation }) => {
         color="white"
       />
       <View style={styles.container}>
-      <Text style={styles.title}>Hair Color</Text>
-      <ScrollView showsVerticalScrollIndicator={false}>
-      <View style={styles.fileds}>
-      <CustomInput
-          name="label"
-          placeholder="Enter Service Name"
-          control={control}
-          rules={{ required: "Sevice name is required" }}
-        />
-        <CustomInput
-          name="brand"
-          placeholder="Enter Brand Name"
-          control={control}
-          rules={{ required: "Brand Name is required" }}
-        />
-        <CustomInput
-          name="length"
-          placeholder="Enter Hair Length"
-          control={control}
-          rules={{ required: "Length is required" }}
-        />
-        <CustomInput
-          name="volume"
-          placeholder="Enter Hair Volume"
-          control={control}
-          rules={{ required: "Volume is required" }}
-        />
-         <CustomInput
-          name="description"
-          placeholder="Enter Description"
-          control={control}
-          rules={{ required: "Description is required" }}
-        />
-          <CustomInput
-          name="price"
-          placeholder="Enter Price"
-          control={control}
-          rules={{ required: "Price is required" }}
-          keyboardType="numeric"
-          />
-            <CustomButton style={{ marginBottom: 10}}
-          text="Submit"
-          onPress={handleSubmit(onSave)}
-        />
-        </View>
+        <Text style={styles.title}>Hair Color</Text>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View style={styles.fileds}>
+            <CustomInput
+              name="label"
+              placeholder="Enter Service Name"
+              control={control}
+              rules={{ required: "Sevice name is required" }}
+            />
+            <CustomInput
+              name="brand"
+              placeholder="Enter Brand Name"
+              control={control}
+              rules={{ required: "Brand Name is required" }}
+            />
+            <CustomInput
+              name="length"
+              placeholder="Enter Hair Length"
+              control={control}
+              rules={{ required: "Length is required" }}
+            />
+            <CustomInput
+              name="volume"
+              placeholder="Enter Hair Volume"
+              control={control}
+              rules={{ required: "Volume is required" }}
+            />
+            <CustomInput
+              name="description"
+              placeholder="Enter Description"
+              control={control}
+              rules={{ required: "Description is required" }}
+            />
+            <CustomInput
+              name="price"
+              placeholder="Enter Price"
+              control={control}
+              rules={{ required: "Price is required" }}
+              keyboardType="numeric"
+            />
+            <CustomButton
+              style={{ marginBottom: 10 }}
+              text="Submit"
+              onPress={handleSubmit(onSave)}
+            />
+          </View>
         </ScrollView>
       </View>
-
     </>
-
   );
 };
 const styles = StyleSheet.create({
   image: {
     width: "100%",
-    height: 250,
+    height: 260,
   },
   title: {
-    marginTop: 15, 
-    marginBottom:15, 
-    fontSize: 26, 
+    marginTop: 15,
+    marginBottom: 15,
+    fontSize: 26,
     fontWeight: "bold",
-    color: "#5085E1", 
+    color: "#5085E1",
     textAlign: "center",
   },
   container: {
-    position: "absolute", 
-    width: "100%", 
-    height: "70%", 
-    backgroundColor: "white", 
+    position: "absolute",
+    width: "100%",
+    height: "70%",
+    backgroundColor: "white",
     bottom: 0,
     borderTopLeftRadius: 45,
     borderTopRightRadius: 45,
     borderColor: "#5085E1",
   },
   fileds: {
-  marginLeft: 25,
-  marginRight: -35,
-  paddingLeft: 10,
+    marginLeft: 25,
+    marginRight: -35,
+    paddingLeft: 10,
   },
   backIcon: {
     position: "absolute",
     marginLeft: 15,
     marginTop: 15,
-  }
+  },
 });
 export default HairColor;

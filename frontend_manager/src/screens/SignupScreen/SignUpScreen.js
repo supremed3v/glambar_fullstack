@@ -1,6 +1,10 @@
-import { ImageBackground, StyleSheet, Text, View } from "react-native";
-import axios from "axios";
-
+import {
+  ImageBackground,
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+} from "react-native";
 import background from "../../../assets/bg.jpeg";
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
@@ -21,116 +25,134 @@ const SignUpScreen = ({ navigation }) => {
   };
 
   const onSignUpPressed = (data) => {
-    console.log(data)
+    console.log(data);
     navigation.navigate("SalonHome");
   };
 
-    // try {
-    //   const reponse = await axios.post(
-    //     "http://10.0.2.2:5000/api/manager/register",
-    //     {
-    //       salonName,
-    //       email,
-    //       password,
-    //       contactNumber,
-    //       address,
-    //     }
-    //   );
-    //   if (reponse.status === 201) {
-    //     alert(` You have created: ${JSON.stringify(reponse.data)}`);
-    //   } else {
-    //     throw new Error(console.log(Error));
-    //   }
-    // } catch (err) {
-    //   console.log(err.message);
-    // }
+  // try {
+  //   const reponse = await axios.post(
+  //     "http://10.0.2.2:5000/api/manager/register",
+  //     {
+  //       salonName,
+  //       email,
+  //       password,
+  //       contactNumber,
+  //       address,
+  //     }
+  //   );
+  //   if (reponse.status === 201) {
+  //     alert(` You have created: ${JSON.stringify(reponse.data)}`);
+  //   } else {
+  //     throw new Error(console.log(Error));
+  //   }
+  // } catch (err) {
+  //   console.log(err.message);
+  // }
 
   const onSignIn = () => {
     navigation.goBack();
   };
 
   return (
-    <ImageBackground source={background} style={styles.container}>
-      <View style={styles.container_center}>
-        <Text style={styles.SignupText}>Register Your Salon!</Text>
-        <CustomInput
-          name="salonName"
-          placeholder="Enter your Salon Name"
-          control={control}
-          rules={{ required: "Salon name is required" }}
-        />
-        <CustomInput
-          name="email"
-          placeholder="Enter your Email"
-          control={control}
-          rules={{
-            required: "Email is required",
-            pattern: { value: EMAIL_REGEX, message: "Email is invalid" },
-          }}
-        />
-        <CustomInput
-          name="contactNumber"
-          placeholder="Enter your Contact Number"
-          control={control}
-          keyboardType={"phone-pad"}
-          rules={{
-            required: "Contact number is required",
-            minLength: {
-              value: 12,
-              message: "Contact number should be 12 numbers long",
-            },
-          }}
-        />
-        <CustomInput
-          name="address"
-          placeholder="Enter your Salon Address"
-          control={control}
-          rules={{ required: "Address is required" }}
-        />
-        <CustomInput
-          name="password"
-          placeholder="Password"
-          secureTextEntry={true}
-          control={control}
-          rules={{
-            required: "Password is required",
-            minLength: {
-              value: 7,
-              message: "Password should be 7 characters long",
-            },
-          }}
-        />
+    <ImageBackground
+      source={background}
+      resizeMode="cover"
+      style={styles.container}
+    >
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={styles.container_center}>
+          <Text style={styles.SignupText}>Register Your Salon!</Text>
+          <CustomInput
+            name="salonName"
+            placeholder="Enter your Salon Name"
+            control={control}
+            rules={{ required: "Salon name is required" }}
+          />
+          <CustomInput
+            name="email"
+            placeholder="Enter your Email"
+            control={control}
+            rules={{
+              required: "Email is required",
+              pattern: { value: EMAIL_REGEX, message: "Email is invalid" },
+            }}
+          />
+          <CustomInput
+            name="contactNumber"
+            placeholder="Enter your Contact Number"
+            control={control}
+            keyboardType={"phone-pad"}
+            rules={{
+              required: "Contact number is required",
+              minLength: {
+                value: 12,
+                message: "Contact number should be 12 numbers long",
+              },
+            }}
+          />
+          <CustomInput
+            name="city"
+            placeholder="Enter City"
+            control={control}
+            rules={{ required: "City is required" }}
+          />
+          <CustomInput
+            name="area"
+            placeholder="Enter Area"
+            control={control}
+            rules={{ required: "Area is required" }}
+          />
+          <CustomInput
+            name="address"
+            placeholder="Enter your Salon Address"
+            control={control}
+            rules={{ required: "Address is required" }}
+          />
+          <CustomInput
+            name="password"
+            placeholder="Password"
+            secureTextEntry={true}
+            control={control}
+            rules={{
+              required: "Password is required",
+              minLength: {
+                value: 7,
+                message: "Password should be 7 characters long",
+              },
+            }}
+          />
 
-        <CustomInput
-          name="confirm-password"
-          placeholder="Password"
-          secureTextEntry={true}
-          control={control}
-          rules={{
-            validate: (value) => value === pwd || "Password do not match",
-          }}
-        />
+          <CustomInput
+            name="confirm-password"
+            placeholder="Confirm Password"
+            secureTextEntry={true}
+            control={control}
+            rules={{
+              validate: (value) => value === pwd || "Password do not match",
+            }}
+          />
 
-        <Text style={styles.text}>
-          I read and agree to the{" "}
-          <Text onPress={onPrivacyPressed} style={styles.button}>
-            Terms and Conditions
+          <Text style={styles.text}>
+            I read and agree to the{" "}
+            <Text onPress={onPrivacyPressed} style={styles.button}>
+              Terms and Conditions
+            </Text>
+            .
           </Text>
-          .
-        </Text>
-        <CustomButton
-          text="Register Your Salon"
-          onPress={handleSubmit(onSignUpPressed)}
-        />
+          <CustomButton
+            text="Register Your Salon"
+            onPress={handleSubmit(onSignUpPressed)}
+          />
 
-        <Text style={styles.signInText}>
-          Already have an account?{" "}
-          <Text onPress={onSignIn} style={styles.button}>
-            Sign In
+          <Text style={styles.signInText}>
+            Already have an account?{" "}
+            <Text onPress={onSignIn} style={styles.button}>
+              Sign In
+            </Text>
+            .
           </Text>
-          .
-        </Text>
-      </View>
+        </View>
+      </ScrollView>
     </ImageBackground>
   );
 };
@@ -156,6 +178,7 @@ const styles = StyleSheet.create({
   container_center: {
     alignItems: "center",
     marginTop: 30,
+    marginBottom: 100,
   },
 
   button: {
@@ -165,6 +188,11 @@ const styles = StyleSheet.create({
   signInText: {
     marginTop: 5,
     color: "#827676",
+  },
+  fileds: {
+    marginLeft: 10,
+    marginRight: -35,
+    paddingLeft: 10,
   },
 });
 export default SignUpScreen;
