@@ -152,7 +152,6 @@ const styles = StyleSheet.create({
     container: {
         alignItems: "center",
     },
-
     card: {
         width: 175,
         height: 120,
@@ -172,7 +171,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         alignContent: "space-around",
         paddingTop: 20,
-        marginStart: 10,
+        marginStart: 20,
         marginTop: 10
     },
     topNav2: {
