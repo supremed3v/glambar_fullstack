@@ -11,7 +11,6 @@ import {
 
 import React from "react";
   import { useForm } from "react-hook-form";
-import bgNewPassword from "../../../assets/signup-bg.jpeg";
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
 
@@ -32,7 +31,7 @@ const onSave = (data) => {
   };
 
   return (
-    <ImageBackground source={bgNewPassword} style={styles.container}>
+    // <ImageBackground source={bgNewPassword} style={styles.container}>
       <View style={styles.container_center}>
         <Text style={styles.AddBleachText}>Bleach</Text>
 
@@ -60,7 +59,7 @@ const onSave = (data) => {
           onPress={handleSubmit(onSave)}
         />
       </View>
-    </ImageBackground>
+    // </ImageBackground>
   );
 
 };

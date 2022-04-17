@@ -12,11 +12,9 @@ import {
   import React from "react";
   import { useForm } from "react-hook-form";
 
-  import bgNewPassword from "../../../assets/signup-bg.jpeg";
+  import background from "../../../assets/bg.jpeg";
   import CustomInput from "../../components/CustomInput";
   import CustomButton from "../../components/CustomButton";
-
-  
 
   const AddJob = ({naviagtion}) => {
     const {
@@ -34,7 +32,7 @@ import {
     
  
       return (
-        <ImageBackground source={bgNewPassword} style={styles.container}>
+        <ImageBackground source={background} style={styles.container}>
         <View style={styles.container_center}>
           <Text style={styles.AddJobText}>Add Job</Text>
          

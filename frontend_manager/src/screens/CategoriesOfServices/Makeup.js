@@ -11,7 +11,7 @@ import {
 
   import React from "react";
   import { useForm } from "react-hook-form";
-  import bgNewPassword from "../../../assets/signup-bg.jpeg";
+  // import bgNewPassword from "../../../assets/signup-bg.jpeg";
   import CustomInput from "../../components/CustomInput";
   import CustomButton from "../../components/CustomButton";
 
@@ -32,7 +32,7 @@ import {
     };
  
       return (
-        <ImageBackground source={bgNewPassword} style={styles.container}>
+        // <ImageBackground source={bgNewPassword} style={styles.container}>
         <View style={styles.container_center}>
           <Text style={styles.AddMakeupText}>Makeup</Text>
           <CustomInput
@@ -57,7 +57,7 @@ import {
         />
         <CustomButton text="Submit" onPress={handleSubmit(onSave)} />
           </View>
-          </ImageBackground>
+          // </ImageBackground>
       );
 
   };

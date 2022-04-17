@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   container: {
     width: "80%",
     padding: 10,
-    marginVertical: 11,
+    marginVertical: 12,
 
     alignItems: "center",
     borderRadius: 15,
@@ -44,7 +44,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#3b71f3",
   },
 
-  container_TERTIARY: {},
+  container_TERTIARY: {
+    backgroundColor: "#A2BCED"
+  },
 
   text: {
     fontWeight: "bold",
@@ -56,7 +58,7 @@ const styles = StyleSheet.create({
   },
 
   text_SECONDARY: {
-    color: "white",
+    color: "#5085E1",
   },
 });
 

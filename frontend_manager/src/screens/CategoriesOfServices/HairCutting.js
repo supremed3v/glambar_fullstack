@@ -11,7 +11,6 @@ import {
 
 import React from "react";
 import { useForm } from "react-hook-form";
-import bgNewPassword from "../../../assets/signup-bg.jpeg";
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
 
@@ -30,7 +29,7 @@ const HairCutting = ({navigation}) => {
   };
 
   return (
-    <ImageBackground source={bgNewPassword} style={styles.container}>
+    // <ImageBackground source={bgNewPassword} style={styles.container}>
       <View style={styles.container_center}>
         <Text style={styles.AddHairCuttingText}>Hair Cutting</Text>
 
@@ -75,7 +74,7 @@ const HairCutting = ({navigation}) => {
         />
         <CustomButton text="Submit" onPress={handleSubmit(onSave)} />
       </View>
-    </ImageBackground>
+    // </ImageBackground>
   );
 };
 const styles = StyleSheet.create({

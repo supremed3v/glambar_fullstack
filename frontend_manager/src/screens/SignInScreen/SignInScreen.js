@@ -9,12 +9,13 @@ import {
   TextInput,
 } from "react-native";
 
-import image from "../../../assets/bg-screen.jpg";
-import logo from "../../../assets/logo-white.png";
+import background from "../../../assets/bg.jpeg";
+import logo from "../../../assets/logo.png";
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
+const EMAIL_REGEX =
+  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
 const SignInScreen = ({ navigation }) => {
@@ -28,7 +29,7 @@ const SignInScreen = ({ navigation }) => {
 
   const onSignInPressed = (data) => {
     console.log(data)
-    navigation.push("SalonHome");
+    navigation.navigate("SalonHome");
   };
   
 
@@ -40,24 +41,23 @@ const SignInScreen = ({ navigation }) => {
     navigation.navigate("Signup");
   };
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.container}>
-        <ImageBackground source={image} resizeMode="cover" style={styles.image}>
-          <View style={styles.centerLogo}>
-            <Image
+        <ImageBackground source={background} resizeMode="cover" style={styles.container}>
+          <View style={styles.container_center}>
+          <Image
               source={logo}
-              style={[styles.logo, { height: height * 0.3 }]}
+              style={[styles.logo, { height: height * 0.15 }, {width: "30%"}, {marginBottom: 30}, {marginTop: 30}]}
             />
-          </View>
-          <View style={styles.centerItems}>
-            <Text style={styles.heading}>Welcome to Manager Dashboard</Text>
-            <Text style={styles.text}>Login or Register to get started.</Text>
+            <Text style={styles.SignupText}>Login or Register to get started</Text>
 
             <CustomInput
               name="email"
               placeholder="Enter your email"
               control={control}
-              rules={{ required: "Email is required" }}
+              rules= {{
+                required: "Email is required",
+                pattern: { value: EMAIL_REGEX, message: "Email is invalid" },
+              }}
             />
             <CustomInput
               name="password"
@@ -65,11 +65,7 @@ const SignInScreen = ({ navigation }) => {
               secureTextEntry={true}
               control={control}
               rules={{
-                required: "Password is required",
-                minLength: {
-                  value: 7,
-                  message: "Password should be 7 characters long",
-                },
+                required: "Password is required"
               }}
             />
 
@@ -83,66 +79,44 @@ const SignInScreen = ({ navigation }) => {
               onPress={onForgotPasswordPressed}
               type="SECONDARY"
             />
-            <View style={{ marginTop: 48 }}>
-              <CustomButton
-                text="Don't have an account? Create one."
-                onPress={onCreateAnAccount}
-                type="SECONDARY"
-              />
-            </View>
+            <Text style={styles.text}>
+          Don't have an account?{" "}
+          <Text onPress={onCreateAnAccount} style={styles.button}>
+            Create one
+          </Text>
+          .
+        </Text>
           </View>
-        </ImageBackground>
+       </ImageBackground>
       </View>
-    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    height: "100%",
-    flex: 1,
-  },
-  image: {
-    flex: 1,
-  },
-  centerLogo: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "column",
-  },
-  centerItems: {
-    marginBottom: 10,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "column",
-  },
-  text: {
-    color: "white",
-    fontSize: 30,
+  SignupText: {
+    fontSize: 20,
     fontWeight: "bold",
-    textAlign: "center",
-    width: 250,
-    marginBottom: 30,
-  },
-  logo: {
-    width: "50%",
-    maxHeight: 180,
-    display: "flex",
-    zIndex: 2,
-    maxWidth: 500,
-  },
-  heading: {
-    marginBottom: 10,
-    fontSize: 30,
-    width: "80%",
-    textAlign: "center",
-    fontWeight: "bold",
-    color: "white",
-    borderBottomWidth: 2,
-    borderColor: "#fff",
+    color: "#5085E1",
+    marginBottom: 20,
+borderBottomWidth: 2,
+    borderColor: "#A2BCED",
     paddingBottom: 10,
+  },
+  container: {
+    flex: 1,
+  },
+  container_center: {
+    alignItems: "center",
+    marginTop: 50,
+  },
+  button: {
+    color: "#5085E1",
+  }, 
+  text: {
+    marginTop: 20,
+    textAlign: "left",
+    color: "#827676",
+    fontWeight: "normal",
   },
 });
 

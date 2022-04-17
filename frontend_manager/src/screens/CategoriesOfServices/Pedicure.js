@@ -9,7 +9,7 @@ import {
     ScrollView,
   } from "react-native";
   
-  import bgClientDetails from "../../../assets/signup-bg.jpeg";
+  // import bgClientDetails from "../../../assets/signup-bg.jpeg";
   
   import CustomInput from "../../components/CustomInput";
   import CustomButton from "../../components/CustomButton";
@@ -31,7 +31,7 @@ import {
     };
  
     return (
-      <ImageBackground source={bgClientDetails} style={styles.container}>
+      // <ImageBackground source={bgClientDetails} style={styles.container}>
         <View style={styles.container_center}>
           <Text style={styles.ProfileText}>Pedicure</Text>
           <CustomInput
@@ -56,7 +56,7 @@ import {
         />
         <CustomButton text="Submit" onPress={handleSubmit(onSave)} />
         </View>
-      </ImageBackground>
+      // </ImageBackground>
     );
   };
   const styles = StyleSheet.create({

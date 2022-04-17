@@ -1,7 +1,7 @@
 import { ImageBackground, StyleSheet, Text, View } from "react-native";
 import axios from "axios";
 
-import bgSignup from "../../../assets/signup-bg.jpeg";
+import background from "../../../assets/bg.jpeg";
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
 
@@ -20,25 +20,10 @@ const SignUpScreen = ({ navigation }) => {
     navigation.navigate("TermsandConditions");
   };
 
-  const onSignUpPressed = async (data) => {
-    fetch("http://10.0.2.2:5000", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        salonName,
-        email,
-        phoneNumber,
-        contactNumber,
-        address,
-        password,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      });
+  const onSignUpPressed = (data) => {
+    console.log(data)
+    navigation.navigate("SalonHome");
+  };
 
     // try {
     //   const reponse = await axios.post(
@@ -59,14 +44,13 @@ const SignUpScreen = ({ navigation }) => {
     // } catch (err) {
     //   console.log(err.message);
     // }
-  };
 
   const onSignIn = () => {
     navigation.goBack();
   };
 
   return (
-    <ImageBackground source={bgSignup} style={styles.container}>
+    <ImageBackground source={background} style={styles.container}>
       <View style={styles.container_center}>
         <Text style={styles.SignupText}>Register Your Salon!</Text>
         <CustomInput
@@ -153,7 +137,7 @@ const SignUpScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   SignupText: {
-    marginTop: 80,
+    marginTop: 55,
     fontSize: 26,
     fontWeight: "bold",
     color: "#5085E1",
@@ -179,7 +163,7 @@ const styles = StyleSheet.create({
   },
 
   signInText: {
-    marginTop: 10,
+    marginTop: 5,
     color: "#827676",
   },
 });

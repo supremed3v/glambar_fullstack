@@ -26,3 +26,4 @@ export { default as SalonDetails} from "./SalonDetails/SalonDetails";
 export { default as SalonHome} from "./SalonHome/SalonHome";
 export { default as UpdatePassword} from "./UpdatePassword/UpdatePassword";
 export { default as VerificationCode} from "./VerificationCode/VerificationCode";
+export { default as LandingPage} from "./LandingPage/LandingPage";

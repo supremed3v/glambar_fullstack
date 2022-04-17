@@ -3,13 +3,14 @@ import {
     Text,
     StyleSheet,
     Image,
+    ImageBackground,
     ScrollView,
     FlatList,
     SafeAreaView,
     TouchableOpacity,
 } from "react-native";
 import React, { useState } from "react";
-import CustomInput from "../../components/CustomInput";
+import background from "../../../assets/bg.jpeg";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import Entypo from "@expo/vector-icons/Entypo";
 import AntDesign from "@expo/vector-icons/AntDesign";
@@ -23,6 +24,7 @@ const SalonHome = ({ navigation }) => {
     const [isModalVisible, setIsModalVisible] =useState(false);
 
     return (
+        <ImageBackground source={background} resizeMode="cover" style={styles.container}>
         <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.topNav}>
                 <Entypo name="menu" size={35} color="black" />
@@ -139,23 +141,22 @@ const SalonHome = ({ navigation }) => {
                 </View>
             </SafeAreaView>
         </ScrollView>
+        </ImageBackground>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
         alignItems: "center",
-        marginTop: 50,
-        paddingHorizontal: 20,
     },
 
     card: {
-        width: 180,
+        width: 140,
         height: 120,
         marginStart: 12,
         marginTop: 20,
         backgroundColor:"#edeef2",
-        borderRadius:5
+        borderRadius:5,
 
     },
     cardAlign: {

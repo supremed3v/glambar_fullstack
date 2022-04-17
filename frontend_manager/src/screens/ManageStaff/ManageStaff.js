@@ -9,7 +9,7 @@ import {
     ScrollView,
   } from "react-native";
   
-  import bgClientDetails from "../../../assets/signup-bg.jpeg";
+  import background from "../../../assets/bg.jpeg";
   
   import CustomInput from "../../components/CustomInput";
   import CustomButton from "../../components/CustomButton";
@@ -32,7 +32,7 @@ import {
       console.log(data);
     };
     return (
-      <ImageBackground source={bgClientDetails} style={styles.container}>
+      <ImageBackground source={background} style={styles.container}>
         <View style={styles.container_center}>
           <Text style={styles.ProfileText}>ManageStaff</Text>
           <CustomInput

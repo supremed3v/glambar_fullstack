@@ -13,7 +13,7 @@ import {
 
   import React from "react";
   import { useForm } from "react-hook-form";
-  import bgUpdatePassword from "../../../assets/signup-bg.jpeg";
+  import background from "../../../assets/bg.jpeg";
   import CustomInput from "../../components/CustomInput";
   import CustomButton from "../../components/CustomButton";
 
@@ -34,7 +34,7 @@ import {
 
  
       return (
-        <ImageBackground source={bgUpdatePassword} style={styles.container}>
+        <ImageBackground source={background} style={styles.container}>
         <View style={styles.container_center}>
           <Text style={styles.UpdatePasswordText}>Create New Password</Text>
           <Text style={styles.text}>

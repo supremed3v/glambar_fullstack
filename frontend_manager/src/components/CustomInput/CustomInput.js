@@ -20,7 +20,14 @@ const CustomInput = ({
         fieldState: { error },
       }) => (
         <>
-          <TextInput
+         
+          <View
+            style={[
+              styles.container,
+              { borderColor: error ? "red" : "#e8e8e8" },
+            ]}
+          >
+             <TextInput
             placeholder={placeholder}
             onChangeText={onChange}
             value={value}
@@ -28,12 +35,6 @@ const CustomInput = ({
             style={styles.input}
             secureTextEntry={secureTextEntry}
           />
-          <View
-            style={[
-              styles.container,
-              { borderColor: error ? "red" : "#e8e8e8" },
-            ]}
-          >
             {error && (
               <Text style={{ color: "red", alignContent: "center" }}>
                 {error.message || "Error"}
