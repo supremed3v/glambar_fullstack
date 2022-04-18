@@ -1,8 +1,8 @@
-export { default as Package } from "./AddPackage/AddPackage";
+export { default as AddPackage } from "./AddPackage/AddPackage";
 export { default as SignInScreen } from "./SignInScreen";
 export { default as SignUpScreen } from "./SignupScreen";
 export { default as Appointment } from "./Appointment/Appointment";
-export { default as Job} from "./AddJob/AddJob";
+export { default as AddJob} from "./AddJob/AddJob";
 export { default as Service} from "./AddService/AddService";
 export { default as BabyCare} from "./CategoriesOfServices/BabyCare";
 export { default as Bleach} from "./CategoriesOfServices/Bleach";
@@ -22,7 +22,6 @@ export { default as CustomerRequest} from "./CustomerRequest/CustomerRequest";
 export { default as ForgotPassword} from "./ForgotPassword/ForgotPassword";
 export { default as JobSeekerRecruited} from "./JobSeekerRecruited/JobSeekerRecruited";
 export { default as ManageStaff} from "./ManageStaff/ManageStaff";
-export { default as SalonDetails} from "./SalonDetails/SalonDetails";
 export { default as SalonHome} from "./SalonHome/SalonHome";
 export { default as UpdatePassword} from "./UpdatePassword/UpdatePassword";
 export { default as VerificationCode} from "./VerificationCode/VerificationCode";

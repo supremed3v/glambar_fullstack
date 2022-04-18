@@ -1,147 +1,110 @@
 import {
-    ImageBackground,
-    TextInput,
-    Image,
-    StyleSheet,
-    Text,
-    View,
-    useWindowDimensions,
-    ScrollView
-  } from "react-native";
+  ImageBackground,
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  Alert,
+} from "react-native";
 
-  import React from "react";
-  import { useForm } from "react-hook-form";
-  import CustomInput from "../../components/CustomInput";
-  import CustomButton from "../../components/CustomButton";
+import threading from "../../../assets/threading.png";
+import CustomInput from "../../components/CustomInput";
+import CustomButton from "../../components/CustomButton";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import React from "react";
+import { useForm } from "react-hook-form";
 
-  
+const Threading = ({ navigation }) => {
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  const Threading = ({navigation}) => {
-    const {
-      control,
-      handleSubmit,
-      formState: { errors },
-    } = useForm();
-  
-    const { height } = useWindowDimensions();
-  
-    const onSave = (data) => {
-      console.log(data);
-      navigation.push("Service");
-    };
- 
-      return (
-        // <ImageBackground source={bgNewPassword} style={styles.container}>
-        <View style={styles.container_center}>
-          <Text style={styles.AddThreadingText}>Threading</Text>
-         
-          {/* <View style={styles.category}>
-                <Text style={styles.text2}>
-                    Body Part
-                </Text>
-                <View style={styles.pickerContainer}>
-                    <Picker style={styles.picker}
-                        selectedValue={pickerValue}
-                        onValueChange={(itemValue) => setPickerValue(itemValue)}>
-                        <Picker.Item label="Choose Body Part" value="Choose City" />
-                        <Picker.Item label="Eyebrows" value="Eyebrows" />
-                        <Picker.Item label="Upper Lips" value="Upper Lips" />
-                        <Picker.Item label="Chin" value="Chin" />
-                        <Picker.Item label="Sides" value="Sides" />
-                        <Picker.Item label="Forehead" value="Forehead" />
-                        <Picker.Item label="Knuckles" value="Knuckles" />
-                        <Picker.Item label="Face" value="Face" />
-                    </Picker>
-                </View>
-            </View> */}
-
-<CustomInput
-          name="label"
-          placeholder="Enter Service Name"
-          control={control}
-          rules={{ required: "Sevice name is required" }}
-        />
-
-<CustomInput
-          name="description"
-          placeholder="Enter Description"
-          control={control}
-          rules={{ required: "Description is required" }}
-        />
-        <CustomInput
-          name="price"
-          placeholder="Enter Price"
-          control={control}
-          rules={{ required: "Price is required" }}
-          keyboardType={"numeric"}
-        />
-        <CustomButton text="Submit" onPress={handleSubmit(onSave)} />
-          </View>
-          // </ImageBackground>
-      );
-
+  const onSave = (data) => {
+    console.log(data);
+    Alert.alert("", "Submitted Successfully");
   };
-  const styles = StyleSheet.create({
-    AddThreadingText: {
-        marginTop: 60,
-        marginBottom:20,
-        fontSize: 26,
-        fontWeight: "bold",
-        color: "#5085E1",
-      },
-    container: {
-        flex: 1,
-      },
-      text: {
-        marginTop: 15,
-        textAlign: "center",
-        paddingLeft: 10,
-        paddingRight: 10,
-        color: '#827676',
-        fontWeight: 'normal',
-        marginBottom: 10,
-      },
-      container_center: {
-        alignItems: "center",
-        marginTop: 30,
-      },
-    
-      button:{
-          color: "#5085E1"
-      },
-      signInText: {
-        marginTop: 150,
-        color: "#827676"
-    },
-    pickerContainer: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      marginTop:2,
-      color:"gray",
-      height:55,
+  const onBackPress = () => {
+    // set route
+    navigation.push("Service");
+  };
+  return (
+    <>
+      <ImageBackground
+        source={threading}
+        style={styles.image}
+        resizeMode="cover"
+      />
+      <Ionicons
+        style={styles.backIcon}
+        name="md-chevron-back-circle-sharp"
+        onPress={onBackPress}
+        size={40}
+        color="white"
+      />
+      <View style={styles.container}>
+        <Text style={styles.title}>Threading</Text>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View style={styles.fileds}>
+            <CustomInput
+              name="label"
+              placeholder="Enter Service Name"
+              control={control}
+              rules={{ required: "Sevice name is required" }}
+            />
+            <CustomInput
+              name="description"
+              placeholder="Enter Description"
+              control={control}
+              rules={{ required: "Description is required" }}
+            />
+            <CustomInput
+              name="price"
+              placeholder="Enter Price"
+              control={control}
+              rules={{ required: "Price is required" }}
+              keyboardType={"numeric"}
+            />
+            <CustomButton text="Submit" onPress={handleSubmit(onSave)} />
+          </View>
+        </ScrollView>
+      </View>
+    </>
+  );
+};
+const styles = StyleSheet.create({
+  image: {
+    width: "100%",
+    height: 260,
   },
-  picker: {
-      width: 200,
-      height: 40,
-      borderColor: 'blue',
-      borderWidth: 1,
-      color:'#827676',
-      fontWeight:'bold',
-      backgroundColor:'#dee1e3',
+  title: {
+    marginTop: 15,
+    marginBottom: 15,
+    fontSize: 26,
+    fontWeight: "bold",
+    color: "#5085E1",
+    textAlign: "center",
   },
-  category:{
-      flexDirection:'row',
-      marginTop:15,
-      marginBottom:5
+  container: {
+    position: "absolute",
+    width: "100%",
+    height: "70%",
+    backgroundColor: "white",
+    bottom: 0,
+    borderTopLeftRadius: 45,
+    borderTopRightRadius: 45,
+    borderColor: "#5085E1",
   },
-  text2: {
-    marginTop: 20,
-    paddingStart: 45,
-    color: '#827676',
-    fontSize: 16,
-    marginBottom: 10,
-},
-    
-  });
-  export default Threading;
+  fileds: {
+    marginLeft: 25,
+    marginRight: -35,
+    paddingLeft: 10,
+  },
+  backIcon: {
+    position: "absolute",
+    marginLeft: 15,
+    marginTop: 15,
+  },
+});
+export default Threading;

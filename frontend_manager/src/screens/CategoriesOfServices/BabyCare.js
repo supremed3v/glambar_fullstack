@@ -1,18 +1,16 @@
 import {
   ImageBackground,
-  TextInput,
-  Image,
   StyleSheet,
   Text,
   View,
-  useWindowDimensions,
   ScrollView,
+  Alert,
 } from "react-native";
 
 import babyCare from "../../../assets/babyCareService.jpg";
-import Ionicons from "@expo/vector-icons/Ionicons";
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import React from "react";
 import { useForm } from "react-hook-form";
 
@@ -23,21 +21,32 @@ const BabyCare = ({ navigation }) => {
     formState: { errors },
   } = useForm();
 
-  const { height } = useWindowDimensions();
-
   const onSave = (data) => {
     console.log(data);
-    // navigation.push("Service");
+    Alert.alert("", "Submitted Successfully");
   };
   const onBackPress = () => {
     // set route
-    console.log("Send me to previous screen");
+    navigation.push("Service");
   };
- 
   return (
     <>
-      <ImageBackground source={babyCare} style={styles.image} resizeMode= "cover"/>
-      <View style={{position: "absolute", width: "100%", height: "60%", backgroundColor: "teal", bottom: 0}}>
+      <ImageBackground
+        source={babyCare}
+        style={styles.image}
+        resizeMode="cover"
+      />
+      <Ionicons
+        style={styles.backIcon}
+        name="md-chevron-back-circle-sharp"
+        onPress={onBackPress}
+        size={40}
+        color="white"
+      />
+      <View style={styles.container}>
+      <Text style={styles.title}>Baby Care</Text>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View style={styles.fileds}>
       <CustomInput
           name="label"
           placeholder="Enter Service Name"
@@ -62,7 +71,8 @@ const BabyCare = ({ navigation }) => {
           onPress={handleSubmit(onSave)}
         />
       </View>
-
+        </ScrollView>
+      </View>
     </>
        
   );
@@ -70,37 +80,35 @@ const BabyCare = ({ navigation }) => {
 const styles = StyleSheet.create({
   image: {
     width: "100%",
-    height: 300,
+    height: 260,
   },
-  ProfileText: {
+  title: {
+    marginTop: 15,
+    marginBottom: 15,
     fontSize: 26,
     fontWeight: "bold",
     color: "#5085E1",
-    marginBottom: 20,
+    textAlign: "center",
   },
   container: {
-    bottom: 0,
-    width: "100%",
-    height: "100%",
     position: "absolute",
+    width: "100%",
+    height: "70%",
     backgroundColor: "white",
+    bottom: 0,
     borderTopLeftRadius: 45,
     borderTopRightRadius: 45,
-    flex: 1,
+    borderColor: "#5085E1",
+  },
+  fileds: {
+    marginLeft: 25,
+    marginRight: -35,
+    paddingLeft: 10,
   },
   backIcon: {
     position: "absolute",
-    marginLeft: 20,
-    marginTop: 20,
+    marginLeft: 15,
+    marginTop: 15,
   },
-  // container_center: {
-  //   position: "absolute",
-  //   zIndex:3,
-  //   alignItems: "center",
-  //   marginTop: 130,
-  //   display: "flex",
-  //   justifyContent: "center",
-  //   flexDirection: "column",
-  // },
 });
 export default BabyCare;

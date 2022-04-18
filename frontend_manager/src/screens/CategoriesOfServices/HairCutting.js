@@ -1,142 +1,120 @@
 import {
   ImageBackground,
-  TextInput,
-  Image,
   StyleSheet,
   Text,
   View,
-  useWindowDimensions,
   ScrollView,
+  Alert,
 } from "react-native";
 
-import React from "react";
-import { useForm } from "react-hook-form";
+import cutting from "../../../assets/cutting.png";
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import React from "react";
+import { useForm } from "react-hook-form";
 
-const HairCutting = ({navigation}) => {
+const HairCutting = ({ navigation }) => {
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const { height } = useWindowDimensions();
-
   const onSave = (data) => {
     console.log(data);
+    Alert.alert("", "Submitted Successfully");
+  };
+  const onBackPress = () => {
+    // set route
     navigation.push("Service");
   };
-
   return (
-    // <ImageBackground source={bgNewPassword} style={styles.container}>
-      <View style={styles.container_center}>
-        <Text style={styles.AddHairCuttingText}>Hair Cutting</Text>
-
-        <CustomInput
-          name="label"
-          placeholder="Enter Service Name"
-          control={control}
-          rules={{ required: "Sevice name is required" }}
-        />
-        {/* <View style={styles.category}>
-                <Text style={styles.text2}>
-                    Length
-                </Text>
-                <View style={styles.pickerContainer}>
-                    <Picker style={styles.picker}
-                        selectedValue={pickerValue}
-                        onValueChange={(itemValue) => setPickerValue(itemValue)}>
-                        <Picker.Item label="Choose Length" value="Choose City" />
-                        <Picker.Item label="Ear" value="Ear" />
-                        <Picker.Item label="Chin" value="Chin" />
-                        <Picker.Item label="Shoulder" value="Shoulder" />
-                        <Picker.Item label="Armpit" value="Armpit" />
-                        <Picker.Item label="Elbow" value="Elbow" />
-                        <Picker.Item label="Waist" value="Waist" />
-                        <Picker.Item label="Hip" value="Hip" />
-                        <Picker.Item label="Knee" value="Knee" />
-                    </Picker>
-                </View>
-            </View> */}
-        <CustomInput
-          name="description"
-          placeholder="Enter Description"
-          control={control}
-          rules={{ required: "Description is required" }}
-        />
-        <CustomInput
-          name="price"
-          placeholder="Enter Price"
-          control={control}
-          rules={{ required: "Price is required" }}
-          keyboardType={"numeric"}
-        />
-        <CustomButton text="Submit" onPress={handleSubmit(onSave)} />
+    <>
+      <ImageBackground
+        source={cutting}
+        style={styles.image}
+        resizeMode="cover"
+      />
+      <Ionicons
+        style={styles.backIcon}
+        name="md-chevron-back-circle-sharp"
+        onPress={onBackPress}
+        size={40}
+        color="white"
+      />
+      <View style={styles.container}>
+        <Text style={styles.title}>Hair Cutting</Text>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View style={styles.fileds}>
+            <CustomInput
+              name="label"
+              placeholder="Enter Service Name"
+              control={control}
+              rules={{ required: "Sevice name is required" }}
+            />
+            <CustomInput
+              name="length"
+              placeholder="Enter Hair Length"
+              control={control}
+              rules={{ required: "Length is required" }}
+            />
+            <CustomInput
+              name="description"
+              placeholder="Enter Description"
+              control={control}
+              rules={{ required: "Description is required" }}
+            />
+            <CustomInput
+              name="price"
+              placeholder="Enter Price"
+              control={control}
+              rules={{ required: "Price is required" }}
+              keyboardType="numeric"
+            />
+            <CustomButton
+              style={{ marginBottom: 10 }}
+              text="Submit"
+              onPress={handleSubmit(onSave)}
+            />
+          </View>
+        </ScrollView>
       </View>
-    // </ImageBackground>
+    </>
   );
 };
 const styles = StyleSheet.create({
-  AddHairCuttingText: {
-    marginTop: 60,
-    marginBottom: 20,
+  image: {
+    width: "100%",
+    height: 260,
+  },
+  title: {
+    marginTop: 15,
+    marginBottom: 15,
     fontSize: 26,
     fontWeight: "bold",
     color: "#5085E1",
+    textAlign: "center",
   },
   container: {
-    flex: 1,
+    position: "absolute",
+    width: "100%",
+    height: "70%",
+    backgroundColor: "white",
+    bottom: 0,
+    borderTopLeftRadius: 45,
+    borderTopRightRadius: 45,
+    borderColor: "#5085E1",
   },
-  text: {
-    marginTop: 15,
-    textAlign: "center",
+  fileds: {
+    marginLeft: 25,
+    marginRight: -35,
     paddingLeft: 10,
-    paddingRight: 10,
-    color: "#827676",
-    fontWeight: "normal",
-    marginBottom: 10,
   },
-  container_center: {
-    alignItems: "center",
-    marginTop: 30,
-  },
-
-  button: {
-    color: "#5085E1",
-  },
-  signInText: {
-    marginTop: 150,
-    color: "#827676",
-  },
-  pickerContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 2,
-    color: "gray",
-    height: 55,
-  },
-  picker: {
-    width: 200,
-    height: 40,
-    borderColor: "blue",
-    borderWidth: 1,
-    color: "#827676",
-    fontWeight: "bold",
-    backgroundColor: "#dee1e3",
-  },
-  category: {
-    flexDirection: "row",
-    marginTop: 5,
-    marginBottom: 5,
-  },
-  text2: {
-    marginTop: 20,
-    paddingStart: 60,
-    color: "#827676",
-    fontSize: 16,
-    marginBottom: 10,
+  backIcon: {
+    position: "absolute",
+    marginLeft: 15,
+    marginTop: 15,
   },
 });
 export default HairCutting;

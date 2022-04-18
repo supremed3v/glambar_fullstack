@@ -1,17 +1,16 @@
 import {
   ImageBackground,
-  TextInput,
-  Image,
   StyleSheet,
   Text,
   View,
-  useWindowDimensions,
   ScrollView,
+  Alert,
 } from "react-native";
 
 import React from "react";
 import { useForm } from "react-hook-form";
 import background from "../../../assets/bg.jpeg";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
 const EMAIL_REGEX =
@@ -24,47 +23,64 @@ const ForgotPassword = ({ navigation }) => {
     formState: { errors },
   } = useForm();
 
-  const { height } = useWindowDimensions();
-
   const onForgotPasswordPressed = (data) => {
     console.log(data);
+    Alert.alert("", "Link Sent");
   };
   const onLogInPressed = () => {
     navigation.navigate("Login");
   };
+  const onBackPress = () => {
+    // set route
+    navigation.push("SalonHome");
+  };
   return (
-    <ImageBackground source={background} style={styles.container}>
-      <View style={styles.container_center}>
-        <Text style={styles.ForgotPasswordText}>Forgot Your Password?</Text>
-        <Text style={styles.text}>
-          Enter your email address and we'll send you instructions to reset your
-          password.
-        </Text>
-        <CustomInput
-          name="email"
-          placeholder="Enter Your Email Address"
-          control={control}
-          rules={{
-            required: "Email is required",
-            pattern: { value: EMAIL_REGEX, message: "Email is invalid" },
-          }}
-        />
-        <CustomButton
-          text="Send Reset Link"
-          onPress={handleSubmit(onForgotPasswordPressed)}
-        />
-        <Text style={styles.logInText}>
-          Back to{" "}
-          <Text onPress={onLogInPressed} style={styles.button}>
-            Login
+    <ImageBackground
+      source={background}
+      resizeMode="cover"
+      style={styles.container}
+    >
+      <Ionicons
+        style={styles.backIcon}
+        name="md-chevron-back-circle-sharp"
+        onPress={onBackPress}
+        size={40}
+        color="#5085E1"
+      />
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={styles.container_center}>
+          <Text style={styles.heading}>Forgot your password?</Text>
+
+          <Text style={styles.text}>
+            Enter your email address and we'll send you instructions to reset
+            your password.
           </Text>
-        </Text>
-      </View>
+          <CustomInput
+            name="email"
+            placeholder="Enter Your Email Address"
+            control={control}
+            rules={{
+              required: "Email is required",
+              pattern: { value: EMAIL_REGEX, message: "Email is invalid" },
+            }}
+          />
+          <CustomButton
+            text="Send Reset Link"
+            onPress={handleSubmit(onForgotPasswordPressed)}
+          />
+          <Text style={styles.logInText}>
+            Back to{" "}
+            <Text onPress={onLogInPressed} style={styles.button}>
+              Login
+            </Text>
+          </Text>
+        </View>
+      </ScrollView>
     </ImageBackground>
   );
 };
 const styles = StyleSheet.create({
-  ForgotPasswordText: {
+  heading: {
     marginTop: 60,
     fontSize: 26,
     fontWeight: "bold",
@@ -86,13 +102,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 30,
   },
-
-  button: {
-    color: "#5085E1",
-  },
-  signInText: {
-    marginTop: 150,
-    color: "#827676",
+  backIcon: {
+    marginTop: 10,
+    marginLeft: 10,
   },
 });
 export default ForgotPassword;

@@ -1,98 +1,114 @@
 import {
-    ImageBackground,
-    TextInput,
-    Image,
-    StyleSheet,
-    Text,
-    View,
-    useWindowDimensions,
-    ScrollView
-  } from "react-native";
+  ImageBackground,
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  Alert,
+} from "react-native";
 
-  import React from "react";
-  import { useForm } from "react-hook-form";
-  // import bgNewPassword from "../../../assets/signup-bg.jpeg";
-  import CustomInput from "../../components/CustomInput";
-  import CustomButton from "../../components/CustomButton";
+import makeup from "../../../assets/makeup.png";
+import CustomInput from "../../components/CustomInput";
+import CustomButton from "../../components/CustomButton";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import React from "react";
+import { useForm } from "react-hook-form";
 
-  
+const Makeup = ({ navigation }) => {
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  const Makeup = ({navigation}) => {
-    const {
-      control,
-      handleSubmit,
-      formState: { errors },
-    } = useForm();
-  
-    const { height } = useWindowDimensions();
-  
-    const onSave = (data) => {
-      console.log(data);
-      navigation.push("Service");
-    };
- 
-      return (
-        // <ImageBackground source={bgNewPassword} style={styles.container}>
-        <View style={styles.container_center}>
-          <Text style={styles.AddMakeupText}>Makeup</Text>
-          <CustomInput
+  const onSave = (data) => {
+    console.log(data);
+    Alert.alert("", "Submitted Successfully");
+  };
+  const onBackPress = () => {
+    // set route
+    navigation.push("Service");
+  };
+  return (
+    <>
+      <ImageBackground
+        source={makeup}
+        style={styles.image}
+        resizeMode="cover"
+      />
+      <Ionicons
+        style={styles.backIcon}
+        name="md-chevron-back-circle-sharp"
+        onPress={onBackPress}
+        size={40}
+        color="white"
+      />
+      <View style={styles.container}>
+      <Text style={styles.title}>Make Up</Text>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View style={styles.fileds}>
+      <CustomInput
           name="label"
           placeholder="Enter Service Name"
           control={control}
           rules={{ required: "Sevice name is required" }}
         />
-
-<CustomInput
+         <CustomInput
           name="description"
           placeholder="Enter Description"
           control={control}
           rules={{ required: "Description is required" }}
         />
-        <CustomInput
+          <CustomInput
           name="price"
           placeholder="Enter Price"
           control={control}
           rules={{ required: "Price is required" }}
           keyboardType={"numeric"}
+          />
+            <CustomButton
+          text="Submit"
+          onPress={handleSubmit(onSave)}
         />
-        <CustomButton text="Submit" onPress={handleSubmit(onSave)} />
-          </View>
-          // </ImageBackground>
-      );
-
-  };
-  const styles = StyleSheet.create({
-    AddMakeupText: {
-        marginTop: 60,
-        marginBottom:20,
-        fontSize: 26,
-        fontWeight: "bold",
-        color: "#5085E1",
-      },
-    container: {
-        flex: 1,
-      },
-      text: {
-        marginTop: 15,
-        textAlign: "center",
-        paddingLeft: 10,
-        paddingRight: 10,
-        color: '#827676',
-        fontWeight: 'normal',
-        marginBottom: 10,
-      },
-      container_center: {
-        alignItems: "center",
-        marginTop: 30,
-      },
-    
-      button:{
-          color: "#5085E1"
-      },
-      signInText: {
-        marginTop: 150,
-        color: "#827676"
-    }
-    
-  });
-  export default Makeup;
+      </View>
+        </ScrollView>
+      </View>
+    </>
+       
+  );
+};
+const styles = StyleSheet.create({
+  image: {
+    width: "100%",
+    height: 260,
+  },
+  title: {
+    marginTop: 15,
+    marginBottom: 15,
+    fontSize: 26,
+    fontWeight: "bold",
+    color: "#5085E1",
+    textAlign: "center",
+  },
+  container: {
+    position: "absolute",
+    width: "100%",
+    height: "70%",
+    backgroundColor: "white",
+    bottom: 0,
+    borderTopLeftRadius: 45,
+    borderTopRightRadius: 45,
+    borderColor: "#5085E1",
+  },
+  fileds: {
+    marginLeft: 25,
+    marginRight: -35,
+    paddingLeft: 10,
+  },
+  backIcon: {
+    position: "absolute",
+    marginLeft: 15,
+    marginTop: 15,
+  },
+});
+export default Makeup;
