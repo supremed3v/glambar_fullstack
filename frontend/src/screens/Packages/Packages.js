@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, SafeAreaView,FlatList } from "react-native";
 import React from "react";
-import salonbg from "../../../assets/salonbg.jpeg";
+import salonbg from "../../../assets/salonbg.png";
 import myData from "../../DummyData/SalonPackageData";
 
 const Packages = () => {

@@ -1,6 +1,5 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import React from "react";
-import salonbg from "../../../../assets/salonbg.jpeg";
 import CustomButton from "../../../components/CustomButton";
 
 const SalonServices = () => {
@@ -8,10 +7,7 @@ const SalonServices = () => {
     console.log("Pressed");
   };
   return (
-    <View style={{ marginTop: 50 }}>
-      <View>
-        <Image style={styles.image} source={salonbg} resizeMode="cover" />
-      </View>
+    <>
       <View style={styles.container}>
         <Text
           style={{
@@ -80,7 +76,7 @@ const SalonServices = () => {
           </View>
            </View>
       </View>
-    </View>
+    </>
   );
 };
 

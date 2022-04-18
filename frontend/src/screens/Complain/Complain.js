@@ -1,41 +1,49 @@
 import {
-    ImageBackground,
-    TextInput,
-    Image,
-    StyleSheet,
-    Text,
-    View,
-    useWindowDimensions,
-    ScrollView,
-  } from "react-native";
-  
-  import bgSignup from "../../../assets/signup-bg.jpeg";
-  
-  import CustomInput from "../../components/CustomInput";
-  import CustomButton from "../../components/CustomButton";
-  import AntDesign from "@expo/vector-icons/AntDesign"; 
-  import React from "react";
-  import { useForm } from "react-hook-form";
-  
-  const Complain = () => {
-    const {
-      control,
-      handleSubmit,
-      formState: { errors },
-    } = useForm();
-  
-    const { height } = useWindowDimensions();
-  
-    const onSave = (data) => {
-      console.log(data);
-      console.warn("Thanks for your valuable response");
-    };
+  ImageBackground,
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  Alert,
+} from "react-native";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import background from "../../../assets/bg.jpeg";
+import CustomInput from "../../components/CustomInput";
+import CustomButton from "../../components/CustomButton";
+import React from "react";
+import { useForm } from "react-hook-form";
 
-  
-    return (
-      <ImageBackground source={bgSignup} style={styles.container}>
+const Complain = ({ navigation }) => {
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSave = (data) => {
+    console.log(data);
+    Alert.alert("Your Complain is Registered", "We'll make sure to resolve your issue as soon as possible.");
+  };
+  const onBackPress = () => {
+    // set route
+    navigation.push("PassedAppointment");
+  };
+  return (
+    <ImageBackground
+      source={background}
+      resizeMode="cover"
+      style={styles.container}
+    >
+      <Ionicons
+        style={styles.backIcon}
+        name="md-chevron-back-circle-sharp"
+        onPress={onBackPress}
+        size={40}
+        color="#5085E1"
+      />
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.container_center}>
-          <Text style={styles.SignupText}>Complain</Text>
+          <Text style={styles.heading}>Complain</Text>
+
           <CustomInput
           name="complain"
           placeholder="Enter Your Complain here"
@@ -46,43 +54,34 @@ import {
 <CustomButton text="Submit" onPress={handleSubmit(onSave)} />
 
         </View>
+        </ScrollView>
       </ImageBackground>
     );
   };
   
   const styles = StyleSheet.create({
-    SignupText: {
-      marginTop: 60,
+    heading: {
+      marginTop: 30,
       fontSize: 26,
       fontWeight: "bold",
       color: "#5085E1",
       marginBottom: 20,
+      borderBottomWidth: 2,
+      borderColor: "#A2BCED",
+      paddingBottom: 10,
+      marginRight: 180,
     },
     container: {
       flex: 1,
     },
-  
-    text: {
-      marginTop: 20,
-      textAlign: "left",
-      color: "#827676",
-      fontWeight: "normal",
-    },
     container_center: {
       alignItems: "center",
       marginTop: 30,
+      marginBottom: 100,
     },
-  
-    button: {
-      color: "#5085E1",
+    backIcon: {
+      marginTop: 10,
+      marginLeft: 10,
     },
-  
-    signInText: {
-      marginTop: 150,
-      color: "#827676",
-    },
-    rating:{
-        flexDirection: "row",
-    }
   });
   export default Complain;

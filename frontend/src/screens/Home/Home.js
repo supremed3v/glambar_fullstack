@@ -8,7 +8,7 @@ import {
   SafeAreaView,
   TouchableOpacity,
 } from "react-native";
-import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 import CustomInput from "../../components/CustomInput";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import Feather from "@expo/vector-icons/Feather"; 
@@ -17,7 +17,11 @@ import AntDesign from "@expo/vector-icons/AntDesign";
 import myData from "../../DummyData/SalonHomeData";
 
 const Home = ({ navigation }) => {
-  const [search, setSearch] = useState("");
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   return (
     
@@ -36,9 +40,15 @@ const Home = ({ navigation }) => {
           ListHeaderComponent={
             <View style={styles.container}>
               <CustomInput
-                placeholder="Search"
-                value={search}
-                setValue={setSearch}
+                name="search"
+                placeholder="Search here..."
+                control={control}
+            rules={{
+              minLength: {
+                value: 30,
+                message: "30 Characters",
+              },
+            }}
               />
             </View>
           }
@@ -50,10 +60,12 @@ const Home = ({ navigation }) => {
               <Image source={{ uri: item.img }} style={styles.cardImg} />
               <View style={styles.textSalon}>
                 <Text>{item.name}</Text>
-                <Text style={styles.textRating}>
+                <View style={styles.textRating}>
+                <Text>
                   <Ionicons name="star" size={14} color="yellow" />{" "}
                   {item.rating}
                 </Text>
+                </View>
               </View>
               <Text>{item.gender}</Text>
             </TouchableOpacity>
@@ -67,21 +79,20 @@ const Home = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
-    marginTop: 10,
-    paddingHorizontal: 20,
+    marginTop: 5,
   },
 
   card: {
-    width: 250,
+    width: 350,
     height: 200,
-    paddingLeft: 50,
+    paddingLeft: 40,
     paddingRight: 50,
     marginTop: 20,
     marginBottom: 10,
   },
   cardImg: {
     borderRadius: 15,
-    width: 250,
+    width: 280,
     height: 150,
     resizeMode: "cover",
   },
@@ -92,16 +103,17 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#5085E1",
     alignItems: "center",
-    justifyContent: "space-between",
-    paddingRight: 20,
+    marginRight: 60,
   },
   textRating: {
-    paddingLeft: 90,
+    paddingLeft:40
   },
   topnav:{
     flexDirection: "row",
     marginTop: 10,
     padding: 10,
+    paddingRight: 20,
+    paddingLeft: 20,
     justifyContent: "space-between",
     alignItems: "center"
   },

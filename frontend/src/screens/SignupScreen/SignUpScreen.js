@@ -9,7 +9,7 @@ import {
   ScrollView,
 } from "react-native";
 
-import bgSignup from "../../../assets/signup-bg.jpeg";
+import background from "../../../assets/bg.jpeg";
 
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
@@ -54,9 +54,10 @@ const SignUpScreen = ({ navigation }) => {
   };
 
   return (
-    <ImageBackground source={bgSignup} style={styles.container}>
+    <ImageBackground source={background} style={styles.container}>
+      <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.container_center}>
-        <Text style={styles.SignupText}>Create an account</Text>
+        <Text style={styles.heading}>Create an account</Text>
         <CustomInput
           name="name"
           control={control}
@@ -73,23 +74,6 @@ const SignUpScreen = ({ navigation }) => {
             },
           }}
         />
-
-        <CustomInput
-          name="username"
-          control={control}
-          placeholder="Username"
-          rules={{
-            required: "Username is required",
-            minLength: {
-              value: 3,
-              message: "Username should be at least 3 characters long",
-            },
-            maxLength: {
-              value: 24,
-              message: "Username should be max 24 characters long",
-            },
-          }}
-        />
         <CustomInput
           name="email"
           control={control}
@@ -99,6 +83,31 @@ const SignUpScreen = ({ navigation }) => {
             pattern: { value: EMAIL_REGEX, message: "Email is invalid" },
           }}
         />
+         <CustomInput
+            name="contactNumber"
+            placeholder="Enter your Contact Number"
+            control={control}
+            keyboardType={"phone-pad"}
+            rules={{
+              required: "Contact number is required",
+              minLength: {
+                value: 12,
+                message: "Contact number should be 12 numbers long",
+              },
+            }}
+          />
+          <CustomInput
+            name="city"
+            placeholder="Enter City"
+            control={control}
+            rules={{ required: "City is required" }}
+          />
+          <CustomInput
+            name="area"
+            placeholder="Enter Area"
+            control={control}
+            rules={{ required: "Area is required" }}
+          />
         <CustomInput
           name="password"
           control={control}
@@ -148,13 +157,15 @@ const SignUpScreen = ({ navigation }) => {
           .
         </Text>
       </View>
+      </ScrollView>
     </ImageBackground>
+    
   );
 };
 
 const styles = StyleSheet.create({
-  SignupText: {
-    marginTop: 60,
+  heading: {
+    marginTop: 55,
     fontSize: 26,
     fontWeight: "bold",
     color: "#5085E1",
@@ -173,6 +184,7 @@ const styles = StyleSheet.create({
   container_center: {
     alignItems: "center",
     marginTop: 30,
+    marginBottom: 100,
   },
 
   button: {
@@ -180,7 +192,7 @@ const styles = StyleSheet.create({
   },
 
   signInText: {
-    marginTop: 150,
+    marginTop: 5,
     color: "#827676",
   },
 });
