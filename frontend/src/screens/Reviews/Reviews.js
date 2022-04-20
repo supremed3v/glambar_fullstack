@@ -7,96 +7,73 @@ const Reviews = () => {
         console.log("Pressed");
     };
     return (
-        <View style={{ marginTop: 50 }}>
-            <View>
-                <Image style={styles.image} source={salonbg} resizeMode="cover" />
-            </View>
-
-            <View style={styles.container}>
-                <Text
-                    style={{
-                        marginTop: 30,
-                        marginLeft: 25,
-                        fontWeight: "bold",
-                        fontSize: 20,
-                    }}
-                >
-                    Reviews
-                </Text>
-        
         <View>
-        <Text style={{  marginTop:25 ,marginStart: 25, marginLeft:25, fontWeight:"bold",fontSize:17 }}>
-          Anaya Rajpoot
-        </Text>
-        <Text style={{ marginTop: 5,marginStart: 25, marginLeft:25,}}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem,
-          corporis laudantium ratione, sapiente voluptatibus pariatur
-          repellendus, exercitationem asperiores illo saepe rem!</Text>
-        </View>
-        {/* new review */}
-        <View>
-        <Text style={{  marginTop:25 ,marginStart: 25, marginLeft:25, fontWeight:"bold",fontSize:17 }}>
-          Amna Ilyas
-        </Text>
-        <Text style={{ marginTop: 5,marginStart: 25, marginLeft:25,}}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem,
-          corporis laudantium ratione, sapiente voluptatibus pariatur
-          repellendus, exercitationem asperiores illo saepe rem!</Text>
-        </View>
-        {/* new review */}
-        <View>
-        <Text style={{  marginTop:25 ,marginStart: 25, marginLeft:25, fontWeight:"bold",fontSize:17 }}>
-          Sabeena Kiyani
-        </Text>
-        <Text style={{ marginTop: 5,marginStart: 25, marginLeft:25,}}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem,
-          corporis laudantium ratione, sapiente voluptatibus pariatur
-          repellendus, exercitationem asperiores illo saepe rem!</Text>
-        </View>
-            </View>
+            <Text style={styles.heading}>Reviews</Text>
+            <ScrollView showsVerticalScrollIndicator={false}>
+                <SafeAreaView>
+                    <View style={styles.container}>
+                        <View>
+                            <Text style={styles.textHeading}>
+                                Anaya Rajpoot
+                            </Text>
+                            <Text style={styles.Text}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem,
+                                corporis laudantium ratione, sapiente voluptatibus pariatur
+                                repellendus, exercitationem asperiores illo saepe rem!</Text>
+                        </View>
+                        {/* new review */}
+                        <View>
+                            <Text style={styles.textHeading}>
+                                Amna Ilyas
+                            </Text>
+                            <Text style={styles.Text}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem,
+                                corporis laudantium ratione, sapiente voluptatibus pariatur
+                                repellendus, exercitationem asperiores illo saepe rem!</Text>
+                        </View>
+                        {/* new review */}
+                        <View>
+                            <Text style={styles.textHeading}>
+                                Sabeena Kiyani
+                            </Text>
+                            <Text style={styles.Text}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem,
+                                corporis laudantium ratione, sapiente voluptatibus pariatur
+                                repellendus, exercitationem asperiores illo saepe rem!</Text>
+                        </View>
+                    </View>
+                </SafeAreaView>
+            </ScrollView>
         </View>
     );
 };
 
 const styles = StyleSheet.create({
-    image: {
-        width: "100%",
-        height: 500,
+    heading: {
+        fontSize: 26,
+        fontWeight: "bold",
+        color: "#5085E1",
+        marginBottom: 20,
+        borderBottomWidth: 2,
+        borderColor: "#A2BCED",
+        marginTop: 60,
+        marginStart: 25,
+        paddingBottom: 10,
+        marginRight: 200,
+    },
+    textHeading: {
+        marginTop: 10,
+        marginStart: 20,
+        marginLeft: 20,
+        fontWeight: "bold",
+        fontSize: 17
     },
     container: {
-        bottom: 0,
-        width: "100%",
-        height: "40%",
-        position: "absolute",
-        backgroundColor: "white",
-        borderTopLeftRadius: 45,
-        borderTopRightRadius: 45,
-      },
-    flexContainer: {
-        flexDirection: "row",
-        marginLeft: 20,
-        marginTop: 20,
+        marginStart: 10,
+        marginBottom: 10
     },
-    text: {
-        paddingRight: 20,
-    },
-    textPrice: {
-        fontWeight: "bold",
-        paddingRight: 20,
-    },
-    cardImage: {
-        width: 80,
-        height: 80,
-        borderRadius: 10,
-    },
-    card: {
-        marginTop: 30,
-        marginLeft: 30,
-        display: "flex",
-        flexDirection: "row",
+    Text: {
         alignItems: "center",
-    },
-    textWrapper: {
-        marginTop: 40,
+        marginTop: 5,
         marginStart: 20,
-        marginVertical: 20,
+        marginLeft: 20,
     },
 });
 

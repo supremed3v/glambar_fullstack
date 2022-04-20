@@ -1,29 +1,29 @@
 [
     {
       "id": 1,
-      "name": "Mehndi Package",
-      "specialrequirements": "Dupatta setting is included in this package",
+      "label": "Mehndi Package",
+      "description": "Dupatta setting is included in this package",
       "price": 20000,
       "img": "https://i.pinimg.com/550x/4e/ab/d3/4eabd3b68c29b33411117742ef10a229.jpg"
     },
     {
         "id": 2,
-        "name": "Barat Package",
-        "specialrequirements": "without services",
+        "label": "Barat Package",
+        "description": "without services",
         "price": 50000,
         "img": "https://i.pinimg.com/originals/04/a7/fb/04a7fbd5418865d88cdc7e8eadc5aebb.jpg"
       },
       {
         "id": 3,
-        "name": "Walima Package",
-        "specialrequirements": "without services",
+        "label": "Walima Package",
+        "description": "without services",
         "price": 40000,
         "img": "https://beautyhooked.com/wp-content/uploads/2021/11/screenshot_20211128-210403_instagram.jpg"
       },
       {
         "id": 4,
-        "servicename": "Nikkah Package",
-        "specialrequirements": "Dupatta setting is included in this package",
+        "label": "Nikkah Package",
+        "description": "Dupatta setting is included in this package",
         "price": 18000,
         "img": "https://i.pinimg.com/originals/3a/eb/2a/3aeb2aac209e2ec8d1f8416567d8dff6.jpg"
       }
