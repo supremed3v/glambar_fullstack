@@ -13,6 +13,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import background from "../../../assets/bg.jpeg";
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
+import { Picker } from "@react-native-picker/picker";
 
 const AddJob = ({ navigation }) => {
   const {
@@ -53,12 +54,14 @@ const AddJob = ({ navigation }) => {
             control={control}
             rules={{ required: "Salon name is required" }}
           />
-          <CustomInput
-            name="city"
-            placeholder="Enter City Name"
-            control={control}
-            rules={{ required: "City Name is required" }}
-          />
+          <View style={styles.pickerView}>
+              <Text style={styles.pickerText}>City</Text>
+              <Picker style={styles.picker} onValueChange={(data) => console.log(data)} >
+                <Picker.Item label="Select" />
+                <Picker.Item label="Islamabad" value="Islamabad" />
+                <Picker.Item label="Rawalpindi" value="Rawalpindi" />
+              </Picker>
+            </View>
           <CustomInput
             name="address"
             placeholder="Enter your Salon Address"
@@ -119,5 +122,25 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginLeft: 10,
   },
+  pickerView: {
+    flexDirection: "row",
+    margin: 5,
+    height: 52,
+  },
+  pickerText: {
+    fontSize: 14,
+    color: "gray",
+    alignItems: "center",
+    marginTop: 15,
+    marginBottom: 15,
+    marginStart: 20,
+  },
+  picker: {
+    width: 200,
+    height: 30,
+    backgroundColor: "#f0f1f2",
+    borderWidth: 5,
+    marginStart: 50
+  }
 });
 export default AddJob;

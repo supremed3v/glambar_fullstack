@@ -13,6 +13,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import background from "../../../assets/bg.jpeg";
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
+import { Picker } from "@react-native-picker/picker";
 
 const EMAIL_REGEX =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -74,12 +75,14 @@ const ManageStaff = ({ navigation }) => {
             keyboardType={"numeric"}
             rules={{ required: "Age is required" }}
           />
-          <CustomInput
-            name="gender"
-            placeholder="Enter Gender"
-            control={control}
-            rules={{ required: "Gender is required" }}
-          />
+          <View style={styles.pickerView}>
+              <Text style={styles.pickerText}>Gender</Text>
+              <Picker style={styles.picker} onValueChange={(data) => console.log(data)} >
+                <Picker.Item label="Select" />
+                <Picker.Item label="Male" value="Male" />
+                <Picker.Item label="Female" value="Female" />
+              </Picker>
+            </View>
           <CustomInput
             name="cnic"
             placeholder="Enter CNIC"
@@ -143,5 +146,25 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginLeft: 10,
   },
+  pickerView: {
+    flexDirection: "row",
+    margin: 5,
+    height: 52,
+  },
+  pickerText: {
+    fontSize: 14,
+    color: "gray",
+    alignItems: "center",
+    marginTop: 15,
+    marginBottom: 15,
+    marginStart: 20,
+  },
+  picker: {
+    width: 200,
+    height: 30,
+    backgroundColor: "#f0f1f2",
+    borderWidth: 5,
+    marginStart: 50
+  }
 });
 export default ManageStaff;

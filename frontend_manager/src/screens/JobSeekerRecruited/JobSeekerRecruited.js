@@ -1,114 +1,121 @@
 import {
-    ImageBackground,
-    TextInput,
-    Image,
-    StyleSheet,
-    Text,
-    View,
-    useWindowDimensions,
-    ScrollView,
-  } from "react-native";
-  
-  import background from "../../../assets/bg.jpeg";
-  import salonimage from "../../../assets/salonimage.jpeg";
-  import CustomInput from "../../components/CustomInput";
-  import CustomButton from "../../components/CustomButton";
-  
-  import React, { useState } from "react";
-  
-  const JobSeekerRecruited = ({ navigation }) => {
-  
-    const onRequestPressed = () => {
-        navigation.navigate("RequestAppointment");
-      };
-    const onViewDetailsPressed = () => {
-      navigation.navigate("ViewDetails");
-    };
+  Image,
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  Dimensions,
+  TouchableOpacity,
+  Alert,
 
-    return (
-      <ImageBackground source={background} style={styles.container}>
-        <View style={styles.container_center}>
-          <Text style={styles.SignupText}>Recruited</Text>
-        <View style={styles.UpcomingPassed}>
-          <CustomButton text="Appointment" />
-          <CustomButton
-            text="Request" onPress={onRequestPressed}
-          />
-          </View>
-          <View style ={styles.salonDetails}>
-            <Image source={salonimage} style={styles.card}></Image>
-            <View style={styles.salonName}>
-            <Text>Anaya</Text>
-            <Text>+92 XXX XXX XXXX</Text>
-            <Text>Experience: 5 Year</Text>
-            </View>
-          </View>
-          <View style={styles.btn}>
-          <CustomButton text="View Details" onPress={onViewDetailsPressed} />
-          </View>
-        </View>
-      </ImageBackground>
-    );
+} from "react-native";
+
+import profile from "../../../assets/profile.png";
+import CustomButton from "../../components/CustomButton";
+import AppointmentSelectorButton from "../../components/AppointmentSelectorButton/AppointmentSelectorButton";
+
+const JobSeekerRecruited = ({ navigation }) => {
+  const onRequestPressed = () => {
+      navigation.navigate("JobSeekerRequest");
   };
-  
-  const styles = StyleSheet.create({
-    SignupText: {
-      marginTop: 60,
+  const onViewDetailsPressed = () => {
+
+  };
+
+
+  return (
+      <View>
+          <View style={styles.container_center}>
+              <Text style={styles.AppointmentText}>Candidates</Text>
+
+              <View style={{ flexDirection: "row", paddingHorizontal: 20, }}>
+                  <AppointmentSelectorButton title="Selected" backgroundColor='rgb(80, 133, 225)' style={styles.borderLeft} />
+                  <TouchableOpacity onPress={onRequestPressed}>
+                      <AppointmentSelectorButton title="Request" backgroundColor='rgb(162, 188, 237)' style={styles.borderRight} />
+                  </TouchableOpacity>
+              </View>
+          </View>
+          <ScrollView>
+              <View style={styles.container}>
+                  <View style={styles.box}>
+                      <View style={styles.salonDetails}>
+                          <Image source={profile} style={styles.card}></Image>
+                          <View style={styles.salonName}>
+                              <Text style={styles.Text}>Name: Anaya Ali</Text>
+                              <Text style={styles.Text}>No: +92 300 5117682</Text>
+                              <Text style={styles.Text}>Experience: 5 years</Text>
+                          </View>
+                      </View >
+                      <View style={styles.btn}>
+                      <CustomButton text="View Details" onPress={onViewDetailsPressed} />
+                      </View>
+                  </View>
+              </View>
+          </ScrollView>
+      </View>
+
+  );
+};
+
+const styles = StyleSheet.create({
+  AppointmentText: {
+      marginTop: 40,
       fontSize: 26,
       fontWeight: "bold",
       color: "#5085E1",
       marginBottom: 20,
-    },
-    container: {
+  },
+  container: {
       flex: 1,
-    },
-    UpcomingPassed:{
-        flexDirection: "row",
-        width: 200,
-        marginRight: 100,
-      alignItems: "center",
-      alignContent: "space-between"
-      
-    },
-    salonDetails:{
-        flexDirection: "row"
-    },
-    text: {
-      marginTop: 20,
-      textAlign: "left",
-      color: "#827676",
-      fontWeight: "normal",
-    },
-    container_center: {
+  },
+  container_center: {
       alignItems: "center",
       marginTop: 30,
-    },
-  
-    button: {
-      color: "#5085E1",
-    },
-  
-    signInText: {
-      marginTop: 150,
-      color: "#827676",
-    },
-    card: {
-      borderRadius: 15,
-      width: 150,
-      height: 100,
-      resizeMode: "cover",
-      padding: 20,
-    },
-    salonName:{
-      flexDirection: "column",
-      padding: 20,
-    },
-    btn: {
-      flexDirection: "row",
-      width: 150,
-      marginRight: 200,
+  },
+  borderLeft: {
+      borderTopLeftRadius: 8,
+      borderBottomLeftRadius: 8
+  },
+  borderRight: {
+      borderBottomRightRadius: 8,
+      borderTopRightRadius: 8,
+  },
+  container: {
+      marginTop: 10,
       alignItems: "center",
-      alignContent: "space-between"
-    }
-  });
-  export default JobSeekerRecruited;
+      width: Dimensions.get('window').width,
+  },
+  box: {
+      backgroundColor: "#F0F0F0",
+      width: 350,
+      height: 145,
+      borderRadius: 8,
+  },
+  salonDetails: {
+      flexDirection: "row",
+      paddingTop: 10,
+      paddingStart: 25,
+      paddingEnd: 10,
+  },
+  card: {
+      borderRadius: 5,
+      width: 70,
+      height: 70,
+      resizeMode: "cover",
+  },
+  salonName: {
+      flexDirection: "column",
+      marginTop: 5,
+      marginStart: 15,
+  },
+  Text: {
+      fontSize: 15,
+  },
+  btn: {
+      flexDirection: "row",
+      width:350,
+      justifyContent:"center",
+      alignItems: "center",
+  }
+});
+export default JobSeekerRecruited;

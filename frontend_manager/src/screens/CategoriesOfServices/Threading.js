@@ -14,6 +14,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import React from "react";
 import { useForm } from "react-hook-form";
 
+
 const Threading = ({ navigation }) => {
   const {
     control,
@@ -106,5 +107,6 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     marginTop: 15,
   },
+ 
 });
 export default Threading;

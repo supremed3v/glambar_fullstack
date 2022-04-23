@@ -6,39 +6,38 @@ import {
     ScrollView,
     Dimensions,
     TouchableOpacity,
-    Alert,
-
 } from "react-native";
 
 import profile from "../../../assets/profile.png";
 import CustomButton from "../../components/CustomButton";
 import AppointmentSelectorButton from "../../components/AppointmentSelectorButton/AppointmentSelectorButton";
 
-const Appointment = ({ navigation }) => {
-    const onPassedPressed = () => {
-        navigation.navigate("Request");
+const Request = ({ navigation }) => {
+    const onAppointmentPressed = () => {
+        navigation.navigate("Appointment");
     };
     const onViewDetailsPressed = () => {
 
     };
-    const onRatePressed = () => {
-        
+    const onAcceptPressed = () => {
+        Alert.alert("", "Request Accepted!");
     };
-
-
+    const onRejectPressed = () => {
+        Alert.alert("", "Request Rejected!");
+    };
     return (
         <View>
             <View style={styles.container_center}>
                 <Text style={styles.AppointmentText}>Bookings</Text>
-
                 <View style={{ flexDirection: "row", paddingHorizontal: 20, }}>
-                    <AppointmentSelectorButton title="Appointment" backgroundColor='rgb(80, 133, 225)' style={styles.borderLeft} />
-                    <TouchableOpacity onPress={onPassedPressed}>
-                        <AppointmentSelectorButton title="Request" backgroundColor='rgb(162, 188, 237)' style={styles.borderRight} />
+                    <TouchableOpacity onPress={onAppointmentPressed}>
+                        <AppointmentSelectorButton title="Appointment" backgroundColor='rgb(162, 188, 237)' style={styles.borderLeft} />
                     </TouchableOpacity>
+                    <AppointmentSelectorButton title="Request" backgroundColor='rgb(80, 133, 225)' style={styles.borderRight} />
                 </View>
             </View>
             <ScrollView>
+                {/* card1 */}
                 <View style={styles.container}>
                     <View style={styles.box}>
                         <View style={styles.salonDetails}>
@@ -50,14 +49,15 @@ const Appointment = ({ navigation }) => {
                             </View>
                         </View >
                         <View style={styles.btn}>
-                        <CustomButton text="View Details" onPress={onViewDetailsPressed} />
-                            <CustomButton text="Rate" onPress={onRatePressed} />
+                            <CustomButton text="View Details" onPress={onViewDetailsPressed} />
+                            <CustomButton text="Accept" onPress={onAcceptPressed} />
+                            <CustomButton text="Reject" onPress={onRejectPressed} />
                         </View>
                     </View>
                 </View>
+                
             </ScrollView>
         </View>
-
     );
 };
 
@@ -117,10 +117,10 @@ const styles = StyleSheet.create({
     },
     btn: {
         flexDirection: "row",
-        width:200,
-        marginStart:15,
+        width:140,
+        marginStart:6,
         alignContent: "space-between",
         alignItems: "center",
     }
 });
-export default Appointment;
+export default Request;

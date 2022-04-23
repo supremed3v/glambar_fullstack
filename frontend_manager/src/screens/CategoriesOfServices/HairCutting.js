@@ -13,6 +13,7 @@ import CustomButton from "../../components/CustomButton";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { Picker } from "@react-native-picker/picker";
 
 const HairCutting = ({ navigation }) => {
   const {
@@ -53,12 +54,18 @@ const HairCutting = ({ navigation }) => {
               control={control}
               rules={{ required: "Sevice name is required" }}
             />
-            <CustomInput
-              name="length"
-              placeholder="Enter Hair Length"
-              control={control}
-              rules={{ required: "Length is required" }}
-            />
+            <View style={styles.pickerView}>
+              <Text style={styles.pickerText}>Length</Text>
+              <Picker style={styles.picker} onValueChange={(data) => console.log(data)} >
+                <Picker.Item label="Select" />
+                <Picker.Item label="Shoulder" value="Shoulder" />
+                <Picker.Item label="Armpit" value="Armpit" />
+                <Picker.Item label="Elbow" value="Elbow" />
+                <Picker.Item label="Waist" value="Waist" />
+                <Picker.Item label="Hip" value="Hip" />
+                <Picker.Item label="Knee" value="Knee" />
+              </Picker>
+            </View>
             <CustomInput
               name="description"
               placeholder="Enter Description"
@@ -116,5 +123,25 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     marginTop: 15,
   },
+  pickerView: {
+    flexDirection: "row",
+    margin: 5,
+    height: 52,
+  },
+  pickerText: {
+    fontSize: 14,
+    color: "gray",
+    alignItems: "center",
+    marginTop: 15,
+    marginBottom: 15,
+    marginStart: 20,
+  },
+  picker: {
+    width: 200,
+    height: 30,
+    backgroundColor: "#f0f1f2",
+    borderWidth: 5,
+    marginStart: 50
+  }
 });
 export default HairCutting;

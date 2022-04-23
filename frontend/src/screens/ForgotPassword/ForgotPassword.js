@@ -18,7 +18,7 @@ import CustomButton from "../../components/CustomButton";
 const EMAIL_REGEX =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-const ForgotPassword = () => {
+const ForgotPassword = ({navigation}) => {
   const {
     control,
     handleSubmit,
@@ -33,10 +33,11 @@ const ForgotPassword = () => {
   const onLogInPressed = () => {
     navigation.navigate("Login");
   };
+
   return (
     <ImageBackground source={bgSignup} style={styles.container}>
       <View style={styles.container_center}>
-        <Text style={styles.ForgotPasswordText}>Forgot Your Password?</Text>
+        <Text onPress={onLogInPressed} style={styles.ForgotPasswordText}>Forgot Your Password?</Text>
         <Text style={styles.text}>
           Enter your email address and we'll send you instructions to reset your
           password.

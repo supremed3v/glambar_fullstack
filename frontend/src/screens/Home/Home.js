@@ -15,9 +15,14 @@ import Feather from "@expo/vector-icons/Feather";
 import Entypo from "@expo/vector-icons/Entypo"; 
 import AntDesign from "@expo/vector-icons/AntDesign"; 
 import myData from "../../DummyData/SalonHomeData";
+import { useForm, Controller } from "react-hook-form";
 
 const Home = ({ navigation }) => {
-  const [search, setSearch] = useState("");
+  const {
+    control,
+    handleSubmit,
+    formState: { error },
+  } = useForm();
 
   return (
     
@@ -37,8 +42,8 @@ const Home = ({ navigation }) => {
             <View style={styles.container}>
               <CustomInput
                 placeholder="Search"
-                value={search}
-                setValue={setSearch}
+                name="search"
+                control={control}
               />
             </View>
           }
