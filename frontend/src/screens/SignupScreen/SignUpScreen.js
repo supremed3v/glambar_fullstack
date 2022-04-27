@@ -41,7 +41,7 @@ const SignUpScreen = ({ navigation }) => {
         },
       });
 
-      navigation.navigate("ConfirmEmail", { email });
+      navigation.navigate("VerificationCode", { email });
     } catch (e) {
       Alert.alert("Oops", e.message);
     }
@@ -89,7 +89,7 @@ const SignUpScreen = ({ navigation }) => {
             name="phone_number"
             placeholder="Enter your Contact Number (+92xxxxxxxxxx)"
             control={control}
-            keyboardType={"phone-pad"}
+            keyboardType="phone-pad"
             rules={{
               required: "Contact number is required",
               minLength: {

@@ -1,11 +1,11 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, ActivityIndicator, View } from "react-native";
 
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import SignInScreen from "./src/screens/SignInScreen";
 import ForgotPassword from "./src/screens/ForgotPassword/ForgotPassword";
@@ -31,14 +31,12 @@ import Reviews from "./src/screens/Reviews/Reviews";
 import LandingPage from "./src/screens/LandingPage/LandingPage";
 
 // Import Amplify
-import { Amplify } from "aws-amplify";
+import { Amplify, Auth, Hub } from "aws-amplify";
 // Configure Amplify
 import awsconfig from "./src/aws-exports";
 Amplify.configure(awsconfig);
 
 const Stack = createStackNavigator();
-
-const Tab = createBottomTabNavigator();
 
 const theme = {
   ...DefaultTheme,
@@ -49,48 +47,86 @@ const theme = {
 };
 
 export default function App() {
+  const [user, setUser] = useState(undefined);
+  const checkUser = async () => {
+    try {
+      const authUser = await Auth.currentAuthenticatedUser({
+        bypassCache: true,
+      });
+      setUser(authUser);
+    } catch (e) {
+      setUser(null);
+    }
+  };
+
+  useEffect(() => {
+    const listener = (data) => {
+      if (data.payload.event === "signIn" || data.payload.event === "signOut") {
+        checkUser();
+      }
+    };
+
+    Hub.listen("auth", listener);
+    return () => Hub.remove("auth", listener);
+  }, []);
+
+  // if (user === undefined) {
+  //   return (
+  //     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+  //       <ActivityIndicator />
+  //     </View>
+  //   );
+  // }
+
   return (
     <NavigationContainer theme={theme}>
       <Stack.Navigator
         screenOptions={{ headerShown: false }}
         initialRouteName="LandingPage"
       >
-        <Stack.Screen name="Login" component={SignInScreen} />
-        <Stack.Screen
-          name="SalonServices"
-          component={SalonNavigationContainer}
-        />
-        <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
-        <Stack.Screen
-          name="TermsandConditions"
-          component={TermsandConditions}
-        />
-        <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
-        <Stack.Screen name="ClientDetails" component={ClientDetails} />
-        <Stack.Screen name="SalonScreen" component={SalonScreen} />
-        <Stack.Screen name="NewPassword" component={NewPassword} />
-        <Stack.Screen name="VerificationCode" component={VerificationCode} />
-        <Stack.Screen name="AddAddress" component={AddAddress} />
-        <Stack.Screen name="AddressDetails" component={AddressDetails} />
-        <Stack.Screen name="AboutUs" component={AboutUs} />
-        <Stack.Screen name="Packages" component={Packages} />
-        <Stack.Screen name="Reviews" component={Reviews} />
-        <Stack.Screen
-          name="UpcomingAppointment"
-          component={UpcomingAppointment}
-        />
-        <Stack.Screen name="PassedAppointment" component={PassedAppointment} />
-        <Stack.Screen name="Complain" component={Complain} />
-        <Stack.Screen name="Rate" component={Rate} />
-        <Stack.Screen name="LandingPage" component={LandingPage} />
-        <Stack.Screen name="Home" component={HomeNavigationContainer} />
+        {!user ? (
+          <>
+            <Stack.Screen name="Login" component={SignInScreen} />
+            <Stack.Screen
+              name="SalonServices"
+              component={SalonNavigationContainer}
+            />
+            <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
+            <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
+            <Stack.Screen name="NewPassword" component={NewPassword} />
+            <Stack.Screen
+              name="VerificationCode"
+              component={VerificationCode}
+            />
+            <Stack.Screen name="LandingPage" component={LandingPage} />
+            <Stack.Screen
+              name="TermsandConditions"
+              component={TermsandConditions}
+            />
+          </>
+        ) : (
+          <>
+            <Stack.Screen name="Home" component={HomeNavigationContainer} />
+            <Stack.Screen name="ClientDetails" component={ClientDetails} />
+            <Stack.Screen name="SalonScreen" component={SalonScreen} />
+            <Stack.Screen name="AddAddress" component={AddAddress} />
+            <Stack.Screen name="AddressDetails" component={AddressDetails} />
+            <Stack.Screen name="AboutUs" component={AboutUs} />
+            <Stack.Screen name="Packages" component={Packages} />
+            <Stack.Screen name="Reviews" component={Reviews} />
+            <Stack.Screen
+              name="UpcomingAppointment"
+              component={UpcomingAppointment}
+            />
+            <Stack.Screen
+              name="PassedAppointment"
+              component={PassedAppointment}
+            />
+            <Stack.Screen name="Complain" component={Complain} />
+            <Stack.Screen name="Rate" component={Rate} />
+          </>
+        )}
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});

@@ -13,6 +13,8 @@ import background from "../../../assets/bg.jpeg";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
+import { Auth } from "aws-amplify";
+
 const EMAIL_REGEX =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -23,16 +25,16 @@ const ForgotPassword = ({ navigation }) => {
     formState: { errors },
   } = useForm();
 
-  const onForgotPasswordPressed = (data) => {
-    console.log(data);
-    Alert.alert("", "Link Sent");
+  const onForgotPasswordPressed = async (data) => {
+    try {
+      await Auth.forgotPassword(data.email);
+      navigation.navigate("NewPassword");
+    } catch (e) {
+      Alert.alert("Oops", e.message);
+    }
   };
   const onLogInPressed = () => {
     navigation.navigate("Login");
-  };
-  const onBackPress = () => {
-    // set route
-    navigation.push("SalonHome");
   };
   return (
     <ImageBackground
@@ -40,13 +42,6 @@ const ForgotPassword = ({ navigation }) => {
       resizeMode="cover"
       style={styles.container}
     >
-      <Ionicons
-        style={styles.backIcon}
-        name="md-chevron-back-circle-sharp"
-        onPress={onBackPress}
-        size={40}
-        color="#5085E1"
-      />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.container_center}>
           <Text style={styles.heading}>Forgot your password?</Text>
@@ -68,12 +63,6 @@ const ForgotPassword = ({ navigation }) => {
             text="Send Reset Link"
             onPress={handleSubmit(onForgotPasswordPressed)}
           />
-          <Text style={styles.logInText}>
-            Back to{" "}
-            <Text onPress={onLogInPressed} style={styles.button}>
-              Login
-            </Text>
-          </Text>
         </View>
       </ScrollView>
     </ImageBackground>
