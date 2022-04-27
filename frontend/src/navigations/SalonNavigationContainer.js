@@ -8,7 +8,7 @@ import SalonScreen from "../screens/SalonScreen";
 import Packages from "../screens/Packages/Packages";
 import Reviews from "../screens/Reviews/Reviews";
 
-const SalonNavigationContainer = ({ navigation }) => {
+const SalonNavigationContainer = () => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -33,12 +33,12 @@ const SalonNavigationContainer = ({ navigation }) => {
     >
       <Tab.Screen
         options={{ headerShown: false }}
-        name="About"
+        name="SalonScreen"
         component={SalonScreen}
       />
       <Tab.Screen
         options={{ headerShown: false }}
-        name="Services"
+        name="SalonServiceScreen"
         component={SalonServices}
       />
       <Tab.Screen

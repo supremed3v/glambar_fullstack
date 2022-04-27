@@ -5,19 +5,32 @@ import {
   View,
   ScrollView,
   Alert,
+  ActivityIndicator,
 } from "react-native";
+import { useRoute, useNavigation } from "@react-navigation/native";
 
 import salonbg from "../../../assets/salonbg.png";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useState, useEffect } from "react";
+import { DataStore } from "aws-amplify";
+import { Salon } from "../../models";
 
 const SalonScreen = ({ navigation }) => {
+  const [salon, setSalon] = useState(null);
+  const route = useRoute();
+  const id = route.params?.id;
 
-  const onBackPress = () => {
-    // set route
-    navigation.push("Home");
-  };
+  useEffect(() => {
+    // Fetch salon with id
+    DataStore.query(Salon, id).then(setSalon);
+  }, [id]);
+
+  if (!salon) {
+    return <ActivityIndicator size={"large"} color="blue" />;
+  }
+
   return (
     <>
       <ImageBackground
@@ -25,15 +38,9 @@ const SalonScreen = ({ navigation }) => {
         style={styles.image}
         resizeMode="cover"
       />
-      <Ionicons
-        style={styles.backIcon}
-        name="md-chevron-back-circle-sharp"
-        onPress={onBackPress}
-        size={40}
-        color="white"
-      />
+
       <View style={styles.container}>
-      <Text style={styles.title}>Stylers Salon</Text>
+        <Text style={styles.title}>{}</Text>
 
         <Text style={{ marginTop: 15, marginStart: 20 }}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem,
@@ -41,11 +48,17 @@ const SalonScreen = ({ navigation }) => {
           repellendus, exercitationem asperiores illo saepe rem! Ullam omnis
           odio recusandae consequuntur veritatis assumenda perspiciatis. Minima!
         </Text>
-        <Text style={{ marginTop: 10, marginStart: 20}}>Open Hours: Monday - Friday | 09:00AM - 09:00PM</Text>
-        <Text style={{ marginTop: 10, marginStart: 20}}>Contact #: 123 4567 890</Text>
-        <Text style={{ marginTop: 10, marginStart: 20}}>Address: ABC Lane, 2nd Floor, G/13-1</Text>
+        <Text style={{ marginTop: 10, marginStart: 20 }}>
+          Open Hours: Monday - Friday | 09:00AM - 09:00PM
+        </Text>
+        <Text style={{ marginTop: 10, marginStart: 20 }}>
+          Contact #: 123 4567 890
+        </Text>
+        <Text style={{ marginTop: 10, marginStart: 20 }}>
+          Address: ABC Lane, 2nd Floor, G/13-1
+        </Text>
       </View>
-      </>
+    </>
   );
 };
 
@@ -65,7 +78,7 @@ const styles = StyleSheet.create({
     marginRight: 100,
     marginLeft: 100,
     marginTop: 20,
-    textAlign: "center"
+    textAlign: "center",
   },
   container: {
     position: "absolute",

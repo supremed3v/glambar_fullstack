@@ -3,8 +3,6 @@ import { StyleSheet, ActivityIndicator, View } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
 import React, { useEffect, useState } from "react";
 
 import SignInScreen from "./src/screens/SignInScreen";
@@ -88,7 +86,7 @@ export default function App() {
           <>
             <Stack.Screen name="Login" component={SignInScreen} />
             <Stack.Screen
-              name="SalonServices"
+              name="SalonServiceScreen"
               component={SalonNavigationContainer}
             />
             <Stack.Screen name="SignUpScreen" component={SignUpScreen} />

@@ -14,9 +14,20 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import Feather from "@expo/vector-icons/Feather";
 import Entypo from "@expo/vector-icons/Entypo";
 import AntDesign from "@expo/vector-icons/AntDesign";
-import myData from "../../DummyData/SalonHomeData.json";
+import { useState, useEffect } from "react";
+import { DataStore } from "aws-amplify";
+import { Salon, Service } from "../../models";
+import { LogBox } from "react-native";
+
+LogBox.ignoreLogs(["Setting a timer"]);
 
 const Home = ({ navigation }) => {
+  const [salon, setSalon] = useState([]);
+
+  useEffect(() => {
+    DataStore.query(Salon).then(setSalon);
+  }, []);
+
   const {
     control,
     handleSubmit,
@@ -35,19 +46,19 @@ const Home = ({ navigation }) => {
       </View>
       <SafeAreaView>
         <FlatList
-          data={myData}
+          data={salon}
           ListHeaderComponent={
             <View style={styles.container}>
               <CustomInput
                 name="search"
                 placeholder="Search here..."
                 control={control}
-            rules={{
-              minLength: {
-                value: 30,
-                message: "30 Characters",
-              },
-            }}
+                rules={{
+                  minLength: {
+                    value: 30,
+                    message: "30 Characters",
+                  },
+                }}
               />
             </View>
           }
@@ -55,16 +66,18 @@ const Home = ({ navigation }) => {
             <TouchableOpacity
               key={id}
               style={styles.card}
-              onPress={() => navigation.navigate("SalonServices", { myData })}
+              onPress={() =>
+                navigation.navigate("SalonScreen", { id: Salon.id })
+              }
             >
-              <Image source={{ uri: item.img }} style={styles.cardImg} />
+              <Image source={{ uri: item.image }} style={styles.cardImg} />
               <View style={styles.textSalon}>
                 <Text>{item.name}</Text>
                 <View style={styles.textRating}>
-                <Text>
-                  <Ionicons name="star" size={14} color="yellow" />{" "}
-                  {item.rating}
-                </Text>
+                  <Text>
+                    <Ionicons name="star" size={14} color="yellow" />{" "}
+                    {item.rating.toFixed(1)}
+                  </Text>
                 </View>
               </View>
               <Text>{item.gender}</Text>
@@ -106,7 +119,7 @@ const styles = StyleSheet.create({
     marginRight: 60,
   },
   textRating: {
-    paddingLeft:40
+    paddingLeft: 40,
   },
   topnav: {
     flexDirection: "row",

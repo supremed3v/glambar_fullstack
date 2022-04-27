@@ -1,0 +1,23 @@
+type Service @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String!
+  label: String!
+  description: String
+  price: Int!
+  image: String
+  salonID: ID! @index(name: "bySalon")
+}
+
+type Salon @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String!
+  image: String!
+  gender: String!
+  phone_number: Int!
+  rating: Float
+  lat: Float!
+  lng: Float!
+  Services: [Service] @hasMany(indexName: "bySalon", fields: ["id"])
+  address: String!
+}
+ 
