@@ -4,10 +4,6 @@ import salonbg from "../../../assets/salonbg.jpeg";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 const SalonScreen = () => {
-  const onBackPress = () => {
-    // set route
-    console.log("Send me to previous screen");
-  };
   return (
     <View style={{ marginTop: 50 }}>
       <View>
@@ -16,7 +12,6 @@ const SalonScreen = () => {
       <Ionicons
         style={styles.backIcon}
         name="md-chevron-back-circle-sharp"
-        onPress={onBackPress}
         size={40}
         color="white"
       />

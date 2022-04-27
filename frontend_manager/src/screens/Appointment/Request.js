@@ -1,4 +1,5 @@
 import {
+    Alert,
     Image,
     StyleSheet,
     Text,

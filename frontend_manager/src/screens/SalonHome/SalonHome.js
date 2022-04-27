@@ -114,7 +114,7 @@ const SalonHome = ({ navigation }) => {
                     {/* Card 8 */}
                     <TouchableOpacity
                         style={styles.card}
-                        onPress={() => navigation.navigate("JobSeekerRequest",)}>
+                        onPress={() => navigation.navigate("JobSeekerRecruited",)}>
                         <View style={{ alignItems: "center", marginTop: 10 }}>
                             <Image source={jobseeker} />
                             <Text style={{ fontWeight: "bold", fontSize: 16, }}>JOB APPLICANTS</Text>

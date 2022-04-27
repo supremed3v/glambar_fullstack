@@ -26,10 +26,6 @@ const Threading = ({ navigation }) => {
     console.log(data);
     Alert.alert("", "Submitted Successfully");
   };
-  const onBackPress = () => {
-    // set route
-    navigation.push("Service");
-  };
   return (
     <>
       <ImageBackground
@@ -40,7 +36,6 @@ const Threading = ({ navigation }) => {
       <Ionicons
         style={styles.backIcon}
         name="md-chevron-back-circle-sharp"
-        onPress={onBackPress}
         size={40}
         color="white"
       />
