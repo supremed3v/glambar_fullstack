@@ -23,9 +23,6 @@ import Feather from "@expo/vector-icons/Feather";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
 const SalonHome = ({ navigation }) => {
-  const [chooseData, setChooseData] = useState("Select Items");
-  const [isModalVisible, setIsModalVisible] = useState(false);
-
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.topNav}>
