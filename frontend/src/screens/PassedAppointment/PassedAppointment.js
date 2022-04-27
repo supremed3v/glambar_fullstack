@@ -1,18 +1,17 @@
 import {
-  ImageBackground,
-  TextInput,
+  Alert,
   Image,
   StyleSheet,
   Text,
   View,
-  useWindowDimensions,
+  Dimensions,
+  TouchableOpacity,
   ScrollView,
 } from "react-native";
 
-import bgSignup from "../../../assets/signup-bg.jpeg";
-import salonimage from "../../../assets/salonimage.jpeg";
-import CustomInput from "../../components/CustomInput";
+import profile from "../../../assets/profile.png";
 import CustomButton from "../../components/CustomButton";
+import AppointmentSelectorButton from "../../components/AppointmentSelectorButton/AppointmentSelectorButton";
 
 import React, { useState } from "react";
 
@@ -23,44 +22,52 @@ const PassedAppointment = ({ navigation }) => {
   const onRatePressed = () => {
     navigation.navigate("Rate");
   };
-
   const onComplainPressed = () => {
     navigation.navigate("Complain");
   };
-
   const onReschedulePressed = () => {
-    navigation.navigate("Reschedule");
+    
   };
 
+
   return (
-    <ImageBackground source={bgSignup} style={styles.container}>
+    <View>
       <View style={styles.container_center}>
-        <Text style={styles.SignupText}>Passed Appointmets</Text>
-        <View style={styles.UpcomingPassed}>
-          <CustomButton text="Upcoming" onPress={onUpcomingPressed} />
-          <CustomButton text="Passed" />
-        </View>
-        <View style={styles.salonDetails}>
-          <Image source={salonimage} style={styles.card}></Image>
-          <View style={styles.salonName}>
-            <Text>Styler</Text>
-            <Text>Date: 03/07/2022</Text>
-            <Text>Time: 01:00PM</Text>
-          </View>
-        </View>
-        <View style={styles.btn}>
-          <CustomButton text="Rate" onPress={onRatePressed} />
-          <CustomButton text="Complain" onPress={onComplainPressed} />
-          <CustomButton text="Reschedule" onPress={onReschedulePressed} />
+        <Text style={styles.AppointmentText}>Appointments</Text>
+
+        <View style={{ flexDirection: "row", paddingHorizontal: 20, }}>
+        <TouchableOpacity onPress={onUpcomingPressed}>
+          <AppointmentSelectorButton title="Upcoming" backgroundColor='rgb(162, 188, 237)' style={styles.borderLeft} />
+          </TouchableOpacity>
+            <AppointmentSelectorButton title="Passed" backgroundColor='rgb(80, 133, 225)' style={styles.borderRight} />
         </View>
       </View>
-    </ImageBackground>
+      <ScrollView>
+        <View style={styles.container}>
+          <View style={styles.box}>
+            <View style={styles.salonDetails}>
+              <Image source={profile} style={styles.card}></Image>
+              <View style={styles.salonName}>
+                <Text style={styles.Text}>Salon Name: Stylers</Text>
+                <Text style={styles.Text}>Date: 03/07/2022</Text>
+                <Text style={styles.Text}>Time: 01:00PM</Text>
+              </View>
+            </View >
+            <View style={styles.btn}>
+              <CustomButton text="Rate" onPress={onRatePressed} />
+              <CustomButton text="Complain" onPress={onComplainPressed} />
+              <CustomButton text="Reschedule" onPress={onReschedulePressed} />
+            </View>
+          </View>
+        </View>
+      </ScrollView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  SignupText: {
-    marginTop: 60,
+  AppointmentText: {
+    marginTop: 40,
     fontSize: 26,
     fontWeight: "bold",
     color: "#5085E1",
@@ -69,52 +76,55 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  UpcomingPassed: {
-    flexDirection: "row",
-    width: 200,
-    marginRight: 100,
-    alignItems: "center",
-    alignContent: "space-between",
-  },
-  salonDetails: {
-    flexDirection: "row",
-  },
-  text: {
-    marginTop: 20,
-    textAlign: "left",
-    color: "#827676",
-    fontWeight: "normal",
-  },
   container_center: {
     alignItems: "center",
     marginTop: 30,
   },
-
-  button: {
-    color: "#5085E1",
+  borderLeft: {
+    borderTopLeftRadius: 8,
+    borderBottomLeftRadius: 8
   },
-
-  signInText: {
-    marginTop: 150,
-    color: "#827676",
+  borderRight: {
+    borderBottomRightRadius: 8,
+    borderTopRightRadius: 8,
+  },
+  container: {
+    marginTop: 10,
+    alignItems: "center",
+    width: Dimensions.get('window').width,
+  },
+  box: {
+    backgroundColor: "#F0F0F0",
+    width: 350,
+    height: 145,
+    borderRadius: 8,
+  },
+  salonDetails: {
+    flexDirection: "row",
+    paddingTop: 10,
+    paddingStart: 25,
+    paddingEnd: 10,
   },
   card: {
-    borderRadius: 15,
-    width: 150,
-    height: 100,
+    borderRadius: 5,
+    width: 70,
+    height: 70,
     resizeMode: "cover",
-    padding: 20,
   },
   salonName: {
     flexDirection: "column",
-    padding: 20,
+    marginTop: 5,
+    marginStart: 15,
+  },
+  Text: {
+    fontSize: 15,
   },
   btn: {
     flexDirection: "row",
-    width: 150,
-    marginRight: 200,
-    alignItems: "center",
+    width: 140,
+    marginStart: 6,
     alignContent: "space-between",
-  },
+    alignItems: "center",
+  }
 });
 export default PassedAppointment;

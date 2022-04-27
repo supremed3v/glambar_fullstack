@@ -1,4 +1,5 @@
-import { StyleSheet, View } from "react-native";
+import "react-native-gesture-handler";
+import { StyleSheet } from "react-native";
 
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
@@ -7,28 +8,12 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import React from "react";
 
-import SignInScreen from "./src/screens/SignInScreen";
-import ForgotPassword from "./src/screens/ForgotPassword/ForgotPassword";
-import TermsandConditions from "./src/screens/TermsandConditions/TermsandConditions";
-import SignUpScreen from "./src/screens/SignupScreen/SignUpScreen";
-import ClientDetails from "./src/screens/ClientDetails/ClientDetails";
-import Home from "./src/screens/Home";
-import SalonScreen from "./src/screens/SalonScreen";
-import SalonServices2 from "./src/screens/SalonScreen/SalonServices";
-import NewPassword from "./src/screens/NewPassword/NewPassword";
-import VerificationCode from "./src/screens/VerificationCode/VerificationCode";
-import HomeNavigationContainer from "./src/navigations/HomeNavigationContainer";
-import SalonNavigationContainer from "./src/navigations/SalonNavigationContainer";
-import Profile from "./src/screens/Profile/Profile";
-import AddressDetails from "./src/screens/AddressDetails/AddressDetails";
-import AddAddress from "./src/screens/AddAddress/AddAddress";
-import AboutUs from "./src/screens/AboutUs/AboutUs";
-import UpcomingAppointment from "./src/screens/UpcomingAppointment/UpcomingAppointment";
-import PassedAppointment from "./src/screens/PassedAppointment/PassedAppointment";
-import Complain from "./src/screens/Complain/Complain";
-import Rate from "./src/screens/Rate/Rate";
-import Packages from "./src/screens/Packages/Packages";
-import Reviews from "./src/screens/Reviews/Reviews";
+import {
+  SignInScreen, ForgotPassword, TermsandConditions, SignUpScreen, ClientDetails, Home, SalonScreen, 
+NewPassword, VerificationCode, HomeNavigationContainer, 
+SalonNavigationContainer, Profile, AddressDetails, AddAddress, AboutUs, 
+UpcomingAppointment, PassedAppointment, Complain, Rate, Packages, Reviews
+} from "./src";
 
 const Stack = createStackNavigator();
 
@@ -79,3 +64,4 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
+

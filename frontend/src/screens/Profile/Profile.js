@@ -13,13 +13,16 @@ import image from "../../../assets/bg-screen.jpg";
 import logo from "../../../assets/logo-white.png";
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
+import { useForm, Controller } from "react-hook-form";
 
 import React, { useState } from "react";
 
 const Profile = ({ navigation }) => {
-  const [firstName, setfirstName] = useState("");
-  const [lastName, setlastName] = useState("");
-  const [contact, setcontact] = useState("");
+  const {
+    control,
+    handleSubmit,
+    formState: { error },
+  } = useForm();
   const { height } = useWindowDimensions();
 
   const onUpdateProfilePressed = () => {
@@ -34,22 +37,22 @@ const Profile = ({ navigation }) => {
 
             <CustomInput
               placeholder="First Name"
-              value={firstName}
-              setValue={setfirstName}
+                name="first name"
+                control={control}
             />
             <CustomInput
               placeholder="Last Name"
-              value={lastName}
-              setValue={setlastName}
+                name="last name"
+                control={control}
             />
             <CustomInput
               placeholder="Contact"
-              value={contact}
-              setValue={setcontact}
+              name="contact"
+              control={control}
               keyboardType="number-pad"
             />
 
-            <CustomButton text="Update" onPress={onUpdateProfilePressed} />
+            <CustomButton text="Update" onPress={handleSubmit(onUpdateProfilePressed)}  />
           </View>
         </ImageBackground>
       </View>

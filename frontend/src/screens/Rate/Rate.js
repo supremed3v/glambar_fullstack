@@ -15,9 +15,14 @@ import {
   import CustomButton from "../../components/CustomButton";
   import AntDesign from "@expo/vector-icons/AntDesign"; 
   import React, { useState } from "react";
+  import { useForm } from "react-hook-form";
   
   const Rate = ({ navigation }) => {
-    const [review, setreview] = useState("");
+    const {
+      control,
+      handleSubmit,
+      formState: { errors },
+    } = useForm();
     const onSubmitPressed = () => {
       console.warn("Thanks for your valuable response");
     };
@@ -37,10 +42,10 @@ import {
             </View>
             <CustomInput
           placeholder="Reviews"
-          value={review}
-          setValue={setreview}
+          name="reviews"
+          control={control}
         />
-          <CustomButton text="Submit" onPress={onSubmitPressed} />
+          <CustomButton text="Submit" onPress={handleSubmit(onSubmitPressed)}/>
 
         </View>
       </ImageBackground>
