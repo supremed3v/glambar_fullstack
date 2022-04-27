@@ -1,91 +1,95 @@
 import {
   ImageBackground,
-  TextInput,
-  Image,
   StyleSheet,
   Text,
   View,
-  useWindowDimensions,
   ScrollView,
+  Alert,
 } from "react-native";
 
-import image from "../../../assets/bg-screen.jpg";
-import logo from "../../../assets/logo-white.png";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import background from "../../../assets/bg.jpeg";
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
 import React from "react";
 import { useForm } from "react-hook-form";
 
-const AddAddress = () => {
+const AddAddress = ({navigation}) => {
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const { height } = useWindowDimensions();
-
-
   const onAddAddressPressed = (data) => {
     console.log(data);
+    Alert.alert("", "Submitted Successfully");
   };
-  return (
-    <ScrollView showsVerticalScrollIndicator={false}>
-      <View style={styles.container}>
-        <ImageBackground source={image} resizeMode="cover" style={styles.image}>
-          <View style={styles.centerItems}>
-            <Text style={styles.text}>Add Your Address</Text>
+  const onBackPress = () => {
+    // set route
+    navigation.push("AddressDetails");
+  };
 
-            <CustomInput
-          name="city"
-          placeholder="Enter Your City"
-          control={control}
-          rules={{ required: "City name is required" }}
-        />
-        <CustomInput
-          name="area"
-          placeholder="Enter Your City"
-          control={control}
-          rules={{ required: "Area is required" }}
-        />
-        <CustomButton text="Submit" onPress={handleSubmit(onAddAddressPressed)} />
-          </View>
-        </ImageBackground>
-      </View>
-    </ScrollView>
+  return (
+    <ImageBackground
+      source={background}
+      resizeMode="cover"
+      style={styles.container}
+    >
+      <Ionicons
+        style={styles.backIcon}
+        name="md-chevron-back-circle-sharp"
+        onPress={onBackPress}
+        size={40}
+        color="#5085E1"
+      />
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={styles.container_center}>
+          <Text style={styles.heading}>Add Your Address</Text>
+
+          <CustomInput
+            name="city"
+            placeholder="Enter Your City"
+            control={control}
+            rules={{ required: "City name is required" }}
+          />
+          <CustomInput
+            name="area"
+            placeholder="Enter Your City"
+            control={control}
+            rules={{ required: "Area is required" }}
+          />
+          <CustomButton
+            text="Submit"
+            onPress={handleSubmit(onAddAddressPressed)}
+          />
+        </View>
+      </ScrollView>
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
+  heading: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#5085E1",
+    marginBottom: 20,
+    borderBottomWidth: 2,
+    borderColor: "#A2BCED",
+    paddingBottom: 10,
+    marginRight: 120,
+  },
   container: {
     flex: 1,
-    marginTop: 50,
   },
-  image: {
-    flex: 1,
-  },
-  centerItems: {
-    marginTop: 5,
-    display: "flex",
+  container_center: {
     alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "column",
+    marginTop: 40,
   },
-  text: {
-    color: "white",
-    fontSize: 30,
-    fontWeight: "bold",
-    textAlign: "center",
-    width: 250,
-    marginBottom: 10,
-  },
-  logo: {
-    width: "50%",
-    maxHeight: 300,
-    display: "flex",
-    zIndex: 2,
-    maxWidth: 500,
+  backIcon: {
+    marginTop: 10,
+    marginLeft: 10,
   },
 });
-
 export default AddAddress;

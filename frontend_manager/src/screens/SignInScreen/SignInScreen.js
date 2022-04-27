@@ -55,7 +55,7 @@ const SignInScreen = ({ navigation }) => {
               { marginTop: 30 },
             ]}
           />
-          <Text style={styles.SignupText}>
+          <Text style={styles.heading}>
             Login or Register to get started
           </Text>
 
@@ -102,7 +102,7 @@ const SignInScreen = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  SignupText: {
+  heading: {
     fontSize: 20,
     fontWeight: "bold",
     color: "#5085E1",

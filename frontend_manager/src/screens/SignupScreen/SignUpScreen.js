@@ -61,7 +61,7 @@ const SignUpScreen = ({ navigation }) => {
     >
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.container_center}>
-          <Text style={styles.SignupText}>Register Your Salon!</Text>
+          <Text style={styles.heading}>Register Your Salon!</Text>
           <CustomInput
             name="salonName"
             placeholder="Enter your Salon Name"
@@ -158,7 +158,7 @@ const SignUpScreen = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  SignupText: {
+  heading: {
     marginTop: 55,
     fontSize: 26,
     fontWeight: "bold",
@@ -188,11 +188,6 @@ const styles = StyleSheet.create({
   signInText: {
     marginTop: 5,
     color: "#827676",
-  },
-  fileds: {
-    marginLeft: 10,
-    marginRight: -35,
-    paddingLeft: 10,
   },
 });
 export default SignUpScreen;

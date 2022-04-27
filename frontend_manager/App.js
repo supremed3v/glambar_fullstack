@@ -7,8 +7,7 @@ import {
   SignInScreen, SignUpScreen, AddJob, Service, BabyCare, Bleach, Facial,
   HairColor, HairCutting, HairStyling, HairTreatment,
   Makeup, Manicure, Massage, Pedicure, AddPackage, Scrub, Threading, Waxing,
-  CustomerRequest, ForgotPassword, JobSeekerRecruited, ManageStaff,
-  SalonDetails, SalonHome, UpdatePassword, VerificationCode, Appointment, LandingPage
+  CustomerRequest, ForgotPassword, JobSeekerRecruited, ManageStaff, SalonHome, UpdatePassword, VerificationCode, Appointment, LandingPage
 } from "./src/screens";
 
 const Stack = createStackNavigator();
@@ -26,7 +25,7 @@ export default function App() {
     <NavigationContainer theme={theme}>
       <Stack.Navigator
         screenOptions={{ headerShown: false }}
-        initialRouteName="UpdatePassword"
+        initialRouteName="LandingPage"
       >
         <Stack.Screen name="Login" component={SignInScreen} />
         <Stack.Screen name="Signup" component={SignUpScreen} />

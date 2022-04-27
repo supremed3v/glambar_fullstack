@@ -5,8 +5,8 @@ import Home from "../screens/Home";
 const Tab = createBottomTabNavigator();
 import Ionicons from "react-native-vector-icons/Ionicons";
 import UpcomingAppointment from "../screens/UpcomingAppointment/UpcomingAppointment";
-import Profile from "../screens/Profile/Profile";
 import AddressDetails from "../screens/AddressDetails/AddressDetails";
+import ClientDetails from "../screens/ClientDetails/ClientDetails";
 
 const HomeNavigationContainer = () => {
   return (
@@ -29,7 +29,7 @@ const HomeNavigationContainer = () => {
           }
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: "rgb(59, 113, 243)",
+        tabBarActiveTintColor: "#5085E1",
         tabBarInactiveTintColor: "gray",
       })}
     >
@@ -46,7 +46,7 @@ const HomeNavigationContainer = () => {
       <Tab.Screen
         options={{ headerShown: false }}
         name="Profile"
-        component={Profile}
+        component={ClientDetails}
       />
       <Tab.Screen
         options={{ headerShown: false }}

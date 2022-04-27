@@ -30,170 +30,184 @@ const AddService = ({ navigation }) => {
 
 
     return (
-        <ScrollView>
-            <View style={styles.container_center}>
-                <Text style={styles.AddNewServiceText}>Add New Service</Text>
+      <ScrollView>
+        <View style={styles.container_center}>
+          <Text style={styles.AddNewServiceText}>Add New Service</Text>
+        </View>
+        <View style={styles.category}>
+          <Text style={styles.text}>Choose category to add new service</Text>
+          <SafeAreaView>
+            {/* Card#1 */}
+            <View style={styles.cardAlign}>
+              <TouchableOpacity
+                style={styles.card}
+                onPress={() => navigation.navigate("BabyCare")}
+              >
+                <View style={styles.cardContent}>
+                  <Image source={babyCareService} style={styles.cardImg} />
+                  <Text style={styles.cardText}>BABY CARE</Text>
+                </View>
+              </TouchableOpacity>
             </View>
-            <View style={styles.category}>
-                <Text style={styles.text}>Choose category to add new service</Text>
-                <SafeAreaView>
-                    {/* Card#1 */}
-                    <View style={styles.cardAlign}>
-                        <TouchableOpacity
-                            style={styles.card}
-                            onPress={() => navigation.navigate("BabyCare",)}>
-                            <View style={styles.cardContent}>
-                                <Image source={babyCareService} style={styles.cardImg} />
-                                <Text style={styles.cardText}>BABY CARE</Text>
-                            </View>
-                        </TouchableOpacity>
-                    </View>
-                    {/* Card#2 */}
-                    <View style={styles.cardAlign}>
-                        <TouchableOpacity
-                            style={styles.card}
-                            onPress={() => navigation.navigate("Bleach",)}>
-                            <View style={styles.cardContent}>
-                                <Image source={bleach} style={styles.cardImg} />
-                                <Text style={styles.cardText}>BLEACH</Text>
-                            </View>
-                        </TouchableOpacity>
-                    </View>
-                    {/* Card#3 */}
-                    <View style={styles.cardAlign}>
-                        <TouchableOpacity
-                            style={styles.card}
-                            onPress={() => navigation.navigate("Facial",)}>
-                            <View style={styles.cardContent}>
-                                <Image source={facial} style={styles.cardImg} />
-                                <Text style={styles.cardText}>FACIAL</Text>
-                            </View>
-                        </TouchableOpacity>
-                    </View>
-                    {/* Card#4*/}
-                    <View style={styles.cardAlign}>
-                        <TouchableOpacity
-                            style={styles.card}
-                            onPress={() => navigation.navigate("HairColor",)}>
-                            <View style={styles.cardContent}>
-                                <Image source={hairColor} style={styles.cardImg} />
-                                <Text style={styles.cardText}>HAIR COLOR</Text>
-                            </View>
-                        </TouchableOpacity>
-                    </View>
-                    {/* Card#5 */}
-                    <View style={styles.cardAlign}>
-                        <TouchableOpacity
-                            style={styles.card}
-                            onPress={() => navigation.navigate("HairCutting",)}>
-                            <View style={styles.cardContent}>
-                                <Image source={cutting} style={styles.cardImg} />
-                                <Text style={styles.cardText}>HAIR CUTTING</Text>
-                            </View>
-                        </TouchableOpacity>
-                    </View>
-                    {/* Card#6 */}
-                    <View style={styles.cardAlign}>
-                        <TouchableOpacity
-                            style={styles.card}
-                            onPress={() => navigation.navigate("HairStyling",)}>
-                            <View style={styles.cardContent}>
-                                <Image source={styling} style={styles.cardImg} />
-                                <Text style={styles.cardText}>HAIR STYLING</Text>
-                            </View>
-                        </TouchableOpacity>
-                    </View>
-                    {/* Card#7 */}
-                    <View style={styles.cardAlign}>
-                        <TouchableOpacity
-                            style={styles.card}
-                            onPress={() => navigation.navigate("HairTreatment",)}>
-                            <View style={styles.cardContent}>
-                                <Image source={treatment} style={styles.cardImg} />
-                                <Text style={styles.cardText}>HAIR TREATMENT</Text>
-                            </View>
-                        </TouchableOpacity>
-                    </View>
-                    {/* Card#8 */}
-                    <View style={styles.cardAlign}>
-                        <TouchableOpacity
-                            style={styles.card}
-                            onPress={() => navigation.navigate("Makeup",)}>
-                            <View style={styles.cardContent}>
-                                <Image source={makeup} style={styles.cardImg} />
-                                <Text style={styles.cardText}>MAKEUP</Text>
-                            </View>
-                        </TouchableOpacity>
-                    </View>
-                    {/* Card#9 */}
-                    <View style={styles.cardAlign}>
-                        <TouchableOpacity
-                            style={styles.card}
-                            onPress={() => navigation.navigate("Massage",)}>
-                            <View style={styles.cardContent}>
-                                <Image source={massage} style={styles.cardImg} />
-                                <Text style={styles.cardText}>MASSAGE</Text>
-                            </View>
-                        </TouchableOpacity>
-                    </View>
-                    {/* Card#10 */}
-                    <View style={styles.cardAlign}>
-                        <TouchableOpacity
-                            style={styles.card}
-                            onPress={() => navigation.navigate("Manicure",)}>
-                            <View style={styles.cardContent}>
-                                <Image source={manicure} style={styles.cardImg} />
-                                <Text style={styles.cardText}>MANICURE</Text>
-                            </View>
-                        </TouchableOpacity>
-                    </View>
-                    {/* Card#11 */}
-                    <View style={styles.cardAlign}>
-                        <TouchableOpacity
-                            style={styles.card}
-                            onPress={() => navigation.navigate("Pedicure",)}>
-                            <View style={styles.cardContent}>
-                                <Image source={pedicure} style={styles.cardImg} />
-                                <Text style={styles.cardText}>PEDICURE</Text>
-                            </View>
-                        </TouchableOpacity>
-                    </View>
-                    {/* Card#12 */}
-                    <View style={styles.cardAlign}>
-                        <TouchableOpacity
-                            style={styles.card}
-                            onPress={() => navigation.navigate("Scrub",)}>
-                            <View style={styles.cardContent}>
-                                <Image source={scrub} style={styles.cardImg} />
-                                <Text style={styles.cardText}>SCRUB</Text>
-                            </View>
-                        </TouchableOpacity>
-                    </View>
-                    {/* Card#13 */}
-                    <View style={styles.cardAlign}>
-                        <TouchableOpacity
-                            style={styles.card}
-                            onPress={() => navigation.navigate("Threading",)}>
-                            <View style={styles.cardContent}>
-                                <Image source={threading} style={styles.cardImg} />
-                                <Text style={styles.cardText}>THREADING</Text>
-                            </View>
-                        </TouchableOpacity>
-                    </View>
-                    {/* Card#14 */}
-                    <View style={styles.cardAlign}>
-                        <TouchableOpacity
-                            style={styles.card}
-                            onPress={() => navigation.navigate("Waxing",)}>
-                            <View style={styles.cardContent}>
-                                <Image source={waxing} style={styles.cardImg} />
-                                <Text style={styles.cardText}>WAXING</Text>
-                            </View>
-                        </TouchableOpacity>
-                    </View>
-                </SafeAreaView>
+            {/* Card#2 */}
+            <View style={styles.cardAlign}>
+              <TouchableOpacity
+                style={styles.card}
+                onPress={() => navigation.navigate("Bleach")}
+              >
+                <View style={styles.cardContent}>
+                  <Image source={bleach} style={styles.cardImg} />
+                  <Text style={styles.cardText}>BLEACH</Text>
+                </View>
+              </TouchableOpacity>
             </View>
-        </ScrollView>
+            {/* Card#3 */}
+            <View style={styles.cardAlign}>
+              <TouchableOpacity
+                style={styles.card}
+                onPress={() => navigation.navigate("Facial")}
+              >
+                <View style={styles.cardContent}>
+                  <Image source={facial} style={styles.cardImg} />
+                  <Text style={styles.cardText}>FACIAL</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+            {/* Card#4*/}
+            <View style={styles.cardAlign}>
+              <TouchableOpacity
+                style={styles.card}
+                onPress={() => navigation.navigate("HairColor")}
+              >
+                <View style={styles.cardContent}>
+                  <Image source={hairColor} style={styles.cardImg} />
+                  <Text style={styles.cardText}>HAIR COLOR</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+            {/* Card#5 */}
+            <View style={styles.cardAlign}>
+              <TouchableOpacity
+                style={styles.card}
+                onPress={() => navigation.navigate("HairCutting")}
+              >
+                <View style={styles.cardContent}>
+                  <Image source={cutting} style={styles.cardImg} />
+                  <Text style={styles.cardText}>HAIR CUTTING</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+            {/* Card#6 */}
+            <View style={styles.cardAlign}>
+              <TouchableOpacity
+                style={styles.card}
+                onPress={() => navigation.navigate("HairStyling")}
+              >
+                <View style={styles.cardContent}>
+                  <Image source={styling} style={styles.cardImg} />
+                  <Text style={styles.cardText}>HAIR STYLING</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+            {/* Card#7 */}
+            <View style={styles.cardAlign}>
+              <TouchableOpacity
+                style={styles.card}
+                onPress={() => navigation.navigate("HairTreatment")}
+              >
+                <View style={styles.cardContent}>
+                  <Image source={treatment} style={styles.cardImg} />
+                  <Text style={styles.cardText}>HAIR TREATMENT</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+            {/* Card#8 */}
+            <View style={styles.cardAlign}>
+              <TouchableOpacity
+                style={styles.card}
+                onPress={() => navigation.navigate("Makeup")}
+              >
+                <View style={styles.cardContent}>
+                  <Image source={makeup} style={styles.cardImg} />
+                  <Text style={styles.cardText}>MAKEUP</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+            {/* Card#9 */}
+            <View style={styles.cardAlign}>
+              <TouchableOpacity
+                style={styles.card}
+                onPress={() => navigation.navigate("Massage")}
+              >
+                <View style={styles.cardContent}>
+                  <Image source={massage} style={styles.cardImg} />
+                  <Text style={styles.cardText}>MASSAGE</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+            {/* Card#10 */}
+            <View style={styles.cardAlign}>
+              <TouchableOpacity
+                style={styles.card}
+                onPress={() => navigation.navigate("Manicure")}
+              >
+                <View style={styles.cardContent}>
+                  <Image source={manicure} style={styles.cardImg} />
+                  <Text style={styles.cardText}>MANICURE</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+            {/* Card#11 */}
+            <View style={styles.cardAlign}>
+              <TouchableOpacity
+                style={styles.card}
+                onPress={() => navigation.navigate("Pedicure")}
+              >
+                <View style={styles.cardContent}>
+                  <Image source={pedicure} style={styles.cardImg} />
+                  <Text style={styles.cardText}>PEDICURE</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+            {/* Card#12 */}
+            <View style={styles.cardAlign}>
+              <TouchableOpacity
+                style={styles.card}
+                onPress={() => navigation.navigate("Scrub")}
+              >
+                <View style={styles.cardContent}>
+                  <Image source={scrub} style={styles.cardImg} />
+                  <Text style={styles.cardText}>SCRUB</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+            {/* Card#13 */}
+            <View style={styles.cardAlign}>
+              <TouchableOpacity
+                style={styles.card}
+                onPress={() => navigation.navigate("Threading")}
+              >
+                <View style={styles.cardContent}>
+                  <Image source={threading} style={styles.cardImg} />
+                  <Text style={styles.cardText}>THREADING</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+            {/* Card#14 */}
+            <View style={styles.cardAlign}>
+              <TouchableOpacity
+                style={styles.card}
+                onPress={() => navigation.navigate("Waxing")}
+              >
+                <View style={styles.cardContent}>
+                  <Image source={waxing} style={styles.cardImg} />
+                  <Text style={styles.cardText}>WAXING</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+          </SafeAreaView>
+        </View>
+      </ScrollView>
     );
 
 };
