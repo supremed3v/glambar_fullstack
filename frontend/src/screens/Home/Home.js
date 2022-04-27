@@ -11,25 +11,24 @@ import {
 import React, { useState } from "react";
 import CustomInput from "../../components/CustomInput";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import Feather from "@expo/vector-icons/Feather"; 
-import Entypo from "@expo/vector-icons/Entypo"; 
-import AntDesign from "@expo/vector-icons/AntDesign"; 
-import myData from "../../DummyData/SalonHomeData";
+import Feather from "@expo/vector-icons/Feather";
+import Entypo from "@expo/vector-icons/Entypo";
+import AntDesign from "@expo/vector-icons/AntDesign";
+import myData from "../../DummyData/SalonHomeData.json";
 
 const Home = ({ navigation }) => {
   const [search, setSearch] = useState("");
 
   return (
-    
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.topnav}>
-      <AntDesign name="menuunfold" size={24} color="black" />
-      <Text> G 14/4, Islamabad</Text>
-      <View style={styles.topnav2}>
-      <Entypo name="bell" size={24} color="black" />
-      <Feather name="shopping-cart" size={24} color="black" />
+        <AntDesign name="menuunfold" size={24} color="black" />
+        <Text> G 14/4, Islamabad</Text>
+        <View style={styles.topnav2}>
+          <Entypo name="bell" size={24} color="black" />
+          <Feather name="shopping-cart" size={24} color="black" />
+        </View>
       </View>
-              </View> 
       <SafeAreaView>
         <FlatList
           data={myData}
@@ -46,7 +45,8 @@ const Home = ({ navigation }) => {
             <TouchableOpacity
               key={id}
               style={styles.card}
-              onPress={() => navigation.navigate("SalonServices", { myData })}>
+              onPress={() => navigation.navigate("SalonServices", { myData })}
+            >
               <Image source={{ uri: item.img }} style={styles.cardImg} />
               <View style={styles.textSalon}>
                 <Text>{item.name}</Text>
@@ -98,20 +98,20 @@ const styles = StyleSheet.create({
   textRating: {
     paddingLeft: 90,
   },
-  topnav:{
+  topnav: {
     flexDirection: "row",
     marginTop: 10,
     padding: 10,
     justifyContent: "space-between",
-    alignItems: "center"
+    alignItems: "center",
   },
-  topnav2:{
+  topnav2: {
     flexDirection: "row",
     marginTop: 10,
     padding: 10,
     justifyContent: "space-between",
-    alignItems: "center"
-  }
+    alignItems: "center",
+  },
 });
 
 export default Home;
