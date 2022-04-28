@@ -5,10 +5,14 @@ import Home from "../screens/Home";
 const Tab = createBottomTabNavigator();
 import Ionicons from "react-native-vector-icons/Ionicons";
 import UpcomingAppointment from "../screens/UpcomingAppointment/UpcomingAppointment";
-import Profile from "../screens/Profile/Profile";
 import AddressDetails from "../screens/AddressDetails/AddressDetails";
+import ClientDetails from "../screens/ClientDetails/ClientDetails";
+import { Auth } from "aws-amplify";
 
 const HomeNavigationContainer = () => {
+  const signOut = () => {
+    Auth.signOut();
+  };
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -29,7 +33,7 @@ const HomeNavigationContainer = () => {
           }
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: "rgb(59, 113, 243)",
+        tabBarActiveTintColor: "#5085E1",
         tabBarInactiveTintColor: "gray",
       })}
     >
@@ -46,17 +50,12 @@ const HomeNavigationContainer = () => {
       <Tab.Screen
         options={{ headerShown: false }}
         name="Profile"
-        component={Profile}
+        component={ClientDetails}
       />
       <Tab.Screen
         options={{ headerShown: false }}
         name="Location"
         component={AddressDetails}
-      />
-      <Tab.Screen
-        options={{ headerShown: false }}
-        name="Logout"
-        component={Home}
       />
     </Tab.Navigator>
   );

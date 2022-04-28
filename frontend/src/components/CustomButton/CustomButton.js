@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   },
 
   text_SECONDARY: {
-    color: "white",
+    color: "#5085E1",
   },
 });
 

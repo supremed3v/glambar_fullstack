@@ -8,9 +8,10 @@ import {
   SafeAreaView,
   TouchableOpacity,
 } from "react-native";
-import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 import CustomInput from "../../components/CustomInput";
 import Ionicons from "@expo/vector-icons/Ionicons";
+<<<<<<< HEAD
 import Feather from "@expo/vector-icons/Feather"; 
 import Entypo from "@expo/vector-icons/Entypo"; 
 import AntDesign from "@expo/vector-icons/AntDesign"; 
@@ -22,28 +23,62 @@ const Home = ({ navigation }) => {
     control,
     handleSubmit,
     formState: { error },
+=======
+import Feather from "@expo/vector-icons/Feather";
+import Entypo from "@expo/vector-icons/Entypo";
+import AntDesign from "@expo/vector-icons/AntDesign";
+import { useState, useEffect } from "react";
+import { DataStore } from "aws-amplify";
+import { Salon, Service } from "../../models";
+import { LogBox } from "react-native";
+
+LogBox.ignoreLogs(["Setting a timer"]);
+
+const Home = ({ navigation }) => {
+  const [salon, setSalon] = useState([]);
+
+  useEffect(() => {
+    DataStore.query(Salon).then(setSalon);
+  }, []);
+
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+>>>>>>> 08d6cac4395ce025f847ef3802f651e98816bc50
   } = useForm();
 
   return (
-    
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.topnav}>
-      <AntDesign name="menuunfold" size={24} color="black" />
-      <Text> G 14/4, Islamabad</Text>
-      <View style={styles.topnav2}>
-      <Entypo name="bell" size={24} color="black" />
-      <Feather name="shopping-cart" size={24} color="black" />
+        <AntDesign name="menuunfold" size={24} color="black" />
+        <Text> G 14/4, Islamabad</Text>
+        <View style={styles.topnav2}>
+          <Entypo name="bell" size={24} color="black" />
+          <Feather name="shopping-cart" size={24} color="black" />
+        </View>
       </View>
-              </View> 
       <SafeAreaView>
         <FlatList
-          data={myData}
+          data={salon}
           ListHeaderComponent={
             <View style={styles.container}>
               <CustomInput
+<<<<<<< HEAD
                 placeholder="Search"
                 name="search"
                 control={control}
+=======
+                name="search"
+                placeholder="Search here..."
+                control={control}
+                rules={{
+                  minLength: {
+                    value: 30,
+                    message: "30 Characters",
+                  },
+                }}
+>>>>>>> 08d6cac4395ce025f847ef3802f651e98816bc50
               />
             </View>
           }
@@ -51,14 +86,19 @@ const Home = ({ navigation }) => {
             <TouchableOpacity
               key={id}
               style={styles.card}
-              onPress={() => navigation.navigate("SalonServices", { myData })}>
-              <Image source={{ uri: item.img }} style={styles.cardImg} />
+              onPress={() =>
+                navigation.navigate("SalonScreen", { id: Salon.id })
+              }
+            >
+              <Image source={{ uri: item.image }} style={styles.cardImg} />
               <View style={styles.textSalon}>
                 <Text>{item.name}</Text>
-                <Text style={styles.textRating}>
-                  <Ionicons name="star" size={14} color="yellow" />{" "}
-                  {item.rating}
-                </Text>
+                <View style={styles.textRating}>
+                  <Text>
+                    <Ionicons name="star" size={14} color="yellow" />{" "}
+                    {item.rating.toFixed(1)}
+                  </Text>
+                </View>
               </View>
               <Text>{item.gender}</Text>
             </TouchableOpacity>
@@ -72,21 +112,20 @@ const Home = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
-    marginTop: 10,
-    paddingHorizontal: 20,
+    marginTop: 5,
   },
 
   card: {
-    width: 250,
+    width: 350,
     height: 200,
-    paddingLeft: 50,
+    paddingLeft: 40,
     paddingRight: 50,
     marginTop: 20,
     marginBottom: 10,
   },
   cardImg: {
     borderRadius: 15,
-    width: 250,
+    width: 280,
     height: 150,
     resizeMode: "cover",
   },
@@ -97,26 +136,27 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#5085E1",
     alignItems: "center",
-    justifyContent: "space-between",
-    paddingRight: 20,
+    marginRight: 60,
   },
   textRating: {
-    paddingLeft: 90,
+    paddingLeft: 40,
   },
-  topnav:{
+  topnav: {
+    flexDirection: "row",
+    marginTop: 10,
+    padding: 10,
+    paddingRight: 20,
+    paddingLeft: 20,
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  topnav2: {
     flexDirection: "row",
     marginTop: 10,
     padding: 10,
     justifyContent: "space-between",
-    alignItems: "center"
+    alignItems: "center",
   },
-  topnav2:{
-    flexDirection: "row",
-    marginTop: 10,
-    padding: 10,
-    justifyContent: "space-between",
-    alignItems: "center"
-  }
 });
 
 export default Home;

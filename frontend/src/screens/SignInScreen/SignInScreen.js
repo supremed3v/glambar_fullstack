@@ -1,23 +1,27 @@
 import {
   ImageBackground,
-  TextInput,
   Image,
   StyleSheet,
   Text,
   View,
   useWindowDimensions,
-  ScrollView,
+  Alert,
 } from "react-native";
+import React, { useState } from "react";
 
-import image from "../../../assets/bg-screen.jpg";
-import logo from "../../../assets/logo-white.png";
+import background from "../../../assets/bg.jpeg";
+import logo from "../../../assets/logo.png";
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
+const EMAIL_REGEX =
+  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-import React, { useState } from "react";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
+import { Auth } from "aws-amplify";
 
 const SignInScreen = ({ navigation }) => {
+  const [loading, setLoading] = useState(false);
+
   const {
     control,
     handleSubmit,
@@ -26,9 +30,19 @@ const SignInScreen = ({ navigation }) => {
 
   const { height } = useWindowDimensions();
 
-  const onSignInPressed = (data) => {
-    console.log(data);
-    navigation.push("Home");
+  const onSignInPressed = async (data) => {
+    if (loading) {
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const response = await Auth.signIn(data.email, data.password);
+      console.log(response);
+    } catch (e) {
+      Alert.alert("Error", e.message);
+    }
+    setLoading(false);
   };
 
   const onForgotPasswordPressed = () => {
@@ -47,103 +61,104 @@ const SignInScreen = ({ navigation }) => {
     navigation.navigate("SignUpScreen");
   };
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
-      <View style={styles.container}>
-        <ImageBackground source={image} resizeMode="cover" style={styles.image}>
-          <View style={styles.centerItems}>
-            <Image
-              source={logo}
-              style={[styles.logo, { height: height * 0.3 }]}
-            />
-          </View>
-          <View style={styles.centerItems}>
-            <Text style={styles.text}>Login or Signup to get started.</Text>
+    <View style={styles.container}>
+      <ImageBackground
+        source={background}
+        resizeMode="cover"
+        style={styles.container}
+      >
+        <View style={styles.container_center}>
+          <Image
+            source={logo}
+            style={[
+              styles.logo,
+              { height: height * 0.15 },
+              { width: "30%" },
+              { marginBottom: 30 },
+              { marginTop: 30 },
+            ]}
+          />
+          <Text style={styles.heading}>Login or Register to get started</Text>
 
-            <CustomInput
-              placeholder="Username"
-              name="username"
-              control={control}
-              rules={{ required: "Username is required" }}
-            />
-            <CustomInput
-              placeholder="Password"
-              secureTextEntry
-              control={control}
-              name="password"
-              rules={{
-                required: "Password is required",
-                minLength: {
-                  value: 5,
-                  message: "Password should be minimum 5 characters long",
-                },
-              }}
-            />
+          <CustomInput
+            name="email"
+            placeholder="Enter your email"
+            control={control}
+            rules={{
+              required: "Email is required",
+              pattern: { value: EMAIL_REGEX, message: "Email is invalid" },
+            }}
+          />
+          <CustomInput
+            placeholder="Password"
+            secureTextEntry
+            control={control}
+            name="password"
+            rules={{
+              required: "Password is required",
+              minLength: {
+                value: 5,
+                message: "Password should be minimum 5 characters long",
+              },
+            }}
+          />
 
-            <CustomButton
-              text="Sign In"
-              onPress={handleSubmit(onSignInPressed)}
-            />
+          <CustomButton
+            text={loading ? "Loading..." : "Sign In"}
+            onPress={handleSubmit(onSignInPressed)}
+          />
 
-            <CustomButton
-              text="Forgot Password?"
-              onPress={onForgotPasswordPressed}
-              type="SECONDARY"
-            />
+          <CustomButton
+            text="Forgot Password?"
+            onPress={onForgotPasswordPressed}
+            type="SECONDARY"
+          />
 
-            <CustomButton
-              text="Sign In With Google"
-              onPress={onSignInGoogle}
-              bgColor="#FAE9EA"
-              fgColor="#DD4D44"
-            />
+          <CustomButton
+            text="Sign In With Google"
+            onPress={onSignInGoogle}
+            bgColor="#FAE9EA"
+            fgColor="#DD4D44"
+          />
 
-            <CustomButton
-              text="Sign In Facebook"
-              onPress={onSignInFacebook}
-              bgColor="#e7eaf4"
-              fgColor="#4765a9"
-            />
-
-            <CustomButton
-              text="Don't have an account? Create one."
-              onPress={onCreateAnAccount}
-              type="SECONDARY"
-            />
-          </View>
-        </ImageBackground>
-      </View>
-    </ScrollView>
+          <Text style={styles.text}>
+            Don't have an account?{" "}
+            <Text onPress={onCreateAnAccount} style={styles.button}>
+              Create one
+            </Text>
+            .
+          </Text>
+        </View>
+      </ImageBackground>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+  heading: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#5085E1",
+    marginBottom: 20,
+    borderBottomWidth: 2,
+    borderColor: "#A2BCED",
+    paddingBottom: 10,
+  },
   container: {
     flex: 1,
   },
-  image: {
-    flex: 1,
-  },
-  centerItems: {
-    marginTop: 5,
-    display: "flex",
+  container_center: {
     alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "column",
+    marginTop: 50,
+  },
+  button: {
+    color: "#5085E1",
   },
   text: {
-    color: "white",
-    fontSize: 30,
-    fontWeight: "bold",
-    textAlign: "center",
-    width: 250,
-    marginBottom: 10,
-  },
-  logo: {
-    width: "50%",
-    maxHeight: 300,
-    display: "flex",
-    zIndex: 2,
-    maxWidth: 500,
+    marginTop: 20,
+    textAlign: "left",
+    color: "#827676",
+    fontWeight: "normal",
   },
 });
 
