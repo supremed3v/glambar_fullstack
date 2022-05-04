@@ -1,3 +1,13 @@
+type SalonPackage @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String!
+  description: String!
+  price: Int!
+  services: [String!]!
+  image: String
+  Salons: [Salon] @manyToMany(relationName: "SalonPackageSalon")
+}
+
 type Service @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String!
@@ -19,5 +29,6 @@ type Salon @model @auth(rules: [{allow: public}]) {
   lng: Float!
   Services: [Service] @hasMany(indexName: "bySalon", fields: ["id"])
   address: String!
+  salonpackages: [SalonPackage!] @manyToMany(relationName: "SalonPackageSalon")
 }
  

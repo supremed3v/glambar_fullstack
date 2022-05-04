@@ -33,7 +33,7 @@ const SalonNavigationContainer = () => {
     >
       <Tab.Screen
         options={{ headerShown: false }}
-        name="SalonScreen"
+        name="About"
         component={SalonScreen}
       />
       <Tab.Screen

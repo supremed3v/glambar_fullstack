@@ -27,6 +27,10 @@ import Rate from "./src/screens/Rate/Rate";
 import Packages from "./src/screens/Packages/Packages";
 import Reviews from "./src/screens/Reviews/Reviews";
 import LandingPage from "./src/screens/LandingPage/LandingPage";
+import SalonDetailsPage from './src/screens/SalonDetailsScreen'
+import ServiceDetailScreen from './src/screens/ServiceDetailScreen'
+import Cart from './src/screens/Cart'
+
 
 // Import Amplify
 import { Amplify, Auth, Hub } from "aws-amplify";
@@ -80,10 +84,14 @@ export default function App() {
     <NavigationContainer theme={theme}>
       <Stack.Navigator
         screenOptions={{ headerShown: false }}
-        initialRouteName="LandingPage"
+        initialRouteName="Cart"
       >
         {!user ? (
           <>
+          
+          <Stack.Screen name="SalonDetailsPage" component={SalonDetailsPage} />
+          <Stack.Screen name="Cart" component={Cart} />
+          <Stack.Screen name="ServiceDetailScreen" component={ServiceDetailScreen} />
             <Stack.Screen name="Login" component={SignInScreen} />
             <Stack.Screen
               name="SalonServiceScreen"
@@ -112,6 +120,7 @@ export default function App() {
             <Stack.Screen name="AboutUs" component={AboutUs} />
             <Stack.Screen name="Packages" component={Packages} />
             <Stack.Screen name="Reviews" component={Reviews} />
+            <Stack.Screen name="SalonDetailsPage" component={SalonDetailsPage} />
             <Stack.Screen
               name="UpcomingAppointment"
               component={UpcomingAppointment}

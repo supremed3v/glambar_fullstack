@@ -18,7 +18,7 @@ const HomeNavigationContainer = () => {
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
-          if (route.name === "HomeNav") {
+          if (route.name === "Home") {
             iconName = focused ? "home-outline" : "home-outline";
           } else if (route.name === "Appointment") {
             iconName = focused ? "calendar-outline" : "calendar-outline";
@@ -39,7 +39,7 @@ const HomeNavigationContainer = () => {
     >
       <Tab.Screen
         options={{ headerShown: false }}
-        name="HomeNav"
+        name="Home"
         component={Home}
       />
       <Tab.Screen

@@ -4,7 +4,7 @@ import { Salon } from "../../../models";
 import { useRoute } from "@react-navigation/native";
 import { DataStore } from "aws-amplify";
 
-const SalonServices = ({ salon }) => {
+const SalonServices = ({}) => {
   const [salon, setSalon] = useState(null);
   const route = useRoute();
   const id = route.params?.id;
