@@ -1,13 +1,13 @@
 import {
   ImageBackground,
-  TextInput,
   Image,
   StyleSheet,
   Text,
   View,
   useWindowDimensions,
-  ScrollView,
+  Alert,
 } from "react-native";
+import React, { useState } from "react";
 
 import background from "../../../assets/bg.jpeg";
 import logo from "../../../assets/logo.png";
@@ -17,8 +17,11 @@ const EMAIL_REGEX =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 import { useForm } from "react-hook-form";
+import { Auth } from "aws-amplify";
 
 const SignInScreen = ({ navigation }) => {
+  const [loading, setLoading] = useState(false);
+
   const {
     control,
     handleSubmit,
@@ -27,9 +30,19 @@ const SignInScreen = ({ navigation }) => {
 
   const { height } = useWindowDimensions();
 
-  const onSignInPressed = (data) => {
-    console.log(data);
-    navigation.navigate("Home");
+  const onSignInPressed = async (data) => {
+    if (loading) {
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const response = await Auth.signIn(data.email, data.password);
+      console.log(response);
+    } catch (e) {
+      Alert.alert("Error", e.message);
+    }
+    setLoading(false);
   };
 
   const onForgotPasswordPressed = () => {
@@ -91,7 +104,7 @@ const SignInScreen = ({ navigation }) => {
           />
 
           <CustomButton
-            text="Sign In"
+            text={loading ? "Loading..." : "Sign In"}
             onPress={handleSubmit(onSignInPressed)}
           />
 

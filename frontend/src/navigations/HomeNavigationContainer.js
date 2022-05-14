@@ -7,14 +7,18 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import UpcomingAppointment from "../screens/UpcomingAppointment/UpcomingAppointment";
 import AddressDetails from "../screens/AddressDetails/AddressDetails";
 import ClientDetails from "../screens/ClientDetails/ClientDetails";
+import { Auth } from "aws-amplify";
 
 const HomeNavigationContainer = () => {
+  const signOut = () => {
+    Auth.signOut();
+  };
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
-          if (route.name === "HomeNav") {
+          if (route.name === "Home") {
             iconName = focused ? "home-outline" : "home-outline";
           } else if (route.name === "Appointment") {
             iconName = focused ? "calendar-outline" : "calendar-outline";
@@ -35,7 +39,7 @@ const HomeNavigationContainer = () => {
     >
       <Tab.Screen
         options={{ headerShown: false }}
-        name="HomeNav"
+        name="Home"
         component={Home}
       />
       <Tab.Screen
@@ -52,11 +56,6 @@ const HomeNavigationContainer = () => {
         options={{ headerShown: false }}
         name="Location"
         component={AddressDetails}
-      />
-      <Tab.Screen
-        options={{ headerShown: false }}
-        name="Logout"
-        component={Home}
       />
     </Tab.Navigator>
   );

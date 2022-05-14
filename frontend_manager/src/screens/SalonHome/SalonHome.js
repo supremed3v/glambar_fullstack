@@ -10,7 +10,6 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React, { useState } from "react";
-import background from "../../../assets/bg.jpeg";
 import profile from "../../../assets/profile.png";
 import story from "../../../assets/story.png";
 import booking from "../../../assets/booking.png";
@@ -24,14 +23,11 @@ import Feather from "@expo/vector-icons/Feather";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
 const SalonHome = ({ navigation }) => {
-  const [chooseData, setChooseData] = useState("Select Items");
-  const [isModalVisible, setIsModalVisible] = useState(false);
-
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.topNav}>
         <Entypo name="menu" size={35} color="black" />
-        <Text style={{ marginStart: 10, fontWeight: "bold", fontSize: 25 }}>
+        <Text style={{ marginStart: 15, fontWeight: "bold", fontSize: 25 }}>
           Stylers
         </Text>
         <View style={styles.topNav2}>
@@ -190,6 +186,7 @@ const styles = StyleSheet.create({
   },
   cardAlign: {
     flexDirection: "row",
+    alignItems: "center",
   },
   textRating: {
     paddingLeft: 90,
@@ -207,7 +204,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     alignContent: "space-around",
     padding: 20,
-    marginStart: 180,
+    marginStart: 175,
   },
 });
 

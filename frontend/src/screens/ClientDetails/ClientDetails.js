@@ -12,8 +12,18 @@ import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { Auth } from "aws-amplify";
 
 const ClientDetails = ({ navigation }) => {
+  const signOut = () => {
+    try {
+      Auth.signOut();
+      console.log("signout");
+    } catch (error) {
+      Alert.alert(error.message);
+    }
+  };
+
   const {
     control,
     handleSubmit,
@@ -22,10 +32,6 @@ const ClientDetails = ({ navigation }) => {
   const onSave = (data) => {
     console.log(data);
     Alert.alert("", "Submitted Successfully");
-  };
-  const onBackPress = () => {
-    // set route
-    navigation.push("Home");
   };
   return (
     <ImageBackground
@@ -47,15 +53,17 @@ const ClientDetails = ({ navigation }) => {
             name="Name"
             placeholder="Enter your First Name"
             control={control}
-            rules={{ required: "First name is required",
-            minLength: {
-              value: 3,
-              message: "Name should be at least 3 characters long",
-            },
-            maxLength: {
-              value: 24,
-              message: "Name should be max 24 characters long",
-            }, }}
+            rules={{
+              required: "First name is required",
+              minLength: {
+                value: 3,
+                message: "Name should be at least 3 characters long",
+              },
+              maxLength: {
+                value: 24,
+                message: "Name should be max 24 characters long",
+              },
+            }}
           />
           <CustomInput
             name="contactNumber"
@@ -84,6 +92,9 @@ const ClientDetails = ({ navigation }) => {
           />
           <CustomButton text="Save" onPress={handleSubmit(onSave)} />
         </View>
+        <Text onPress={signOut} style={styles.signOut_text}>
+          Sign Out
+        </Text>
       </ScrollView>
     </ImageBackground>
   );
@@ -111,6 +122,11 @@ const styles = StyleSheet.create({
   backIcon: {
     marginTop: 10,
     marginLeft: 10,
+  },
+  signOut_text: {
+    color: "red",
+    textAlign: "center",
+    width: "100%",
   },
 });
 export default ClientDetails;

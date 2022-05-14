@@ -2,63 +2,64 @@
     {
       "id": 1,
       "servicename": "Hair Color",
-      "colortype": "Balayage",
-      "specialnote": "A French technique that involves hand painting highlights to create dimension and movement in the hair.",
+      "label": "Balayage",
+      "description": "A French technique that involves hand painting highlights to create dimension and movement in the hair.",
       "price": 15000,
       "img": "https://images.unsplash.com/photo-1605980766335-d3a41c7332a1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"
     },
     {
         "id": 2,
         "servicename": "Hair Color",
-        "colortype": "Ombre",
-        "specialnote": "A technique resulting in colors being graduated from light to dark.",
+        "label": "Ombre",
+        "description": "A technique resulting in colors being graduated from light to dark.",
         "price": 18000,
         "img": "https://images.unsplash.com/photo-1605980625458-21e4d9c29c4c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
       },
       {
         "id": 3,
         "servicename": "Makeup",
-        "servicetype": "Eye Makeup",
-        "specialnote": "A technique that can add dimension and depth to one's eyes.",
+        "label": "Eye Makeup",
+        "description": "A technique that can add dimension and depth to one's eyes.",
         "price": 3000,
         "img": "https://images.unsplash.com/photo-1551392505-f4056032826e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=693&q=80"
       },
       {
         "id": 4,
         "servicename": "Waxing",
-        "servicetype": "Face Wax",
-        "specialnote": "A process which is used to remove unwanted facial hair",
+        "label": "Face Wax",
+        "description": "A process which is used to remove unwanted facial hair",
         "price": 1500,
         "img": "https://images.unsplash.com/photo-1594051843833-0eb76ea1b20b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80"
       },
       {
         "id": 5,
-        "servicename": "Hair Styling",
-        "servicetype": "Hair Curling",
-        "price": 1000,
+        "servicename": "Hair Cutting",
+        "label":"Short Bob",
+        "description": "Above shoulder cut",
+        "price": 3000,
         "img": "https://images.unsplash.com/photo-1499557354967-2b2d8910bcca?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=736&q=80"
       },
       {
         "id": 6,
         "servicename": "Makeup",
-        "servicetype": "Mehndi Makeup",
-        "specialnote": "A fresh glow to give the bride a natural look.",
+        "label": "Mehndi Makeup",
+        "description": "A fresh glow to give the bride a natural look.",
         "price": 15000,
         "img": "https://images.unsplash.com/photo-1594709286121-519552affdc0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
       },
       {
         "id": 7,
         "servicename": "Hair Treatment",
-        "servicetype": "Keratin",
-        "specialnote": "A process of smoothening and straightening hair.",
+        "label": "Keratin",
+        "description": "A process of smoothening and straightening hair.",
         "price": 12000,
         "img": "https://i.pinimg.com/originals/d8/b6/ae/d8b6aefd78f0836aa69088a8d6ff73bb.jpg"
       },
       {
         "id": 8,
         "servicename": "Skin and Body care",
-        "servicetype": "Manicure",
-        "specialnote": "A treatment for fingernails and hands.",
+        "label": "Manicure",
+        "description": "A treatment for fingernails and hands.",
         "price": 2000,
         "img": "https://images.unsplash.com/photo-1610992015732-2449b76344bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1031&q=80"
       }

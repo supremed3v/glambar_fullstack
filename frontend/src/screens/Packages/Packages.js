@@ -1,135 +1,97 @@
-import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, SafeAreaView,FlatList } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+  SafeAreaView,
+  FlatList,
+} from "react-native";
 import React from "react";
 import salonbg from "../../../assets/salonbg.png";
 import myData from "../../DummyData/SalonPackageData";
+import AntDesign from "@expo/vector-icons/AntDesign";
 
 const Packages = () => {
-  const AddToCart = () => {
-    console.log("Pressed");
-  };
   return (
-    <View style={{ marginTop: 50 }}>
-      <View>
-        <Image style={styles.image} source={salonbg} resizeMode="cover" />
-      </View>
-      
-      <View style={styles.container}>
-        <Text
-          style={{
-            marginTop: 30,
-            marginLeft: 25,
-            fontWeight: "bold",
-            fontSize: 20,
-          }}
-        >
-          Packages
-        </Text>
-        <View>
-             {/* new package */}
-        <View style={styles.card}>
-          <Image
-            source={{
-              uri: "https://i.pinimg.com/550x/4e/ab/d3/4eabd3b68c29b33411117742ef10a229.jpg",
-            }}
-            resizeMode="cover"
-            style={styles.cardImage}
-          />
-          <View style={styles.textWrapper}></View>
-          <Text>Mehndi Package {"\n"}Dupatta setting is included. {"\n"}Price: 20000/-</Text>
-        </View>
-        
-        <View style={{ marginTop: 10 }}>
+    <ScrollView showsVerticalScrollIndicator={false}>
+      <SafeAreaView>
+        <Text style={styles.heading}>Packages</Text>
+        <FlatList
+          data={myData}
+          renderItem={({ item, id }) => (
             <TouchableOpacity
-              onPress={AddToCart}
-              style={{
-                backgroundColor: "#c4c4c4",
-                padding: 10,
-                width: "40%",
-                marginStart:30,
-                borderRadius: 10,
-              }}
+              key={id}
+              style={styles.card}
+              onPress={() => navigation.navigate({ myData })}
             >
-              <Text style={{textAlign: "center"}}>Add to cart</Text>
+              <View style={styles.container}>
+                <Image source={{ uri: item.img }} style={styles.cardImg} />
+                <View style={styles.ViewTextSalon}>
+                  <Text style={styles.salonText}>{item.label}</Text>
+                  <Text style={styles.salonText}>{item.price}</Text>
+                </View>
+                <AntDesign
+                  name="plussquare"
+                  size={24}
+                  color="black"
+                  style={styles.addToCartIcon}
+                />
+              </View>
             </TouchableOpacity>
-          </View>
-           {/* new package */}
-        <View style={styles.card}>
-          <Image
-            source={{
-              uri: "https://i.pinimg.com/originals/04/a7/fb/04a7fbd5418865d88cdc7e8eadc5aebb.jpg",
-            }}
-            resizeMode="cover"
-            style={styles.cardImage}
-          />
-          <View style={styles.textWrapper}></View>
-          <Text>Barat Package {"\n"}Without Services.{"\n"}Price: 50000/-</Text>
-        </View>
-        
-        <View style={{ marginTop: 10 }}>
-            <TouchableOpacity
-              onPress={AddToCart}
-              style={{
-                backgroundColor: "#c4c4c4",
-                padding: 10,
-                width: "40%",
-                marginStart:30,
-                borderRadius: 10,
-              }}
-            >
-              <Text style={{textAlign: "center"}}>Add to cart</Text>
-            </TouchableOpacity>
-          </View>
-         
-          
-          </View>
-    </View>
-   
-        </View>
+          )}
+        />
+      </SafeAreaView>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  image: {
-    width: "100%",
-    height: 500,
+  heading: {
+    fontSize: 26,
+    fontWeight: "bold",
+    color: "#5085E1",
+    marginBottom: 20,
+    borderBottomWidth: 2,
+    borderColor: "#A2BCED",
+    marginTop: 60,
+    marginStart: 25,
+    paddingBottom: 10,
+    marginRight: 200,
   },
   container: {
-    bottom: 0,
-    width: "100%",
-    height: "40%",
-    position: "absolute",
-    backgroundColor: "white",
-    borderTopLeftRadius: 45,
-    borderTopRightRadius: 45,
-  },
-  flexContainer: {
+    padding: 10,
+    borderRadius: 5,
     flexDirection: "row",
-    marginLeft: 20,
-    marginTop: 20,
+    width: 380,
+    height: 120,
+    backgroundColor: "#f0f0f0",
   },
-  text: {
-    paddingRight: 20,
+  ViewTextSalon: {
+    marginStart: 15,
+    justifyContent: "center",
   },
-  textPrice: {
-    fontWeight: "bold",
-    paddingRight: 20,
-  },
-  cardImage: {
-    width: 80,
-    height: 80,
-    borderRadius: 10,
+  salonText: {
+    fontSize: 14,
+    width: 120,
   },
   card: {
-    marginTop: 30,
-    marginLeft:30,
+    margin: 10,
     display: "flex",
+    justifyContent: "center",
     flexDirection: "row",
-    alignItems: "center",
   },
-  textWrapper: {
+  cardImg: {
+    borderRadius: 5,
+    width: 120,
+    height: 100,
+    resizeMode: "cover",
+  },
+  addToCartIcon: {
+    marginStart: 80,
     marginTop: 40,
-    marginStart: 20,
-    marginVertical: 20,
+    marginEnd: 20,
   },
 });
 
