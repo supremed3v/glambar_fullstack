@@ -11,41 +11,16 @@ import {
 import { useForm } from "react-hook-form";
 import CustomInput from "../../components/CustomInput";
 import Ionicons from "@expo/vector-icons/Ionicons";
-<<<<<<< HEAD
 import Feather from "@expo/vector-icons/Feather"; 
 import Entypo from "@expo/vector-icons/Entypo"; 
 import AntDesign from "@expo/vector-icons/AntDesign"; 
 import myData from "../../DummyData/SalonHomeData";
-import { useForm, Controller } from "react-hook-form";
 
 const Home = ({ navigation }) => {
   const {
     control,
     handleSubmit,
     formState: { error },
-=======
-import Feather from "@expo/vector-icons/Feather";
-import Entypo from "@expo/vector-icons/Entypo";
-import AntDesign from "@expo/vector-icons/AntDesign";
-import { useState, useEffect } from "react";
-import { DataStore } from "aws-amplify";
-import { Salon, Service } from "../../models";
-import { LogBox } from "react-native";
-
-LogBox.ignoreLogs(["Setting a timer"]);
-
-const Home = ({ navigation }) => {
-  const [salon, setSalon] = useState([]);
-
-  useEffect(() => {
-    DataStore.query(Salon).then(setSalon);
-  }, []);
-
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
->>>>>>> 08d6cac4395ce025f847ef3802f651e98816bc50
   } = useForm();
 
   return (
@@ -60,25 +35,13 @@ const Home = ({ navigation }) => {
       </View>
       <SafeAreaView>
         <FlatList
-          data={salon}
+          data={myData}
           ListHeaderComponent={
             <View style={styles.container}>
               <CustomInput
-<<<<<<< HEAD
                 placeholder="Search"
                 name="search"
                 control={control}
-=======
-                name="search"
-                placeholder="Search here..."
-                control={control}
-                rules={{
-                  minLength: {
-                    value: 30,
-                    message: "30 Characters",
-                  },
-                }}
->>>>>>> 08d6cac4395ce025f847ef3802f651e98816bc50
               />
             </View>
           }
@@ -86,11 +49,8 @@ const Home = ({ navigation }) => {
             <TouchableOpacity
               key={id}
               style={styles.card}
-              onPress={() =>
-                navigation.navigate("SalonScreen", { id: Salon.id })
-              }
-            >
-              <Image source={{ uri: item.image }} style={styles.cardImg} />
+              onPress={() => navigation.navigate("SalonScreen")}>
+              <Image source={{ uri: item.img }} style={styles.cardImg} />
               <View style={styles.textSalon}>
                 <Text>{item.name}</Text>
                 <View style={styles.textRating}>
@@ -118,9 +78,10 @@ const styles = StyleSheet.create({
   card: {
     width: 350,
     height: 200,
-    paddingLeft: 40,
-    paddingRight: 50,
+    paddingLeft: 60,
+    paddingRight: 20,
     marginTop: 20,
+    alignContent:"center",
     marginBottom: 10,
   },
   cardImg: {

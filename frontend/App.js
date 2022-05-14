@@ -1,23 +1,10 @@
-<<<<<<< HEAD
-import "react-native-gesture-handler";
-import { StyleSheet } from "react-native";
-=======
 import { StyleSheet, ActivityIndicator, View } from "react-native";
->>>>>>> 08d6cac4395ce025f847ef3802f651e98816bc50
 
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 
 import React, { useEffect, useState } from "react";
 
-<<<<<<< HEAD
-import {
-  SignInScreen, ForgotPassword, TermsandConditions, SignUpScreen, ClientDetails, Home, SalonScreen, 
-NewPassword, VerificationCode, HomeNavigationContainer, 
-SalonNavigationContainer, Profile, AddressDetails, AddAddress, AboutUs, 
-UpcomingAppointment, PassedAppointment, Complain, Rate, Packages, Reviews
-} from "./src";
-=======
 import SignInScreen from "./src/screens/SignInScreen";
 import ForgotPassword from "./src/screens/ForgotPassword/ForgotPassword";
 import TermsandConditions from "./src/screens/TermsandConditions/TermsandConditions";
@@ -41,12 +28,7 @@ import Packages from "./src/screens/Packages/Packages";
 import Reviews from "./src/screens/Reviews/Reviews";
 import LandingPage from "./src/screens/LandingPage/LandingPage";
 
-// Import Amplify
-import { Amplify, Auth, Hub } from "aws-amplify";
-// Configure Amplify
-import awsconfig from "./src/aws-exports";
-Amplify.configure(awsconfig);
->>>>>>> 08d6cac4395ce025f847ef3802f651e98816bc50
+
 
 const Stack = createStackNavigator();
 
@@ -59,65 +41,20 @@ const theme = {
 };
 
 export default function App() {
-  const [user, setUser] = useState(undefined);
-  const checkUser = async () => {
-    try {
-      const authUser = await Auth.currentAuthenticatedUser({
-        bypassCache: true,
-      });
-      setUser(authUser);
-    } catch (e) {
-      setUser(null);
-    }
-  };
-
-  useEffect(() => {
-    const listener = (data) => {
-      if (data.payload.event === "signIn" || data.payload.event === "signOut") {
-        checkUser();
-      }
-    };
-
-    Hub.listen("auth", listener);
-    return () => Hub.remove("auth", listener);
-  }, []);
-
-  // if (user === undefined) {
-  //   return (
-  //     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-  //       <ActivityIndicator />
-  //     </View>
-  //   );
-  // }
-
-  return (
+ return (
     <NavigationContainer theme={theme}>
       <Stack.Navigator
         screenOptions={{ headerShown: false }}
         initialRouteName="LandingPage"
       >
-        {!user ? (
-          <>
             <Stack.Screen name="Login" component={SignInScreen} />
-            <Stack.Screen
-              name="SalonServiceScreen"
-              component={SalonNavigationContainer}
-            />
+            <Stack.Screen name="SalonServiceScreen" component={SalonNavigationContainer}/>
             <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
             <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
             <Stack.Screen name="NewPassword" component={NewPassword} />
-            <Stack.Screen
-              name="VerificationCode"
-              component={VerificationCode}
-            />
+            <Stack.Screen name="VerificationCode" component={VerificationCode}/>
             <Stack.Screen name="LandingPage" component={LandingPage} />
-            <Stack.Screen
-              name="TermsandConditions"
-              component={TermsandConditions}
-            />
-          </>
-        ) : (
-          <>
+            <Stack.Screen name="TermsandConditions" component={TermsandConditions}/>
             <Stack.Screen name="Home" component={HomeNavigationContainer} />
             <Stack.Screen name="ClientDetails" component={ClientDetails} />
             <Stack.Screen name="SalonScreen" component={SalonScreen} />
@@ -126,29 +63,11 @@ export default function App() {
             <Stack.Screen name="AboutUs" component={AboutUs} />
             <Stack.Screen name="Packages" component={Packages} />
             <Stack.Screen name="Reviews" component={Reviews} />
-            <Stack.Screen
-              name="UpcomingAppointment"
-              component={UpcomingAppointment}
-            />
-            <Stack.Screen
-              name="PassedAppointment"
-              component={PassedAppointment}
-            />
+            <Stack.Screen name="UpcomingAppointment" component={UpcomingAppointment}/>
+            <Stack.Screen name="PassedAppointment" component={PassedAppointment}/>
             <Stack.Screen name="Complain" component={Complain} />
             <Stack.Screen name="Rate" component={Rate} />
-          </>
-        )}
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
-<<<<<<< HEAD
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
-
-=======
->>>>>>> 08d6cac4395ce025f847ef3802f651e98816bc50

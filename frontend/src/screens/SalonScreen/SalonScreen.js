@@ -3,6 +3,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Image,
   ScrollView,
   Alert,
   ActivityIndicator,
@@ -18,21 +19,7 @@ import { DataStore } from "aws-amplify";
 import { Salon } from "../../models";
 
 const SalonScreen = ({ navigation }) => {
-  const [salon, setSalon] = useState(null);
-  const route = useRoute();
-  const id = route.params?.id;
-
-  useEffect(() => {
-    // Fetch salon with id
-    DataStore.query(Salon, id).then(setSalon);
-  }, [id]);
-
-  if (!salon) {
-    return <ActivityIndicator size={"large"} color="blue" />;
-  }
-
-<<<<<<< HEAD
-const SalonScreen = () => {
+  
   return (
     <View style={{ marginTop: 50 }}>
       <View>
@@ -43,14 +30,6 @@ const SalonScreen = () => {
         name="md-chevron-back-circle-sharp"
         size={40}
         color="white"
-=======
-  return (
-    <>
-      <ImageBackground
-        source={salonbg}
-        style={styles.image}
-        resizeMode="cover"
->>>>>>> 08d6cac4395ce025f847ef3802f651e98816bc50
       />
 
       <View style={styles.container}>
@@ -72,7 +51,7 @@ const SalonScreen = () => {
           Address: ABC Lane, 2nd Floor, G/13-1
         </Text>
       </View>
-    </>
+      </View>
   );
 };
 

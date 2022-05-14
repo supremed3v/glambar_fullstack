@@ -13,37 +13,27 @@ import background from "../../../assets/bg.jpeg";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
-import { Auth } from "aws-amplify";
 
 const EMAIL_REGEX =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-<<<<<<< HEAD
 const ForgotPassword = ({navigation}) => {
-=======
-const ForgotPassword = ({ navigation }) => {
->>>>>>> 08d6cac4395ce025f847ef3802f651e98816bc50
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onForgotPasswordPressed = async (data) => {
-    try {
-      await Auth.forgotPassword(data.email);
-      navigation.navigate("NewPassword");
-    } catch (e) {
-      Alert.alert("Oops", e.message);
-    }
+  const onForgotPasswordPressed =  (data) => {
+    
   };
   const onLogInPressed = () => {
     navigation.navigate("Login");
   };
 
   return (
-<<<<<<< HEAD
     <ImageBackground source={bgSignup} style={styles.container}>
+      <ScrollView>
       <View style={styles.container_center}>
         <Text onPress={onLogInPressed} style={styles.ForgotPasswordText}>Forgot Your Password?</Text>
         <Text style={styles.text}>
@@ -63,24 +53,10 @@ const ForgotPassword = ({ navigation }) => {
           text="Send Reset Link"
           onPress={handleSubmit(onForgotPasswordPressed)}
         />
-        <Text style={styles.logInText}>
+        <Text style={styles.logInText}/>
           Back to{" "}
           <Text onPress={onLogInPressed} style={styles.button}>
             Login
-=======
-    <ImageBackground
-      source={background}
-      resizeMode="cover"
-      style={styles.container}
-    >
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={styles.container_center}>
-          <Text style={styles.heading}>Forgot your password?</Text>
-
-          <Text style={styles.text}>
-            Enter your email address and we'll send you instructions to reset
-            your password.
->>>>>>> 08d6cac4395ce025f847ef3802f651e98816bc50
           </Text>
           <CustomInput
             name="email"

@@ -18,7 +18,7 @@ import { useForm } from "react-hook-form";
 const AddressNavigation = ({ navigation }) => {
   const onBackPress = () => {
     // set route
-    navigation.push("SalonHome");
+    navigation.push("Home");
   };
   return (
     <ImageBackground
