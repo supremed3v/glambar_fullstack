@@ -6,8 +6,8 @@ import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import {
   SignInScreen, SignUpScreen, AddJob, Service, BabyCare, Bleach, Facial,
   HairColor, HairCutting, HairStyling, HairTreatment,
-  Makeup, Manicure, Massage, Pedicure, AddPackage, Scrub, Threading, Waxing,
-  CustomerRequest, ForgotPassword, JobSeekerRecruited, ManageStaff, SalonHome, UpdatePassword, VerificationCode, Appointment, LandingPage
+  Makeup, Manicure, Massage, Pedicure, AddPackage, Scrub, Threading, Waxing, ForgotPassword, JobSeekerRecruited, ManageStaff,
+  SalonDetails, SalonHome, UpdatePassword, VerificationCode, Appointment, LandingPage, Request, JobSeekerRequest
 } from "./src/screens";
 
 const Stack = createStackNavigator();
@@ -25,7 +25,7 @@ export default function App() {
     <NavigationContainer theme={theme}>
       <Stack.Navigator
         screenOptions={{ headerShown: false }}
-        initialRouteName="LandingPage"
+        initialRouteName="Login"
       >
         <Stack.Screen name="Login" component={SignInScreen} />
         <Stack.Screen name="Signup" component={SignUpScreen} />
@@ -47,14 +47,15 @@ export default function App() {
         <Stack.Screen name="Scrub" component={Scrub} />
         <Stack.Screen name="Threading" component={Threading} />
         <Stack.Screen name="Waxing" component={Waxing} />
-        <Stack.Screen name="CustomerRequest" component={CustomerRequest} />
         <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
         <Stack.Screen name="JobSeekerRecruited" component={JobSeekerRecruited} />
+        <Stack.Screen name="JobSeekerRequest" component={JobSeekerRequest} />
         <Stack.Screen name="ManageStaff" component={ManageStaff} />
         <Stack.Screen name="SalonHome" component={SalonHome} />
         <Stack.Screen name="UpdatePassword" component={UpdatePassword} />
         <Stack.Screen name="VerificationCode" component={VerificationCode} />
         <Stack.Screen name="LandingPage" component={LandingPage} />
+        <Stack.Screen name="Request" component={Request}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

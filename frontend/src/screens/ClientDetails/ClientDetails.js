@@ -12,26 +12,21 @@ import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Auth } from "aws-amplify";
 
 const ClientDetails = ({ navigation }) => {
-  const signOut = () => {
-    try {
-      Auth.signOut();
-      console.log("signout");
-    } catch (error) {
-      Alert.alert(error.message);
-    }
-  };
-
+  
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
   const onSave = (data) => {
     console.log(data);
     Alert.alert("", "Submitted Successfully");
+  };
+  const signOut = () => {
+    navigation.navigate("Login");
   };
   return (
     <ImageBackground
@@ -42,7 +37,6 @@ const ClientDetails = ({ navigation }) => {
       <Ionicons
         style={styles.backIcon}
         name="md-chevron-back-circle-sharp"
-        onPress={onBackPress}
         size={40}
         color="#5085E1"
       />

@@ -13,6 +13,7 @@ import CustomButton from "../../components/CustomButton";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { Picker } from "@react-native-picker/picker";
 
 const Waxing = ({ navigation }) => {
   const {
@@ -25,10 +26,6 @@ const Waxing = ({ navigation }) => {
     console.log(data);
     Alert.alert("", "Submitted Successfully");
   };
-  const onBackPress = () => {
-    // set route
-    navigation.push("Service");
-  };
   return (
     <>
       <ImageBackground
@@ -39,7 +36,6 @@ const Waxing = ({ navigation }) => {
       <Ionicons
         style={styles.backIcon}
         name="md-chevron-back-circle-sharp"
-        onPress={onBackPress}
         size={40}
         color="white"
       />
@@ -59,12 +55,14 @@ const Waxing = ({ navigation }) => {
               control={control}
               rules={{ required: "Wax name is required" }}
             />
-            <CustomInput
-              name="length"
-              placeholder="Enter Length"
-              control={control}
-              rules={{ required: "Length is required" }}
-            />
+            <View style={styles.pickerView}>
+              <Text style={styles.pickerText}>Length</Text>
+              <Picker style={styles.picker} onValueChange={(data) => console.log(data)} >
+                <Picker.Item label="Select" />
+                <Picker.Item label="Full" value="Full" />
+                <Picker.Item label="Half" value="Half" />
+              </Picker>
+            </View>
             <CustomInput
               name="description"
               placeholder="Enter Description"
@@ -118,5 +116,25 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     marginTop: 15,
   },
+  pickerView: {
+    flexDirection: "row",
+    margin: 5,
+    height: 52,
+  },
+  pickerText: {
+    fontSize: 14,
+    color: "gray",
+    alignItems: "center",
+    marginTop: 15,
+    marginBottom: 15,
+    marginStart: 20,
+  },
+  picker: {
+    width: 200,
+    height: 30,
+    backgroundColor: "#f0f1f2",
+    borderWidth: 5,
+    marginStart: 50
+  }
 });
 export default Waxing;

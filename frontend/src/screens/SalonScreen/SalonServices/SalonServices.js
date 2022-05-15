@@ -2,8 +2,8 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
 import { Salon } from "../../../models";
 import { useRoute } from "@react-navigation/native";
-import { DataStore } from "aws-amplify";
 
+<<<<<<< HEAD
 const SalonServices = ({}) => {
   const [salon, setSalon] = useState(null);
   const route = useRoute();
@@ -17,6 +17,10 @@ const SalonServices = ({}) => {
   if (!salon) {
     return <ActivityIndicator size={"large"} color="blue" />;
   }
+=======
+const SalonServices = ({ navigation }) => {
+  
+>>>>>>> ffaaa7e0c78a482d983a5f9d0ca6910fd86ec5e0
 
   return (
     <>

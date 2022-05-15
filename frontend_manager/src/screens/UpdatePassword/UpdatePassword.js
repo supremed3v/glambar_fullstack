@@ -23,10 +23,6 @@ const UpdatePassword = ({ navigation }) => {
     console.log(data);
     Alert.alert("", "Link Sent");
   };
-  const onBackPress = () => {
-    // set route
-    navigation.push("SalonHome");
-  };
 
   return (
     <ImageBackground
@@ -37,7 +33,6 @@ const UpdatePassword = ({ navigation }) => {
       <Ionicons
         style={styles.backIcon}
         name="md-chevron-back-circle-sharp"
-        onPress={onBackPress}
         size={40}
         color="#5085E1"
       />

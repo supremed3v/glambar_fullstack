@@ -12,39 +12,24 @@ import background from "../../../assets/bg.jpeg";
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
 import { useForm } from "react-hook-form";
-import { Auth } from "aws-amplify";
 
 const EMAIL_REGEX =
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
 const SignUpScreen = ({ navigation }) => {
-  const { control, handleSubmit, watch } = useForm();
-  const pwd = watch("password");
-  // const navigtion = useNavigation();
-
+  const {
+    control,
+    handleSubmit,
+    formState: { error },
+  } = useForm();
+ 
   const onPrivacyPressed = () => {
     navigation.navigate("TermsandConditions");
   };
 
-  const onSignUpPressed = async (data) => {
-    const { name, email, password, address, phone_number, gender } = data;
+  const onSignUpPressed =  (data) => {
     console.log(data);
-    try {
-      await Auth.signUp({
-        username: email,
-        password,
-        attributes: {
-          name,
-          address,
-          phone_number,
-          gender,
-        },
-      });
-
-      navigation.navigate("VerificationCode", { email });
-    } catch (e) {
-      Alert.alert("Oops", e.message);
-    }
+    navigation.navigate("Home");
   };
 
   const onSignUpGoogle = () => {
@@ -129,7 +114,7 @@ const SignUpScreen = ({ navigation }) => {
             placeholder="Repeat Password"
             secureTextEntry
             rules={{
-              validate: (value) => value === pwd || "Password do not match",
+              
             }}
           />
 

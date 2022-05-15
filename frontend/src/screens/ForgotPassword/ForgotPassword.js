@@ -13,42 +13,50 @@ import background from "../../../assets/bg.jpeg";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
-import { Auth } from "aws-amplify";
 
 const EMAIL_REGEX =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-const ForgotPassword = ({ navigation }) => {
+const ForgotPassword = ({navigation}) => {
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onForgotPasswordPressed = async (data) => {
-    try {
-      await Auth.forgotPassword(data.email);
-      navigation.navigate("NewPassword");
-    } catch (e) {
-      Alert.alert("Oops", e.message);
-    }
+  const onForgotPasswordPressed =  (data) => {
+    
   };
   const onLogInPressed = () => {
     navigation.navigate("Login");
   };
-  return (
-    <ImageBackground
-      source={background}
-      resizeMode="cover"
-      style={styles.container}
-    >
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={styles.container_center}>
-          <Text style={styles.heading}>Forgot your password?</Text>
 
-          <Text style={styles.text}>
-            Enter your email address and we'll send you instructions to reset
-            your password.
+  return (
+    <ImageBackground source={bgSignup} style={styles.container}>
+      <ScrollView>
+      <View style={styles.container_center}>
+        <Text onPress={onLogInPressed} style={styles.ForgotPasswordText}>Forgot Your Password?</Text>
+        <Text style={styles.text}>
+          Enter your email address and we'll send you instructions to reset your
+          password.
+        </Text>
+        <CustomInput
+          name="email"
+          placeholder="Enter Your Email Address"
+          control={control}
+          rules={{
+            required: "Email is required",
+            pattern: { value: EMAIL_REGEX, message: "Email is invalid" },
+          }}
+        />
+        <CustomButton
+          text="Send Reset Link"
+          onPress={handleSubmit(onForgotPasswordPressed)}
+        />
+        <Text style={styles.logInText}/>
+          Back to{" "}
+          <Text onPress={onLogInPressed} style={styles.button}>
+            Login
           </Text>
           <CustomInput
             name="email"

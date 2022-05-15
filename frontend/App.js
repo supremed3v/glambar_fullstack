@@ -27,16 +27,16 @@ import Rate from "./src/screens/Rate/Rate";
 import Packages from "./src/screens/Packages/Packages";
 import Reviews from "./src/screens/Reviews/Reviews";
 import LandingPage from "./src/screens/LandingPage/LandingPage";
+<<<<<<< HEAD
 import SalonDetailsPage from './src/screens/SalonDetailsScreen'
 import ServiceDetailScreen from './src/screens/ServiceDetailScreen'
 import Cart from './src/screens/Cart'
+=======
+import ReviewDateTime from "./src/screens/ReviewDateTime/ReviewDateTime";
+import Cart from "./src/screens/Cart/Cart";
+>>>>>>> ffaaa7e0c78a482d983a5f9d0ca6910fd86ec5e0
 
 
-// Import Amplify
-import { Amplify, Auth, Hub } from "aws-amplify";
-// Configure Amplify
-import awsconfig from "./src/aws-exports";
-Amplify.configure(awsconfig);
 
 const Stack = createStackNavigator();
 
@@ -49,69 +49,29 @@ const theme = {
 };
 
 export default function App() {
-  const [user, setUser] = useState(undefined);
-  const checkUser = async () => {
-    try {
-      const authUser = await Auth.currentAuthenticatedUser({
-        bypassCache: true,
-      });
-      setUser(authUser);
-    } catch (e) {
-      setUser(null);
-    }
-  };
-
-  useEffect(() => {
-    const listener = (data) => {
-      if (data.payload.event === "signIn" || data.payload.event === "signOut") {
-        checkUser();
-      }
-    };
-
-    Hub.listen("auth", listener);
-    return () => Hub.remove("auth", listener);
-  }, []);
-
-  // if (user === undefined) {
-  //   return (
-  //     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-  //       <ActivityIndicator />
-  //     </View>
-  //   );
-  // }
-
-  return (
+ return (
     <NavigationContainer theme={theme}>
       <Stack.Navigator
         screenOptions={{ headerShown: false }}
         initialRouteName="Cart"
       >
+<<<<<<< HEAD
         {!user ? (
           <>
           
           <Stack.Screen name="SalonDetailsPage" component={SalonDetailsPage} />
           <Stack.Screen name="Cart" component={Cart} />
           <Stack.Screen name="ServiceDetailScreen" component={ServiceDetailScreen} />
+=======
+>>>>>>> ffaaa7e0c78a482d983a5f9d0ca6910fd86ec5e0
             <Stack.Screen name="Login" component={SignInScreen} />
-            <Stack.Screen
-              name="SalonServiceScreen"
-              component={SalonNavigationContainer}
-            />
+            <Stack.Screen name="SalonServices" component={SalonNavigationContainer}/>
             <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
             <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
             <Stack.Screen name="NewPassword" component={NewPassword} />
-            <Stack.Screen
-              name="VerificationCode"
-              component={VerificationCode}
-            />
+            <Stack.Screen name="VerificationCode" component={VerificationCode}/>
             <Stack.Screen name="LandingPage" component={LandingPage} />
-            <Stack.Screen
-              name="TermsandConditions"
-              component={TermsandConditions}
-            />
-          </>
-        ) : (
-          <>
+            <Stack.Screen name="TermsandConditions" component={TermsandConditions}/>
             <Stack.Screen name="Home" component={HomeNavigationContainer} />
             <Stack.Screen name="ClientDetails" component={ClientDetails} />
             <Stack.Screen name="SalonScreen" component={SalonScreen} />
@@ -120,6 +80,7 @@ export default function App() {
             <Stack.Screen name="AboutUs" component={AboutUs} />
             <Stack.Screen name="Packages" component={Packages} />
             <Stack.Screen name="Reviews" component={Reviews} />
+<<<<<<< HEAD
             <Stack.Screen name="SalonDetailsPage" component={SalonDetailsPage} />
             <Stack.Screen
               name="UpcomingAppointment"
@@ -129,10 +90,14 @@ export default function App() {
               name="PassedAppointment"
               component={PassedAppointment}
             />
+=======
+            <Stack.Screen name="UpcomingAppointment" component={UpcomingAppointment}/>
+            <Stack.Screen name="PassedAppointment" component={PassedAppointment}/>
+>>>>>>> ffaaa7e0c78a482d983a5f9d0ca6910fd86ec5e0
             <Stack.Screen name="Complain" component={Complain} />
             <Stack.Screen name="Rate" component={Rate} />
-          </>
-        )}
+            <Stack.Screen name="ReviewDateTime" component={ReviewDateTime} />
+            <Stack.Screen name="Cart" component={Cart} />
       </Stack.Navigator>
     </NavigationContainer>
   );

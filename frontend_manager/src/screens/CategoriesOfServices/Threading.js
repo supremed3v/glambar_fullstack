@@ -14,6 +14,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import React from "react";
 import { useForm } from "react-hook-form";
 
+
 const Threading = ({ navigation }) => {
   const {
     control,
@@ -25,10 +26,6 @@ const Threading = ({ navigation }) => {
     console.log(data);
     Alert.alert("", "Submitted Successfully");
   };
-  const onBackPress = () => {
-    // set route
-    navigation.push("Service");
-  };
   return (
     <>
       <ImageBackground
@@ -39,7 +36,6 @@ const Threading = ({ navigation }) => {
       <Ionicons
         style={styles.backIcon}
         name="md-chevron-back-circle-sharp"
-        onPress={onBackPress}
         size={40}
         color="white"
       />
@@ -106,5 +102,6 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     marginTop: 15,
   },
+ 
 });
 export default Threading;

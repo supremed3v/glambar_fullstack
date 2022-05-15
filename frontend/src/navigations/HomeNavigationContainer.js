@@ -7,11 +7,9 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import UpcomingAppointment from "../screens/UpcomingAppointment/UpcomingAppointment";
 import AddressDetails from "../screens/AddressDetails/AddressDetails";
 import ClientDetails from "../screens/ClientDetails/ClientDetails";
-import { Auth } from "aws-amplify";
 
 const HomeNavigationContainer = () => {
   const signOut = () => {
-    Auth.signOut();
   };
   return (
     <Tab.Navigator

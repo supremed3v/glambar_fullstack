@@ -13,6 +13,7 @@ import CustomButton from "../../components/CustomButton";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { Picker } from "@react-native-picker/picker";
 
 const HairTreatment = ({ navigation }) => {
   const {
@@ -25,10 +26,6 @@ const HairTreatment = ({ navigation }) => {
     console.log(data);
     Alert.alert("", "Submitted Successfully");
   };
-  const onBackPress = () => {
-    // set route
-    navigation.push("Service");
-  };
   return (
     <>
       <ImageBackground
@@ -39,7 +36,6 @@ const HairTreatment = ({ navigation }) => {
       <Ionicons
         style={styles.backIcon}
         name="md-chevron-back-circle-sharp"
-        onPress={onBackPress}
         size={40}
         color="white"
       />
@@ -59,18 +55,27 @@ const HairTreatment = ({ navigation }) => {
               control={control}
               rules={{ required: "Brand name is required" }}
             />
-            <CustomInput
-              name="length"
-              placeholder="Enter Hair Length"
-              control={control}
-              rules={{ required: "Length is required" }}
-            />
-            <CustomInput
-              name="volume"
-              placeholder="Enter Hair Volume"
-              control={control}
-              rules={{ required: "Volume is required" }}
-            />
+            <View style={styles.pickerView}>
+              <Text style={styles.pickerText}>Length</Text>
+              <Picker style={styles.picker} onValueChange={(value) => console.log(value)} >
+                <Picker.Item label="Select" value="Select" />
+                <Picker.Item label="Shoulder" value="Shoulder" />
+                <Picker.Item label="Armpit" value="Armpit" />
+                <Picker.Item label="Elbow" value="Elbow" />
+                <Picker.Item label="Waist" value="Waist" />
+                <Picker.Item label="Hip" value="Hip" />
+                <Picker.Item label="Knee" value="Knee" />
+              </Picker>
+            </View>
+            <View style={styles.pickerView2}>
+              <Text style={styles.pickerText2}>Volume</Text>
+              <Picker style={styles.picker2} onValueChange={(data) => console.log(data)} >
+                <Picker.Item label="Select" />
+                <Picker.Item label="Thick" value="Thick" />
+                <Picker.Item label="Normal" value="Normal" />
+                <Picker.Item label="Thin" value="Thin" />
+              </Picker>
+            </View>
             <CustomInput
               name="description"
               placeholder="Enter Description"
@@ -128,5 +133,45 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     marginTop: 15,
   },
+  pickerView: {
+    flexDirection: "row",
+    margin: 5,
+    height: 52,
+  },
+  pickerText: {
+    fontSize: 14,
+    color: "gray",
+    alignItems: "center",
+    marginTop: 15,
+    marginBottom: 15,
+    marginStart: 20,
+  },
+  picker: {
+    width: 200,
+    height: 30,
+    backgroundColor: "#f0f1f2",
+    borderWidth: 5,
+    marginStart: 50
+  },
+  pickerView2: {
+    flexDirection: "row",
+    margin: 5,
+    height: 52,
+  },
+  pickerText2: {
+    fontSize: 14,
+    color: "gray",
+    alignItems: "center",
+    marginTop: 15,
+    marginBottom: 15,
+    marginStart: 20,
+  },
+  picker2: {
+    width: 200,
+    height: 30,
+    backgroundColor: "#f0f1f2",
+    borderWidth: 5,
+    marginStart: 45
+  }
 });
 export default HairTreatment;
