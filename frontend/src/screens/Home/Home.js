@@ -29,8 +29,8 @@ const Home = ({ navigation }) => {
         <AntDesign name="menuunfold" size={24} color="black" />
         <Text> G 14/4, Islamabad</Text>
         <View style={styles.topnav2}>
-          <Entypo name="bell" size={24} color="black" />
-          <Feather name="shopping-cart" size={24} color="black" />
+          <Entypo name="bell" size={24} color="black"  />
+          <Feather name="shopping-cart" size={24} color="black"  onPress={() => navigation.navigate("Cart")}/>
         </View>
       </View>
       <SafeAreaView>

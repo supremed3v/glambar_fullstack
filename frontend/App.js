@@ -27,6 +27,8 @@ import Rate from "./src/screens/Rate/Rate";
 import Packages from "./src/screens/Packages/Packages";
 import Reviews from "./src/screens/Reviews/Reviews";
 import LandingPage from "./src/screens/LandingPage/LandingPage";
+import ReviewDateTime from "./src/screens/ReviewDateTime/ReviewDateTime";
+import Cart from "./src/screens/Cart/Cart";
 
 
 
@@ -45,10 +47,10 @@ export default function App() {
     <NavigationContainer theme={theme}>
       <Stack.Navigator
         screenOptions={{ headerShown: false }}
-        initialRouteName="LandingPage"
+        initialRouteName="Cart"
       >
             <Stack.Screen name="Login" component={SignInScreen} />
-            <Stack.Screen name="SalonServiceScreen" component={SalonNavigationContainer}/>
+            <Stack.Screen name="SalonServices" component={SalonNavigationContainer}/>
             <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
             <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
             <Stack.Screen name="NewPassword" component={NewPassword} />
@@ -67,6 +69,8 @@ export default function App() {
             <Stack.Screen name="PassedAppointment" component={PassedAppointment}/>
             <Stack.Screen name="Complain" component={Complain} />
             <Stack.Screen name="Rate" component={Rate} />
+            <Stack.Screen name="ReviewDateTime" component={ReviewDateTime} />
+            <Stack.Screen name="Cart" component={Cart} />
       </Stack.Navigator>
     </NavigationContainer>
   );
