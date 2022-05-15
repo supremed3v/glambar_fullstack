@@ -47,7 +47,7 @@ export default function App() {
     <NavigationContainer theme={theme}>
       <Stack.Navigator
         screenOptions={{ headerShown: false }}
-        initialRouteName="Cart"
+        initialRouteName="LandingPage"
       >
             <Stack.Screen name="Login" component={SignInScreen} />
             <Stack.Screen name="SalonServices" component={SalonNavigationContainer}/>
