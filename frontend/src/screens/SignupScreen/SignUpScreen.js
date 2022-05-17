@@ -89,6 +89,18 @@ const SignUpScreen = ({ navigation }) => {
             control={control}
             rules={{ required: "Address is required" }}
           />
+           <CustomInput
+            name="city"
+            placeholder="Enter Your City"
+            control={control}
+            rules={{ required: "City name is required" }}
+          />
+          <CustomInput
+            name="area"
+            placeholder="Enter Your Area"
+            control={control}
+            rules={{ required: "Area is required" }}
+          />
           <CustomInput
             name="gender"
             placeholder="Enter your Gender"

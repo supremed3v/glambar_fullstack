@@ -55,7 +55,7 @@ const AddAddress = ({navigation}) => {
           />
           <CustomInput
             name="area"
-            placeholder="Enter Your City"
+            placeholder="Enter Your Area"
             control={control}
             rules={{ required: "Area is required" }}
           />

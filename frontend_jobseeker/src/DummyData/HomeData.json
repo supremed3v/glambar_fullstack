@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "name": "Royli Salon and Studio",
+    "requiredstaff": "Hair Stylist",
+    "experience": "4 years",
+    "salary": "10,000 - 40,000",
+    "img": "https://images.unsplash.com/photo-1526045478516-99145907023c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+  },
+  {
+    "id": 2,
+    "name": "Omni Health and Beauty Center",
+    "requiredstaff": "Hair Stylist",
+    "experience": "4 years",
+    "salary": "10,000 - 40,000",
+    "img": "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1611&q=80" 
+  },
+  {
+    "id": 3,
+    "name": "Maisha Spa and Health Club",
+    "requiredstaff": "Hair Stylist",
+    "experience": "4 years",
+    "salary": "10,000 - 40,000",
+    "img": "https://images.unsplash.com/photo-1487412912498-0447578fcca8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+  },
+  {
+    "id": 4,
+    "requiredstaff": "Hair Stylist",
+    "experience": "4 years",
+    "salary": "10,000 - 40,000",
+    "img": "https://images.unsplash.com/photo-1527799595389-46c4c3aa0df2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1031&q=80"
+  },
+  {
+    "id": 5,
+    "name": "Allure Salon and Spa",
+    "requiredstaff": "Hair Stylist",
+    "experience": "4 years",
+    "salary": "10,000 - 40,000",
+    "img": "https://images.unsplash.com/photo-1619607146034-5a05296c8f9a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+  },
+  {
+    "id": 6,
+    "name": "Faizas",
+    "requiredstaff": "Hair Stylist",
+    "experience": "4 years",
+    "salary": "10,000 - 40,000",
+    "img": "https://images.unsplash.com/photo-1634449571017-5fecfd26ad76?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+  },
+  {
+    "id": 7,
+    "name": "Toni and Guy",
+    "requiredstaff": "Hair Stylist",
+    "experience": "4 years",
+    "salary": "10,000 - 40,000",
+    "img": "https://images.unsplash.com/photo-1634449571017-5fecfd26ad76?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+  },
+  {
+    "id": 8,
+    "name": "Sobia salon and studio",
+    "requiredstaff": "Hair Stylist",
+    "experience": "4 years",
+    "salary": "10,000 - 40,000",
+    "img": "https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80w"
+  }
+]

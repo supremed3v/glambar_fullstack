@@ -27,7 +27,7 @@ const TermsandConditions = ({ navigation }) => {
         color="#5085E1"
       />
       <View style={styles.container_center}>
-        <Text style={styles.heading}>About Us</Text>
+        <Text style={styles.heading}>Terms and Conditions</Text>
         <View>
           <ScrollView showsVerticalScrollIndicator={false}>
             <Text style={styles.text}>

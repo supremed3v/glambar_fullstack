@@ -26,7 +26,7 @@ const PassedAppointment = ({ navigation }) => {
     navigation.navigate("Complain");
   };
   const onReschedulePressed = () => {
-    
+    navigation.navigate("ReviewDateTime");
   };
 
 

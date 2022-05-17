@@ -7,13 +7,16 @@ import {
   ScrollView,
   SafeAreaView,
   FlatList,
+  Alert
 } from "react-native";
 import React from "react";
-import salonbg from "../../../assets/salonbg.png";
-import myData from "../../DummyData/SalonPackageData";
+import myData from "../../DummyData/SalonPackageData.json";
 import AntDesign from "@expo/vector-icons/AntDesign";
 
 const Packages = () => {
+  const AddToCart = () => {
+    Alert.alert("", "Added to cart.");
+  };
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <SafeAreaView>
@@ -29,13 +32,14 @@ const Packages = () => {
               <View style={styles.container}>
                 <Image source={{ uri: item.img }} style={styles.cardImg} />
                 <View style={styles.ViewTextSalon}>
-                  <Text style={styles.salonText}>{item.label}</Text>
-                  <Text style={styles.salonText}>{item.price}</Text>
+                  <Text style={styles.salonText}>Name: {item.label}</Text>
+                  <Text style={styles.salonText}>Price: {item.price}</Text>
                 </View>
                 <AntDesign
                   name="plussquare"
                   size={24}
                   color="black"
+                  onPress={AddToCart}
                   style={styles.addToCartIcon}
                 />
               </View>

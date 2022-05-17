@@ -1,86 +1,54 @@
-import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
-import React, { useState } from "react";
-import { Salon } from "../../../models";
-import { useRoute } from "@react-navigation/native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  ScrollView,
+  SafeAreaView,
+  FlatList,
+  TouchableOpacity,
+  Alert
+} from "react-native";
+import React from "react";
+import myData from "../../../DummyData/SalonServiceData.json";
+import AntDesign from "@expo/vector-icons/AntDesign";
 
 const SalonServices = ({ navigation }) => {
-  
 
+  const AddToCart = () => {
+    Alert.alert("", "Added to cart.");
+  };
   return (
-    <>
-      <View style={styles.container}>
-        <Text
-          style={{
-            marginTop: 30,
-            marginLeft: 25,
-            fontWeight: "bold",
-            fontSize: 20,
-          }}
-        >
-          Services
-        </Text>
-        <View>
-          {/* new service */}
-          <View style={styles.card}>
-            <Image
-              source={{
-                uri: "https://images.unsplash.com/photo-1605980766335-d3a41c7332a1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80",
-              }}
-              resizeMode="cover"
-              style={styles.cardImage}
-            />
-            <View style={styles.textWrapper}></View>
-            <Text>
-              Hair Color {"\n"}Balayage {"\n"}Price: 1900/=
-            </Text>
-          </View>
-
-          <View style={{ marginTop: 10 }}>
+    <ScrollView showsVerticalScrollIndicator={false}>
+      <SafeAreaView>
+        <Text style={styles.heading}>Services</Text>
+        <FlatList
+          data={myData}
+          renderItem={({ item, id }) => (
             <TouchableOpacity
-              onPress={AddToCart}
-              style={{
-                backgroundColor: "#c4c4c4",
-                padding: 10,
-                width: "40%",
-                marginStart: 30,
-                borderRadius: 10,
-              }}
+              key={id}
+              style={styles.card}
+              onPress={() => navigation.navigate({ myData })}
             >
-              <Text style={{ textAlign: "center" }}>Add to cart</Text>
+              <View style={styles.container}>
+                <Image source={{ uri: item.img }} style={styles.cardImg} />
+                <View style={styles.ViewTextSalon}>
+                  <Text style={styles.salonText}>Name: {item.label}</Text>
+                  <Text style={styles.salonText}>Price: {item.price}</Text>
+                </View>
+                <AntDesign
+                  name="plussquare"
+                  size={24}
+                  color="black"
+                  onPress={AddToCart}
+                  style={styles.addToCartIcon}
+                />
+              </View>
             </TouchableOpacity>
-          </View>
-          {/* new service */}
-          <View style={styles.card}>
-            <Image
-              source={{
-                uri: "https://images.unsplash.com/photo-1551392505-f4056032826e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=693&q=80",
-              }}
-              resizeMode="cover"
-              style={styles.cardImage}
-            />
-            <View style={styles.textWrapper}></View>
-            <Text>
-              Makeup {"\n"}Eye Makeup {"\n"}Price: 3000/=
-            </Text>
-          </View>
-
-          <View style={{ marginTop: 10 }}>
-            <TouchableOpacity
-              onPress={AddToCart}
-              style={{
-                backgroundColor: "#c4c4c4",
-                padding: 10,
-                width: "40%",
-                marginStart: 30,
-                borderRadius: 10,
-              }}
-            >
-              <Text style={{ textAlign: "center" }}>Add to cart</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </View>
-    </>
+          )}
+        />
+      </SafeAreaView>
+    </ScrollView>
   );
 };
 
