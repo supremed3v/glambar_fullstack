@@ -25,7 +25,6 @@ const Home = ({ navigation }) => {
           <Feather name="shopping-cart" size={24} color="black"  onPress={() => navigation.navigate("Cart")}/>
         </View>
       </View>
-<<<<<<< HEAD
       <FlatList
         data={salon}
         ListHeaderComponent={
@@ -47,41 +46,6 @@ const Home = ({ navigation }) => {
         showsVerticalScrollIndicator={false}
       />
     </>
-=======
-      <SafeAreaView>
-        <FlatList
-          data={myData}
-          ListHeaderComponent={
-            <View style={styles.container}>
-              <CustomInput
-                placeholder="Search"
-                name="search"
-                control={control}
-              />
-            </View>
-          }
-          renderItem={({ item, id }) => (
-            <TouchableOpacity
-              key={id}
-              style={styles.card}
-              onPress={() => navigation.navigate("SalonScreen")}>
-              <Image source={{ uri: item.img }} style={styles.cardImg} />
-              <View style={styles.textSalon}>
-                <Text>{item.name}</Text>
-                <View style={styles.textRating}>
-                  <Text>
-                    <Ionicons name="star" size={14} color="yellow" />{" "}
-                    {item.rating.toFixed(1)}
-                  </Text>
-                </View>
-              </View>
-              <Text>{item.gender}</Text>
-            </TouchableOpacity>
-          )}
-        />
-      </SafeAreaView>
-    </ScrollView>
->>>>>>> ffaaa7e0c78a482d983a5f9d0ca6910fd86ec5e0
   );
 };
 
@@ -90,37 +54,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 5,
   },
-<<<<<<< HEAD
-=======
-
-  card: {
-    width: 350,
-    height: 200,
-    paddingLeft: 60,
-    paddingRight: 20,
-    marginTop: 20,
-    alignContent:"center",
-    marginBottom: 10,
-  },
-  cardImg: {
-    borderRadius: 15,
-    width: 280,
-    height: 150,
-    resizeMode: "cover",
-  },
-
-  textSalon: {
-    fontSize: 48,
-    flexDirection: "row",
-    fontWeight: "bold",
-    color: "#5085E1",
-    alignItems: "center",
-    marginRight: 60,
-  },
-  textRating: {
-    paddingLeft: 40,
-  },
->>>>>>> ffaaa7e0c78a482d983a5f9d0ca6910fd86ec5e0
   topnav: {
     flexDirection: "row",
     marginTop: 10,

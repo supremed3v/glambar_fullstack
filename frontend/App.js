@@ -27,14 +27,8 @@ import Rate from "./src/screens/Rate/Rate";
 import Packages from "./src/screens/Packages/Packages";
 import Reviews from "./src/screens/Reviews/Reviews";
 import LandingPage from "./src/screens/LandingPage/LandingPage";
-<<<<<<< HEAD
-import SalonDetailsPage from './src/screens/SalonDetailsScreen'
-import ServiceDetailScreen from './src/screens/ServiceDetailScreen'
-import Cart from './src/screens/Cart'
-=======
 import ReviewDateTime from "./src/screens/ReviewDateTime/ReviewDateTime";
 import Cart from "./src/screens/Cart/Cart";
->>>>>>> ffaaa7e0c78a482d983a5f9d0ca6910fd86ec5e0
 
 
 
@@ -55,15 +49,9 @@ export default function App() {
         screenOptions={{ headerShown: false }}
         initialRouteName="Cart"
       >
-<<<<<<< HEAD
-        {!user ? (
-          <>
-          
           <Stack.Screen name="SalonDetailsPage" component={SalonDetailsPage} />
           <Stack.Screen name="Cart" component={Cart} />
           <Stack.Screen name="ServiceDetailScreen" component={ServiceDetailScreen} />
-=======
->>>>>>> ffaaa7e0c78a482d983a5f9d0ca6910fd86ec5e0
             <Stack.Screen name="Login" component={SignInScreen} />
             <Stack.Screen name="SalonServices" component={SalonNavigationContainer}/>
             <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
@@ -80,7 +68,6 @@ export default function App() {
             <Stack.Screen name="AboutUs" component={AboutUs} />
             <Stack.Screen name="Packages" component={Packages} />
             <Stack.Screen name="Reviews" component={Reviews} />
-<<<<<<< HEAD
             <Stack.Screen name="SalonDetailsPage" component={SalonDetailsPage} />
             <Stack.Screen
               name="UpcomingAppointment"
@@ -90,10 +77,6 @@ export default function App() {
               name="PassedAppointment"
               component={PassedAppointment}
             />
-=======
-            <Stack.Screen name="UpcomingAppointment" component={UpcomingAppointment}/>
-            <Stack.Screen name="PassedAppointment" component={PassedAppointment}/>
->>>>>>> ffaaa7e0c78a482d983a5f9d0ca6910fd86ec5e0
             <Stack.Screen name="Complain" component={Complain} />
             <Stack.Screen name="Rate" component={Rate} />
             <Stack.Screen name="ReviewDateTime" component={ReviewDateTime} />
