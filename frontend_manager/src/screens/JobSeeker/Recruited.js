@@ -16,7 +16,7 @@ import AppointmentSelectorButton from "../../components/AppointmentSelectorButto
 
 const Recruited = ({ navigation }) => {
     const onPassedPressed = () => {
-        navigation.navigate("Request");
+        navigation.navigate("JSRequest");
     };
     const onViewDetailsPressed = () => {
 

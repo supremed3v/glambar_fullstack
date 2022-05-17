@@ -132,13 +132,7 @@ const SignUpScreen = ({ navigation }) => {
             }}
           />
 
-          <Text style={styles.text}>
-            I read and agree to the{" "}
-            <Text onPress={onPrivacyPressed} style={styles.button}>
-              Terms and Conditions
-            </Text>
-            .
-          </Text>
+        
           <CustomButton
             text="Register Your Salon"
             onPress={handleSubmit(onSignUpPressed)}

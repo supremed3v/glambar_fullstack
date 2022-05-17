@@ -1,5 +1,13 @@
-import { View, Text, StyleSheet, FlatList } from "react-native";
-import SalonItem from "../../components/SalonItem";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  ScrollView,
+  FlatList,
+  SafeAreaView,
+  TouchableOpacity,
+} from "react-native";
 import { useForm } from "react-hook-form";
 import CustomInput from "../../components/CustomInput";
 import Ionicons from "@expo/vector-icons/Ionicons";
@@ -16,7 +24,7 @@ const Home = ({ navigation }) => {
   } = useForm();
 
   return (
-    <>
+    <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.topnav}>
         <AntDesign name="menuunfold" size={24} color="black" />
         <Text> G 14/4, Islamabad</Text>
@@ -25,7 +33,6 @@ const Home = ({ navigation }) => {
           <Feather name="shopping-cart" size={24} color="black"  onPress={() => navigation.navigate("Cart")}/>
         </View>
       </View>
-<<<<<<< HEAD
       <SafeAreaView>
         <FlatList
           data={myData}
@@ -59,29 +66,6 @@ const Home = ({ navigation }) => {
         />
       </SafeAreaView>
     </ScrollView>
-=======
-      <FlatList
-        data={salon}
-        ListHeaderComponent={
-          <View style={styles.container}>
-            <CustomInput
-              name="search"
-              placeholder="Search here..."
-              control={control}
-              rules={{
-                minLength: {
-                  value: 30,
-                  message: "30 Characters",
-                },
-              }}
-            />
-          </View>
-        }
-        renderItem={({ item }) => <SalonItem salon={item} />}
-        showsVerticalScrollIndicator={false}
-      />
-    </>
->>>>>>> c30596f4b1f8e36cff0c4fbc8e9a05c575589576
   );
 };
 
@@ -89,6 +73,34 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     marginTop: 5,
+  },
+
+  card: {
+    width: 350,
+    height: 200,
+    paddingLeft: 60,
+    paddingRight: 20,
+    marginTop: 20,
+    alignContent:"center",
+    marginBottom: 10,
+  },
+  cardImg: {
+    borderRadius: 15,
+    width: 280,
+    height: 150,
+    resizeMode: "cover",
+  },
+
+  textSalon: {
+    fontSize: 48,
+    flexDirection: "row",
+    fontWeight: "bold",
+    color: "#5085E1",
+    alignItems: "center",
+    marginRight: 60,
+  },
+  textRating: {
+    paddingLeft: 40,
   },
   topnav: {
     flexDirection: "row",

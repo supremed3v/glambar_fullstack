@@ -13,23 +13,7 @@ import React from "react";
 import myData from "../../../DummyData/SalonServiceData.json";
 import AntDesign from "@expo/vector-icons/AntDesign";
 
-<<<<<<< HEAD
 const SalonServices = ({ navigation }) => {
-=======
-const SalonServices = ({}) => {
-  const [salon, setSalon] = useState(null);
-  const route = useRoute();
-  const id = route.params?.id;
-
-  useEffect(() => {
-    // Fetch salon with id
-    DataStore.query(Salon, id).then(setSalon);
-  }, []);
-
-  if (!salon) {
-    return <ActivityIndicator size={"large"} color="blue" />;
-  }
->>>>>>> c30596f4b1f8e36cff0c4fbc8e9a05c575589576
 
   const AddToCart = () => {
     Alert.alert("", "Added to cart.");

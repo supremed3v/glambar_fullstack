@@ -13,21 +13,17 @@ import background from "../../../assets/bg.jpeg";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
-import { Auth } from "aws-amplify";
 
 const NewPassword = ({ navigation }) => {
   const { control, handleSubmit, watch } = useForm();
 
   const pwd = watch("password");
 
-  const onSave = async (data) => {
-    try {
-      await Auth.forgotPasswordSubmit(data.email, data.code, data.password);
-      navigation.navigate("SignIn");
-    } catch (e) {
-      Alert.alert("Oops", e.message);
-    }
+  const onSave = (data) => {
+    console.log(data);
+    Alert.alert("", "Link Sent");
   };
+
   return (
     <ImageBackground
       source={background}
@@ -37,27 +33,22 @@ const NewPassword = ({ navigation }) => {
       <Ionicons
         style={styles.backIcon}
         name="md-chevron-back-circle-sharp"
-        onPress={onBackPress}
         size={40}
         color="#5085E1"
       />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.container_center}>
           <Text style={styles.UpdatePasswordText}>Create New Password</Text>
-
+          <Text style={styles.text}>
+            Your new password must be different from previous used password.
+          </Text>
           <CustomInput
-            placeholder="Email"
-            name="email"
+            name="previousPassword"
+            placeholder="Enter Your Previous Password"
             control={control}
-            rules={{ required: "email is required" }}
+            secureTextEntry={true}
+            rules={{ required: "Previous Password is required" }}
           />
-          <CustomInput
-            placeholder="Code"
-            name="code"
-            control={control}
-            rules={{ required: "Code is required" }}
-          />
-
           <CustomInput
             name="password"
             placeholder="Password"
@@ -66,9 +57,19 @@ const NewPassword = ({ navigation }) => {
             rules={{
               required: "Password is required",
               minLength: {
-                value: 8,
-                message: "Password should be 8 characters long",
+                value: 7,
+                message: "Password should be 7 characters long",
               },
+            }}
+          />
+
+          <CustomInput
+            name="confirm-password"
+            placeholder="Password"
+            secureTextEntry={true}
+            control={control}
+            rules={{
+              validate: (value) => value === pwd || "Password do not match",
             }}
           />
           <CustomButton text="Reset Password" onPress={handleSubmit(onSave)} />

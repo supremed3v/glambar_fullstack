@@ -47,11 +47,9 @@ export default function App() {
     <NavigationContainer theme={theme}>
       <Stack.Navigator
         screenOptions={{ headerShown: false }}
-        initialRouteName="Cart"
+        initialRouteName="LandingPage"
       >
-          <Stack.Screen name="SalonDetailsPage" component={SalonDetailsPage} />
-          <Stack.Screen name="Cart" component={Cart} />
-          <Stack.Screen name="ServiceDetailScreen" component={ServiceDetailScreen} />
+          
             <Stack.Screen name="Login" component={SignInScreen} />
             <Stack.Screen name="SalonServices" component={SalonNavigationContainer}/>
             <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
@@ -68,7 +66,6 @@ export default function App() {
             <Stack.Screen name="AboutUs" component={AboutUs} />
             <Stack.Screen name="Packages" component={Packages} />
             <Stack.Screen name="Reviews" component={Reviews} />
-            <Stack.Screen name="SalonDetailsPage" component={SalonDetailsPage} />
             <Stack.Screen
               name="UpcomingAppointment"
               component={UpcomingAppointment}

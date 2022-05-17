@@ -1,11 +1,8 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, SafeAreaView, FlatList } from "react-native";
 import React from "react";
-import salonbg from "../../../assets/salonbg.png";
 
 const Reviews = () => {
-    const AddToCart = () => {
-        console.log("Pressed");
-    };
+    
     return (
         <View>
             <Text style={styles.heading}>Reviews</Text>
