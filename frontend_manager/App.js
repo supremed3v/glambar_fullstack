@@ -6,8 +6,8 @@ import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import {
   SignInScreen, SignUpScreen, AddJob, Service, BabyCare, Bleach, Facial,
   HairColor, HairCutting, HairStyling, HairTreatment,
-  Makeup, Manicure, Massage, Pedicure, AddPackage, Scrub, Threading, Waxing, ForgotPassword, JobSeekerRecruited, ManageStaff,
-  SalonDetails, SalonHome, UpdatePassword, VerificationCode, Appointment, LandingPage, Request, JobSeekerRequest
+  Makeup, Manicure, Massage, Pedicure, AddPackage, Scrub, Threading, Waxing, ForgotPassword, Recruited, ManageStaff,
+  Profile, SalonHome, UpdatePassword, VerificationCode, Appointment, LandingPage, Request, JSRequest, Reviews
 } from "./src/screens";
 
 const Stack = createStackNavigator();
@@ -29,6 +29,7 @@ export default function App() {
       >
         <Stack.Screen name="Login" component={SignInScreen} />
         <Stack.Screen name="Signup" component={SignUpScreen} />
+        <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen name="Appointment" component={Appointment} />
         <Stack.Screen name="AddPackage" component={AddPackage} />
         <Stack.Screen name="AddJob" component={AddJob} />
@@ -48,14 +49,15 @@ export default function App() {
         <Stack.Screen name="Threading" component={Threading} />
         <Stack.Screen name="Waxing" component={Waxing} />
         <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
-        <Stack.Screen name="JobSeekerRecruited" component={JobSeekerRecruited} />
-        <Stack.Screen name="JobSeekerRequest" component={JobSeekerRequest} />
+        <Stack.Screen name="Recruited" component={Recruited} />
+        <Stack.Screen name="JSRequest" component={JSRequest} />
         <Stack.Screen name="ManageStaff" component={ManageStaff} />
         <Stack.Screen name="SalonHome" component={SalonHome} />
         <Stack.Screen name="UpdatePassword" component={UpdatePassword} />
         <Stack.Screen name="VerificationCode" component={VerificationCode} />
         <Stack.Screen name="LandingPage" component={LandingPage} />
         <Stack.Screen name="Request" component={Request}/>
+        <Stack.Screen name="Reviews" component={Reviews}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
