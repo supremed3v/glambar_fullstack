@@ -19,12 +19,14 @@ export { default as Scrub} from "./CategoriesOfServices/Scrub";
 export { default as Threading} from "./CategoriesOfServices/Threading";
 export { default as Waxing} from "./CategoriesOfServices/Waxing";
 export { default as ForgotPassword} from "./ForgotPassword/ForgotPassword";
-export { default as JobSeekerRecruited} from "./JobSeekerRecruited/JobSeekerRecruited";
-export { default as JobSeekerRequest} from "./JobSeekerRequest/JobSeekerRequest";
 export { default as ManageStaff} from "./ManageStaff/ManageStaff";
 export { default as SalonHome} from "./SalonHome/SalonHome";
 export { default as UpdatePassword} from "./UpdatePassword/UpdatePassword";
 export { default as VerificationCode} from "./VerificationCode/VerificationCode";
 export { default as LandingPage} from "./LandingPage/LandingPage";
 export { default as Request} from "./Appointment/Request";
+export { default as JSRequest} from "./JobSeeker/JSRequest";
+export { default as Recruited} from "./JobSeeker/Recruited";
+export { default as Profile} from "./Profile/Profile";
+export { default as Reviews} from "./Reviews/Reviews";
 

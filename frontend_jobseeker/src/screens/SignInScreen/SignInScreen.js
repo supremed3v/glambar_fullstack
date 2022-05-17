@@ -1,13 +1,22 @@
 import {
   ImageBackground,
+<<<<<<< HEAD
+=======
+  TextInput,
+>>>>>>> c30596f4b1f8e36cff0c4fbc8e9a05c575589576
   Image,
   StyleSheet,
   Text,
   View,
   useWindowDimensions,
+<<<<<<< HEAD
   Alert,
 } from "react-native";
 import React, { useState } from "react";
+=======
+  ScrollView,
+} from "react-native";
+>>>>>>> c30596f4b1f8e36cff0c4fbc8e9a05c575589576
 
 import background from "../../../assets/bg.jpeg";
 import logo from "../../../assets/logo.png";
@@ -19,7 +28,10 @@ const EMAIL_REGEX =
 import { useForm } from "react-hook-form";
 
 const SignInScreen = ({ navigation }) => {
+<<<<<<< HEAD
 
+=======
+>>>>>>> c30596f4b1f8e36cff0c4fbc8e9a05c575589576
   const {
     control,
     handleSubmit,
@@ -28,11 +40,18 @@ const SignInScreen = ({ navigation }) => {
 
   const { height } = useWindowDimensions();
 
+<<<<<<< HEAD
   const onSignInPressed =  (data) => {
     console.log(data);
     navigation.navigate("Home");
   };
     
+=======
+  const onSignInPressed = (data) => {
+    console.log(data);
+    navigation.navigate("Home");
+  };
+>>>>>>> c30596f4b1f8e36cff0c4fbc8e9a05c575589576
 
   const onForgotPasswordPressed = () => {
     navigation.push("ForgotPassword");

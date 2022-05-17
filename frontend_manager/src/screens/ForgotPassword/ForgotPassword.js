@@ -24,7 +24,11 @@ const ForgotPassword = ({ navigation }) => {
   } = useForm();
 
   const onForgotPasswordPressed = (data) => {
+<<<<<<< HEAD
     navigation.navigate("Login");
+=======
+    console.log(data);
+>>>>>>> c30596f4b1f8e36cff0c4fbc8e9a05c575589576
   };
   const onLogInPressed = () => {
     navigation.navigate("Login");
